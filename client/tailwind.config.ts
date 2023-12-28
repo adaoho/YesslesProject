@@ -16,6 +16,9 @@ const config: Config = {
         "yl-50": "#D1FAE5",
         "yl-60": "#527773",
         "yl-70": "#888B97",
+        "yl-80": "#D1FAE5",
+        "yl-90": "#8A8CA5",
+        "yl-100": "#545581",
       },
       fontFamily: {
         lexend: ["Lexend"],

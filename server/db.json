@@ -1,0 +1,158 @@
+{
+  "user": [
+    {
+      "name": "Aletha Gerry",
+      "password": "123456",
+      "email": "aletha@mail.com",
+      "job": "employee",
+      "dateOfBirth": "1976-07-26",
+      "walletBalance": 0,
+      "profilePicture": "https://source.unsplash.com/random/900x700/?female",
+      "role": "User",
+      "pickupVoucher": 10
+    },
+    {
+      "name": "Monroe Gibson",
+      "password": "123456",
+      "email": "monroe@mail.com",
+      "job": "employee",
+      "dateOfBirth": "1976-07-26",
+      "walletBalance": 0,
+      "profilePicture": "https://source.unsplash.com/random/900x700/?female",
+      "role": "User",
+      "pickupVoucher": 10
+    }
+  ],
+  "program_yessles": [
+    {
+      "pendidikan": "Pendidikan Anak Usia Dini",
+      "alias": "PAUD",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student",
+      "priceStart": 5.9,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 100,
+      "type": "program_belajar"
+    },
+    {
+      "pendidikan": "Taman Kanak-Kanak",
+      "alias": "TK",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+2",
+      "priceStart": 3.1,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar"
+    },
+    {
+      "pendidikan": "Sekolah Dasar",
+      "alias": "SD",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+3",
+      "priceStart": 3.1,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar"
+    },
+    {
+      "pendidikan": "Sekolah Menengah Pertama",
+      "alias": "SMP",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+4",
+      "priceStart": 1.9,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar"
+    },
+    {
+      "pendidikan": "Sekolah Menengah Atas",
+      "alias": "SMA",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+5",
+      "priceStart": 1.9,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar"
+    },
+    {
+      "pendidikan": "Softskill",
+      "alias": "SOFTSKILL",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+6",
+      "priceStart": 1.9,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar"
+    },
+    {
+      "pendidikan": "Umum",
+      "alias": "UMUM",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+7",
+      "priceStart": 1.9,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar"
+    },
+    {
+      "pendidikan": "Paket Sahabat Belajar",
+      "alias": "UMUM",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+12",
+      "priceStart": 5.9,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 100,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Sobat Belajar",
+      "alias": "UMUM",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+2",
+      "priceStart": 3.1,
+      "durasiBelajar": 6,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Sohib Belajar",
+      "alias": "UMUM",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+3",
+      "priceStart": 1.9,
+      "durasiBelajar": 3,
+      "icon": "history_edu",
+      "tm": 30,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Konco Belajar",
+      "alias": "UMUM",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+9",
+      "priceStart": 975,
+      "durasiBelajar": 1,
+      "icon": "history_edu",
+      "tm": 15,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Kawan Belajar",
+      "alias": "UMUM",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+10",
+      "priceStart": 650,
+      "durasiBelajar": 1,
+      "icon": "history_edu",
+      "tm": 10,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Teman Belajar",
+      "alias": "UMUM",
+      "thumbnail": "https://source.unsplash.com/random/900x700/?student+6",
+      "priceStart": 325,
+      "durasiBelajar": 1,
+      "icon": "history_edu",
+      "tm": 5,
+      "type": "paket_belajar"
+    }
+  ]
+}

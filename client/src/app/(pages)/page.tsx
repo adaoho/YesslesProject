@@ -1,10 +1,51 @@
 "use client";
 
+import CardProgramYessles from "@/components/HomePage/CardProgramYessles";
+import { DataProgramBelajar, ResponseData } from "@/defs/Type";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
 export default function Home() {
+  const currentRoute = usePathname();
+  const searchParams = useSearchParams();
+  const getType = searchParams.get("type");
+  const linkStyle = `hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1 `;
+  const activeStyle = `bg-yl-10/20 text-yl-10 text-yl-10 border-yl-10/20 border-[1px] border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1 `;
+  const [dataProgBel, setDataProgBel] = useState<DataProgramBelajar[]>();
+  const [link, setLink] = useState(false);
+
+  useEffect(() => {
+    const fetchProgramBelajar = async () => {
+      let response;
+      if (!getType) {
+        response = await fetch(`http://localhost:3001/program_yessles`, {
+          cache: "no-store",
+        });
+      } else {
+        response = await fetch(
+          `http://localhost:3001/program_yessles?type_like=${getType}`,
+          {
+            cache: "no-store",
+          }
+        );
+      }
+
+      const responseJson: DataProgramBelajar[] = await response?.json();
+      setDataProgBel(responseJson);
+    };
+
+    fetchProgramBelajar();
+  }, [searchParams]);
+
+  // console.log(dataProgBel);
+  // console.log(searchParams.get("type"));
+  // console.log(currentRoute);
+
   return (
     <>
       {/* Hero Section */}
-      <section id="hero-section">
+      <section id="hero">
         <div className="grid grid-cols-2 w-full mb-4">
           {/* Part Title */}
           <div className="flex w-[50dvw] h-[720px] items-center">
@@ -115,7 +156,7 @@ export default function Home() {
       </section>
 
       {/* Program Yessles */}
-      <section id="program-section">
+      <section id="programs">
         <div className="flex w-[100dvw] h-[700px] items-center">
           <div className="flex w-full flex-col">
             {/* Header Section Program */}
@@ -129,168 +170,121 @@ export default function Home() {
 
               {/* Button Type */}
               <div className="flex flex-row gap-x-4">
-                <div className="hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1">
-                  <span className="material-symbols-outlined">apps</span>
-                  Semua
-                </div>
-                <div className="hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1">
-                  <span className="material-symbols-outlined">school</span>
-                  Program Belajar
-                </div>
-                <div className="hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1">
-                  <span className="material-symbols-outlined">package</span>
-                  Paket Belajar
-                </div>
-              </div>
-
-              {/* Button Switch Page */}
-              <div className="flex flex-row gap-x-2">
-                <div className="hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-full p-3 flex-row gap-x-1">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: 15 }}
+                <Link href={"/#programs"}>
+                  <div
+                    className={
+                      !searchParams.get("type") ? activeStyle : linkStyle
+                    }
                   >
-                    arrow_back_ios_new
-                  </span>
-                </div>
-                <div className="hover:bg-yl-10/20 rotate-180 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-full p-3 flex-row gap-x-1">
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontSize: 15 }}
+                    <span className="material-symbols-outlined">apps</span>
+                    Semua
+                  </div>
+                </Link>
+                <Link href={"/?type=program_belajar#programs"}>
+                  <div
+                    className={
+                      searchParams.get("type") === "program_belajar"
+                        ? activeStyle
+                        : linkStyle
+                    }
                   >
-                    arrow_back_ios_new
-                  </span>
-                </div>
+                    <span className="material-symbols-outlined">school</span>
+                    Program Belajar
+                  </div>
+                </Link>
+                <Link href={"/?type=paket_belajar#programs"}>
+                  <div
+                    className={
+                      searchParams.get("type") === "paket_belajar"
+                        ? activeStyle
+                        : linkStyle
+                    }
+                  >
+                    <span className="material-symbols-outlined">package</span>
+                    Paket Belajar
+                  </div>
+                </Link>
               </div>
             </div>
 
             {/* Caraousel */}
             <div className="flex flex-row pl-[8%] w-screen mt-2 overflow-x-auto gap-x-8">
-              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5">
-                {/* Card Box */}
-                <div className="flex h-[478px] w-[320px] flex-col">
-                  <div className="flex h-[382px] w-[310px] bg-blue-gray-500 rounded-3xl relative bg-yellow-600">
-                    <div className="absolute h-[34px] w-[77px] bg-blue-gray-700 rounded-xl flex items-center justify-center bottom-0 m-6 bg-red-600 gap-x-1 uppercase text-[12px]">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: 22 }}
-                      >
-                        school
-                      </span>
-                      Paud
-                    </div>
+              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5 pr-[8%]">
+                {dataProgBel?.map((programBel, index) => (
+                  <CardProgramYessles key={index} data={programBel} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Kenapa Harus Belajar di Yessles */}
+      <section id="programs">
+        <div className="flex w-[100dvw] h-fit items-center px-[8%] py-[3%]">
+          <div className="grid grid-cols-2 w-full h-full">
+            <div className="flex flex-col bg-blue-gray-200 h-full w-full justify-center items-start ">
+              {/* Title */}
+              <div className="flex flex-col">
+                <h1 className="text-[12px] text-yl-30">Tentang Yessles</h1>
+                <h1 className="text-[30px] font-bold text-yl-20 font-lexend">
+                  Kenapa Harus Belajar di Yessles?
+                </h1>
+              </div>
+              <p className="text-[15px] text-yl-90 leading-6 font-lexend pr-[8%] mt-3">
+                Bagi Yessles belajar itu bukan hanya tentang mengerjakan tugas
+                atau ujian. Ini tentang memahami konsep, mengeksplorasi minat si
+                Buah Hati, Agar Buah Hati dapat tumbuh menjadi individu yang
+                lebih percaya diri dan berpengetahuan.
+              </p>
+
+              {/* Sistem Belajar */}
+              <div className="flex flex-col mt-7 w-full font-lexend text-yl-100 gap-y-4">
+                <h1 className="font-lexend font-bold">Sistem Belajar</h1>
+                <div className="grid grid-cols-2">
+                  <div className="flex flex-row">
+                    <span className="material-symbols-outlined">nutrition</span>
+                    <p>1 Tutor Untuk 1 Siswa</p>
                   </div>
-                  <div className="flex flex-col mt-2">
-                    <h1>Pendidikan Anak Usia Dini</h1>
-                    <h1>Mulai dari Rp 5,9jt/tahun</h1>
-                  </div>
-                </div>
-                {/* Card Box */}
-                <div className="flex h-[478px] w-[320px] flex-col">
-                  <div className="flex h-[382px] w-[310px] bg-blue-gray-500 rounded-3xl relative bg-yellow-600">
-                    <div className="absolute h-[34px] w-[77px] bg-blue-gray-700 rounded-xl flex items-center justify-center bottom-0 m-6 bg-red-600 gap-x-1 uppercase text-[12px]">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: 22 }}
-                      >
-                        school
-                      </span>
-                      Paud
-                    </div>
-                  </div>
-                  <div className="flex flex-col mt-2">
-                    <h1>Pendidikan Anak Usia Dini</h1>
-                    <h1>Mulai dari Rp 5,9jt/tahun</h1>
-                  </div>
-                </div>
-                {/* Card Box */}
-                <div className="flex h-[478px] w-[320px] flex-col">
-                  <div className="flex h-[382px] w-[310px] bg-blue-gray-500 rounded-3xl relative bg-yellow-600">
-                    <div className="absolute h-[34px] w-[77px] bg-blue-gray-700 rounded-xl flex items-center justify-center bottom-0 m-6 bg-red-600 gap-x-1 uppercase text-[12px]">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: 22 }}
-                      >
-                        school
-                      </span>
-                      Paud
-                    </div>
-                  </div>
-                  <div className="flex flex-col mt-2">
-                    <h1>Pendidikan Anak Usia Dini</h1>
-                    <h1>Mulai dari Rp 5,9jt/tahun</h1>
+                  <div className="flex flex-row">
+                    <span className="material-symbols-outlined">nutrition</span>
+                    <p>90 Menit/Pertemuan</p>
                   </div>
                 </div>
-                {/* Card Box */}
-                <div className="flex h-[478px] w-[320px] flex-col">
-                  <div className="flex h-[382px] w-[310px] bg-blue-gray-500 rounded-3xl relative bg-yellow-600">
-                    <div className="absolute h-[34px] w-[77px] bg-blue-gray-700 rounded-xl flex items-center justify-center bottom-0 m-6 bg-red-600 gap-x-1 uppercase text-[12px]">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: 22 }}
-                      >
-                        school
-                      </span>
-                      Paud
-                    </div>
+                <div className="grid grid-cols-2">
+                  <div className="flex flex-row">
+                    <span className="material-symbols-outlined">nutrition</span>
+                    <p>Semua Mata Pelajaran</p>
                   </div>
-                  <div className="flex flex-col mt-2">
-                    <h1>Pendidikan Anak Usia Dini</h1>
-                    <h1>Mulai dari Rp 5,9jt/tahun</h1>
+                  <div className="flex flex-row">
+                    <span className="material-symbols-outlined">nutrition</span>
+                    <p>Online & Offline</p>
                   </div>
                 </div>
-                {/* Card Box */}
-                <div className="flex h-[478px] w-[320px] flex-col">
-                  <div className="flex h-[382px] w-[310px] bg-blue-gray-500 rounded-3xl relative bg-yellow-600">
-                    <div className="absolute h-[34px] w-[77px] bg-blue-gray-700 rounded-xl flex items-center justify-center bottom-0 m-6 bg-red-600 gap-x-1 uppercase text-[12px]">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: 22 }}
-                      >
-                        school
-                      </span>
-                      Paud
+
+                {/* divider */}
+                <div className="divider pr-[15%]"></div>
+
+                {/* Contact Whatsapp */}
+                <div className="flex flex-row justify-start items-center gap-x-8 pr-[15%]">
+                  <div className="flex flex-row gap-x-3">
+                    <img
+                      src="https://source.unsplash.com/random/900x700/?student+2"
+                      alt=""
+                      className="w-12 h-12 rounded-full"
+                    />
+                    <div className="flex flex-col">
+                      <h1 className="text-[17px] font-lexend font-bold text-yl-20">
+                        Kak Emi
+                      </h1>
+                      <h1 className="font-lexend text-gray-500 text-[14px]">
+                        Yessles Head Office
+                      </h1>
                     </div>
                   </div>
-                  <div className="flex flex-col mt-2">
-                    <h1>Pendidikan Anak Usia Dini</h1>
-                    <h1>Mulai dari Rp 5,9jt/tahun</h1>
-                  </div>
-                </div>
-                {/* Card Box */}
-                <div className="flex h-[478px] w-[320px] flex-col">
-                  <div className="flex h-[382px] w-[310px] bg-blue-gray-500 rounded-3xl relative bg-yellow-600">
-                    <div className="absolute h-[34px] w-[77px] bg-blue-gray-700 rounded-xl flex items-center justify-center bottom-0 m-6 bg-red-600 gap-x-1 uppercase text-[12px]">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: 22 }}
-                      >
-                        school
-                      </span>
-                      Paud
-                    </div>
-                  </div>
-                  <div className="flex flex-col mt-2">
-                    <h1>Pendidikan Anak Usia Dini</h1>
-                    <h1>Mulai dari Rp 5,9jt/tahun</h1>
-                  </div>
-                </div>
-                {/* Card Box */}
-                <div className="flex h-[478px] w-[320px] flex-col">
-                  <div className="flex h-[382px] w-[310px] bg-blue-gray-500 rounded-3xl relative bg-yellow-600">
-                    <div className="absolute h-[34px] w-[77px] bg-blue-gray-700 rounded-xl flex items-center justify-center bottom-0 m-6 bg-red-600 gap-x-1 uppercase text-[12px]">
-                      <span
-                        className="material-symbols-outlined"
-                        style={{ fontSize: 22 }}
-                      >
-                        school
-                      </span>
-                      Paud
-                    </div>
-                  </div>
-                  <div className="flex flex-col mt-2">
-                    <h1>Pendidikan Anak Usia Dini</h1>
-                    <h1>Mulai dari Rp 5,9jt/tahun</h1>
+                  <div className="flex flex-row gap-x-1 ml-4 bg-yl-10 rounded-2xl justify-center items-center px-4 py-2 text-white">
+                    <span className="material-symbols-outlined">nutrition</span>
+                    <p>Contact Now</p>
                   </div>
                 </div>
               </div>
