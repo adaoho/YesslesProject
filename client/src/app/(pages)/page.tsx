@@ -1,6 +1,7 @@
 "use client";
 
 import CardProgramYessles from "@/components/HomePage/CardProgramYessles";
+import Modal from "@/components/Modal";
 import { DataProgramBelajar, ResponseData } from "@/defs/Type";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -14,6 +15,7 @@ export default function Home() {
   const activeStyle = `bg-yl-10/20 text-yl-10 text-yl-10 border-yl-10/20 border-[1px] border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1 `;
   const [dataProgBel, setDataProgBel] = useState<DataProgramBelajar[]>();
   const [link, setLink] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchProgramBelajar = async () => {
@@ -157,11 +159,12 @@ export default function Home() {
 
       {/* Program Yessles */}
       <section id="programs">
-        <div className="flex w-[100dvw] h-[700px] items-center">
+        <div className="flex w-[100dvw] h-[700px] items-center pt-[8%]">
           <div className="flex w-full flex-col">
             {/* Header Section Program */}
             <div className="flex flex-row bg-blue-gray-200 h-full w-full justify-between items-center px-[8%]">
-              <div className="flex flex-col ">
+              <div className="flex flex-col relative ">
+                <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-2"></div>
                 <h1 className="text-[12px] text-yl-30">Program Yessles</h1>
                 <h1 className="text-[30px] font-bold text-yl-20 font-lexend">
                   Belajar di Yessles
@@ -208,8 +211,8 @@ export default function Home() {
             </div>
 
             {/* Caraousel */}
-            <div className="flex flex-row pl-[8%] w-screen mt-2 overflow-x-auto gap-x-8">
-              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5 pr-[8%]">
+            <div className="flex flex-row pl-[8%] w-screen mt-2 overflow-x-auto gap-x-8 ">
+              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5 pr-[8%] snap-x snap-mandatory">
                 {dataProgBel?.map((programBel, index) => (
                   <CardProgramYessles key={index} data={programBel} />
                 ))}
@@ -220,12 +223,14 @@ export default function Home() {
       </section>
 
       {/* Kenapa Harus Belajar di Yessles */}
-      <section id="programs">
-        <div className="flex w-[100dvw] h-fit items-center px-[8%] py-[3%]">
+      <section id="about">
+        <div className="flex w-[100dvw] h-fit items-center px-[8%] py-[8%]">
           <div className="grid grid-cols-2 w-full h-full">
-            <div className="flex flex-col bg-blue-gray-200 h-full w-full justify-center items-start ">
+            {/* Component Left */}
+            <div className="flex flex-col h-full w-full justify-center items-start ">
               {/* Title */}
-              <div className="flex flex-col">
+              <div className="flex flex-col relative">
+                <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-2"></div>
                 <h1 className="text-[12px] text-yl-30">Tentang Yessles</h1>
                 <h1 className="text-[30px] font-bold text-yl-20 font-lexend">
                   Kenapa Harus Belajar di Yessles?
@@ -240,24 +245,30 @@ export default function Home() {
 
               {/* Sistem Belajar */}
               <div className="flex flex-col mt-7 w-full font-lexend text-yl-100 gap-y-4">
-                <h1 className="font-lexend font-bold">Sistem Belajar</h1>
+                <h1 className="font-lexend font-bold text-[17px] underline">
+                  Sistem Belajar
+                </h1>
                 <div className="grid grid-cols-2">
-                  <div className="flex flex-row">
-                    <span className="material-symbols-outlined">nutrition</span>
+                  <div className="flex flex-row gap-x-2">
+                    <span className="material-symbols-outlined">group</span>
                     <p>1 Tutor Untuk 1 Siswa</p>
                   </div>
-                  <div className="flex flex-row">
-                    <span className="material-symbols-outlined">nutrition</span>
+                  <div className="flex flex-row gap-x-2">
+                    <span className="material-symbols-outlined">
+                      pending_actions
+                    </span>
                     <p>90 Menit/Pertemuan</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2">
-                  <div className="flex flex-row">
-                    <span className="material-symbols-outlined">nutrition</span>
+                  <div className="flex flex-row gap-x-2">
+                    <span className="material-symbols-outlined">menu_book</span>
                     <p>Semua Mata Pelajaran</p>
                   </div>
-                  <div className="flex flex-row">
-                    <span className="material-symbols-outlined">nutrition</span>
+                  <div className="flex flex-row gap-x-2">
+                    <span className="material-symbols-outlined">
+                      contact_mail
+                    </span>
                     <p>Online & Offline</p>
                   </div>
                 </div>
@@ -282,13 +293,81 @@ export default function Home() {
                       </h1>
                     </div>
                   </div>
-                  <div className="flex flex-row gap-x-1 ml-4 bg-yl-10 rounded-2xl justify-center items-center px-4 py-2 text-white">
-                    <span className="material-symbols-outlined">nutrition</span>
-                    <p>Contact Now</p>
-                  </div>
+                  <Link
+                    href={`https://api.whatsapp.com/send?phone=62895339096458&text=Halo%20Kak%20Emi!%20Saya%20tertarik%20untuk%20bergabung%20dengan%20Yessles!`}
+                    data-action="share/whatsapp/share"
+                    target="_blank"
+                  >
+                    <div className="flex flex-row gap-x-2 ml-4 bg-yl-60 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-10 hover:scale-105 transition-all">
+                      <img
+                        src="/whatsapp-icon.svg"
+                        alt=""
+                        className="w-5 h-5"
+                      />
+                      <p>Contact Now</p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
+
+            {/* Component Right */}
+            <div className="flex flex-col w-full h-full justify-center items-center relative group">
+              <img
+                src="/video_background.png"
+                alt=""
+                className="w-full h-full grayscale group-hover:grayscale-0 transition-all"
+              />
+              <button
+                onClick={() => setOpen(true)}
+                className="absolute w-full h-full justify-center items-center flex text-white/50 group-hover:scale-105 transition-all group-hover:text-white"
+              >
+                <span
+                  className="material-symbols-outlined shadow-2xl"
+                  style={{ fontSize: 80 }}
+                >
+                  play_circle
+                </span>
+              </button>
+            </div>
+
+            {/* Modal Popup Video */}
+            <Modal
+              open={open}
+              onClose={() => setOpen(false)}
+              bgcolor="bg-white"
+            >
+              <iframe
+                className="w-[960px] h-[480px]"
+                src="https://www.youtube.com/embed/hA6hldpSTF8?si=JkBTyIGnKdcAnOQS"
+                rel="0"
+                allowFullScreen
+              ></iframe>
+            </Modal>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimoni Yessles */}
+      <section id="testimoni">
+        <div className="flex w-[100dvw] h-fit items-center px-[8%] flex-col">
+          <div className="flex flex-col justify-center items-center w-full h-fit">
+            <div className="bg-yl-30 w-[5%] h-[1px] rounded-[20px] mb-2"></div>
+            <h1 className="text-[12px] text-yl-30">Yessles Kata Mereka</h1>
+            <h1 className="text-[30px] font-bold text-yl-20 font-lexend">
+              Dari Yess Student & Yess Parent
+            </h1>
+          </div>
+        </div>
+
+        <div className="flex flex-row w-screen mt-2 gap-x-8 bg-yellow-400 h-[500px]">
+          <div className="overflow-x-auto flex flex-row items-center justify-center gap-x-5 snap-x snap-mandatory">
+            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
+            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
+            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
+            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
+            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
+            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
           </div>
         </div>
       </section>
