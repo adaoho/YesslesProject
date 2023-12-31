@@ -6,6 +6,8 @@ import { DataProgramBelajar, ResponseData } from "@/defs/Type";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
+import { SwiperSlide, Swiper } from "swiper/react";
 
 export default function Home() {
   const currentRoute = usePathname();
@@ -360,14 +362,43 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-row w-screen mt-2 gap-x-8 bg-yellow-400 h-[500px]">
-          <div className="overflow-x-auto flex flex-row items-center justify-center gap-x-5 snap-x snap-mandatory">
-            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
-            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
-            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
-            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
-            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
-            <div className="bg-red-500 w-[800px] h-[200px] flex flex-col"></div>
+        <div
+          id="overflow"
+          className="flex flex-row w-full mt-8 h-[500px] items-start overflow-x-auto"
+        >
+          <div className="gap-x-8 flex flex-row">
+            <div className="flex w-[700px] h-[350px] flex-col justify-center relative items-center">
+              {/* Image Card */}
+              <div className="w-full h-full rounded-2xl overflow-hidden bg-black/40">
+                <img
+                  src="/photo1.png"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Testimoni Card */}
+              <div className="absolute bg-gray-100 w-[80%] h-[200px] -bottom-20 flex rounded-xl"></div>
+            </div>
+            <div className="flex w-[700px] h-[350px] flex-col justify-center relative items-center">
+              <div className="w-full h-full rounded-2xl overflow-hidden">
+                <img
+                  src="/photo1.png"
+                  alt=""
+                  className="w-full h-full object-cover opacity-40"
+                />
+              </div>
+              <div className="absolute bg-white w-[80%] h-[200px] -bottom-20 flex rounded-xl shadow-lg"></div>
+            </div>
+            <div className="flex w-[700px] h-[350px] flex-col justify-center relative items-center">
+              <div className="w-full h-full rounded-2xl overflow-hidden bg-black/40">
+                <img
+                  src="/photo1.png"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute bg-gray-200 w-[80%] h-[200px] -bottom-20 flex rounded-xl"></div>
+            </div>
           </div>
         </div>
       </section>
