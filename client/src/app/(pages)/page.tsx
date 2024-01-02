@@ -1,13 +1,16 @@
 "use client";
 
 import CardProgramYessles from "@/components/HomePage/CardProgramYessles";
+import CardTestimoni from "@/components/HomePage/CardTestimoni";
 import Modal from "@/components/Modal";
 import { DataProgramBelajar, ResponseData } from "@/defs/Type";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
-import { SwiperSlide, Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import CardArticle from "@/components/HomePage/CardArticle";
+import Image from "next/image";
 
 export default function Home() {
   const currentRoute = usePathname();
@@ -364,40 +367,230 @@ export default function Home() {
 
         <div
           id="overflow"
-          className="flex flex-row w-full mt-8 h-[500px] items-start overflow-x-auto"
+          className="flex flex-row w-full mt-10 h-[510px] items-start justify-start overflow-x-auto scroll-m-6 px-[4%] py-2 mb-[5%]"
         >
           <div className="gap-x-8 flex flex-row">
-            <div className="flex w-[700px] h-[350px] flex-col justify-center relative items-center">
-              {/* Image Card */}
-              <div className="w-full h-full rounded-2xl overflow-hidden bg-black/40">
-                <img
-                  src="/photo1.png"
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {/* Testimoni Card */}
-              <div className="absolute bg-gray-100 w-[80%] h-[200px] -bottom-20 flex rounded-xl"></div>
+            <CardTestimoni />
+            <CardTestimoni />
+            <CardTestimoni />
+          </div>
+        </div>
+      </section>
+
+      {/* Article Yessles */}
+      <section id="article">
+        <div className="flex w-[100dvw] h-fit items-center px-[8%] flex-col pb-[6%]">
+          {/* Title Section */}
+          <div className="flex flex-col justify-center items-center w-full h-fit pb-[2%]">
+            <div className="bg-yl-30 w-[5%] h-[1px] rounded-[20px] mb-2"></div>
+            <h1 className="text-[12px] text-yl-30">Yessles Blog</h1>
+            <h1 className="text-[30px] font-bold text-yl-20 font-lexend mb-4">
+              Cerita Terbaru dari Yessles
+            </h1>
+            <div className="flex flex-row font-lexend text-[14px] px-4 py-2 bg-yl-10 text-white rounded-xl mb-4">
+              Find All Article
             </div>
-            <div className="flex w-[700px] h-[350px] flex-col justify-center relative items-center">
-              <div className="w-full h-full rounded-2xl overflow-hidden">
-                <img
-                  src="/photo1.png"
-                  alt=""
-                  className="w-full h-full object-cover opacity-40"
-                />
-              </div>
-              <div className="absolute bg-white w-[80%] h-[200px] -bottom-20 flex rounded-xl shadow-lg"></div>
+          </div>
+
+          {/* Article Section */}
+          <div className="grid grid-cols-2 w-full h-fit py-10">
+            {/* Left Section */}
+            <div className="h-full flex flex-col w-full gap-y-10 justify-between">
+              <CardArticle />
+              <CardArticle />
+              <CardArticle />
             </div>
-            <div className="flex w-[700px] h-[350px] flex-col justify-center relative items-center">
-              <div className="w-full h-full rounded-2xl overflow-hidden bg-black/40">
+
+            {/* Right Section */}
+            <div className="h-full flex justify-start flex-col gap-y-4">
+              <img
+                src="https://source.unsplash.com/random/900x700/?education+2"
+                alt=""
+                className="w-full h-[284px] object-cover rounded-2xl"
+              />
+              <div className="flex flex-row items-center gap-x-2">
                 <img
-                  src="/photo1.png"
+                  src="https://source.unsplash.com/random/900x700/?person"
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-8 h-8 rounded-full object-cover"
                 />
+                <p className="font-lexend text-[16px] text-yl-20">
+                  Cameron Williamson
+                </p>
               </div>
-              <div className="absolute bg-gray-200 w-[80%] h-[200px] -bottom-20 flex rounded-xl"></div>
+              <h1 className="font-lexend font-medium text-yl-20 text-[24px] w-[80%]">
+                Pembelajaran Privat Online: Inovasi Baru dalam Edukasi
+              </h1>
+              <p className="text-yl-40 text-[14px]">
+                Perubahan paradigma pendidikan: Bagaimana pembelajaran privat
+                online memimpin inovasvi baru dalam mendukung proses edukasi di
+                era digital.
+              </p>
+              <div className="flex flex-row text-yl-40 items-center gap-x-1">
+                <span className="material-icons" style={{ fontSize: 18 }}>
+                  schedule
+                </span>
+                <p className="text-[13px] font-lexend">25 Apr 2021</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nodemailer Subscription */}
+      <section id="subscription">
+        <div className="flex w-[100dvw] h-[350px] items-center px-[8%] flex-col pb-[6%] justify-center">
+          {/* Banner Button */}
+          <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] gap-y-6 overflow-hidden relative">
+            <img
+              src="/subscribe_banner.svg"
+              alt=""
+              className="absolute -z-10 w-full object-cover"
+            />
+            <h1 className="font-lexend font-bold text-[28px] w-[30%] text-center leading-9 text-yl-20">
+              Ketahui Lebih Jauh Program Yessles
+            </h1>
+            {/* Input Email */}
+            <div className="flex flex-row bg-white w-fit h-fit px-1 pl-5 justify-center items-center gap-x-2 rounded-[17px] py-1 text-yl-20 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+              <span className="material-symbols-outlined">mail</span>
+              <input
+                placeholder="Ketik email kamu di sini ..."
+                type="text"
+                className="w-[250px] focus:outline-none px-4 font-lexend placeholder:text-yl-40/50"
+              />
+              <button className="bg-yl-10 text-white px-4 py-2 rounded-[13px]">
+                Kirimkan Email
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <section id="footer">
+        <div className="flex w-screen h-[235px] px-[6%] text-gray-500 bottom-0">
+          <div className="border-t-[1px] w-full h-full flex flex-row items-start pb-[4%] pt-[2%] gap-x-3 border-yl-40/30">
+            {/* Coloumn 1 */}
+            <div className="flex flex-col col-span-2 gap-y-6 w-[50%] h-fit">
+              <img src="/yessles_logo.svg" alt="" className="w-[148px]" />
+              <h1 className="text-gray-500 font-light -mt-2 font-lexend text-[12px] w-48">
+                Yessles Bimbingan belajar privat berbasi psikologi.
+              </h1>
+              <div className="flex flex-row gap-x-2 w-fit items-center justify-center">
+                <button
+                  onClick={() =>
+                    window.open("https://www.hacktiv8.com/", "_blank")
+                  }
+                >
+                  <img
+                    src="/social_media/ig_icon.svg"
+                    alt=""
+                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
+                  />
+                </button>
+                <button
+                  onClick={() =>
+                    window.open("https://github.com/EcoBucks", "_blank")
+                  }
+                >
+                  <img
+                    src="/social_media/fb_icon.svg"
+                    alt=""
+                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
+                  />
+                </button>
+                <button
+                  onClick={() =>
+                    window.open("https://github.com/EcoBucks", "_blank")
+                  }
+                >
+                  <img
+                    src="/social_media/tik_icon.svg"
+                    alt=""
+                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
+                  />
+                </button>
+                <button
+                  onClick={() =>
+                    window.open("https://github.com/EcoBucks", "_blank")
+                  }
+                >
+                  <img
+                    src="/social_media/wa_icon.svg"
+                    alt=""
+                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
+                  />
+                </button>
+                <button
+                  onClick={() =>
+                    window.open("https://github.com/EcoBucks", "_blank")
+                  }
+                >
+                  <img
+                    src="/social_media/yb_icon.svg"
+                    alt=""
+                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* Hyperlink Footer */}
+            <div className="flex flex-row w-[64%] text-gray-500 h-fit">
+              <div className="flex flex-col gap-y-5 w-[80%] h-fit justify-start">
+                <div className="flex flex-col text-[11px] gap-y-1">
+                  <h1 className="font-bold text-[13px] underline">
+                    Program Belajar
+                  </h1>
+                  <h1>Program Belajar</h1>
+                  <h1>Sistem Belajar</h1>
+                  <h1>Paket Belajar</h1>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-y-5 w-[70%] h-fit justify-start">
+                <div className="flex flex-col text-[11px] gap-y-1">
+                  <h1 className="font-bold text-[13px] underline">Article</h1>
+                  <h1>New Article</h1>
+                  <h1>Popular Article</h1>
+                  <h1>Most Read</h1>
+                  <h1>Tips & Tricks</h1>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-y-2 w-[70%] h-fit text-[11px]">
+                <h1 className="font-bold text-[13px] underline">Contact</h1>
+                <div className="flex flex-col gap-y-1">
+                  <h1>2464 Royal Ln. Mesa, New Jersey 45463</h1>
+                  <h1>(671) 555-0110</h1>
+                  <h1>yessles@gmail.com</h1>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col col-span-2 gap-y-2 w-[60%] h-fit ml-[5%] ">
+              <h1 className=" font-bold text-[14px] text-eb-10">
+                Jadi Bagian dari +200 Students Kami
+              </h1>
+              <h1 className="text-gray-500 font-light -mt-2 text-[13px] font-lexend">
+                Ketahui Lebih Jauh Program Yessles
+              </h1>
+              <form className="flex flex-row gap-x-2 w-[100%] py-2 items-center justify-center">
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Ketik Email Kamu ..."
+                  autoComplete="off"
+                  className="w-full bg-gray-300 rounded-md px-4 text-gray-900 text-[14px] font-bold font-lexend py-3 placeholder-yl-40/60"
+                />
+                <button
+                  type="submit"
+                  className="w-[40%] h-full py-3 bg-yl-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 hover:bg-yl-30 transition-all"
+                >
+                  <span className="material-symbols-outlined">mail</span>
+                  <p>send</p>
+                </button>
+              </form>
             </div>
           </div>
         </div>
