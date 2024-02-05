@@ -1,26 +1,45 @@
 {
-  "user": [
+  "users": [
     {
+      "id": 1,
       "name": "Aletha Gerry",
       "password": "123456",
       "email": "aletha@mail.com",
-      "job": "employee",
+      "job": "Yess Tutor",
       "dateOfBirth": "1976-07-26",
-      "walletBalance": 0,
       "profilePicture": "https://source.unsplash.com/random/900x700/?female",
-      "role": "User",
-      "pickupVoucher": 10
+      "role": "user"
     },
     {
+      "id": 2,
       "name": "Monroe Gibson",
       "password": "123456",
       "email": "monroe@mail.com",
-      "job": "employee",
+      "job": "Yess Tutor",
       "dateOfBirth": "1976-07-26",
-      "walletBalance": 0,
-      "profilePicture": "https://source.unsplash.com/random/900x700/?female",
-      "role": "User",
-      "pickupVoucher": 10
+      "profilePicture": "https://source.unsplash.com/random/900x700/?female+2",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "John Smith",
+      "password": "password123",
+      "email": "john@mail.com",
+      "job": "Software Engineer",
+      "dateOfBirth": "1985-03-12",
+      "profilePicture": "https://source.unsplash.com/random/900x700/?male",
+      "role": "user"
+    },
+    {
+      "id": 4,
+      "name": "Alice Johnson",
+      "password": "securepass",
+      "email": "alice@mail.com",
+      "job": "Graphic Designer",
+      "dateOfBirth": "1990-09-18",
+      "profilePicture": "https://source.unsplash.com/random/900x700/?female+3",
+      "role": "user",
+      "articleId": 1
     }
   ],
   "program_yessles": [
@@ -153,6 +172,48 @@
       "icon": "history_edu",
       "tm": 5,
       "type": "paket_belajar"
+    }
+  ],
+  "testimoni": [
+    {
+      "title": "Yessles: A Remarkable Educational Journey!",
+      "comment": "With Yessles, my child has found the perfect ally in achieving his ambitions. The level of assistance and guidance provided is truly outstanding.",
+      "name": "John Anderson",
+      "position": "Senior Executive Manager",
+      "rating": 4.8,
+      "image": "https://source.unsplash.com/random/900x700/?student+1"
+    },
+    {
+      "title": "Unparalleled Educational Guidance at Yessles!",
+      "comment": "Yessles has played a pivotal role in shaping my child's dreams into reality. Their commitment to education excellence is commendable.",
+      "name": "Emily Watson",
+      "position": "Chief Operations Officer",
+      "rating": 4.6,
+      "image": "https://source.unsplash.com/random/900x700/?student+2"
+    },
+    {
+      "title": "Yessles: Transforming Education Excellence!",
+      "comment": "My child's aspirations have found wings with the exceptional support from Yessles. It's truly an extraordinary educational institution.",
+      "name": "David Thompson",
+      "position": "Vice President of Operations",
+      "rating": 5,
+      "image": "https://source.unsplash.com/random/900x700/?student+4"
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "Introduction to JavaScript",
+      "userId": 1,
+      "publication_date": "2023-01-01",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+    },
+    {
+      "id": 2,
+      "title": "HTML and CSS Basics",
+      "userId": 1,
+      "publication_date": "2023-02-15",
+      "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
     }
   ]
 }

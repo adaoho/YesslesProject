@@ -1,0 +1,12 @@
+.swiper {
+  width: fit-content;
+  height: 500px;
+}
+
+.swiper-slide {
+  display: flex;
+}
+
+.swiper-slide {
+  width: fit-content;
+}

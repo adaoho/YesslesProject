@@ -1,5 +1,4 @@
-import { DataTestimoni } from "@/defs/Type";
-import React from "react";
+import { DataTestimoni } from "../utils/TypeDefs";
 
 const CardTestimoni = ({ testimoni }: { testimoni: DataTestimoni }) => {
   return (

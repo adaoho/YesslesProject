@@ -1,28 +1,24 @@
-"use client";
-
-import CardProgramYessles from "@/components/HomePage/CardProgramYessles";
-import CardTestimoni from "@/components/HomePage/CardTestimoni";
-import Modal from "@/components/Modal";
-import { DataProgramBelajar, DataTestimoni, ResponseData } from "@/defs/Type";
-import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { DataProgramBelajar, DataTestimoni } from "./utils/TypeDefs";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
-import CardArticle from "@/components/HomePage/CardArticle";
+import CardArticle from "./components/CardArticle";
+import CardProgramYessles from "./components/CardProgramYessles";
+import CardTestimoni from "./components/CardTestimoni";
+import Modal from "../../components/Modal";
 import "swiper/css";
 import "swiper/css/pagination";
-import ".//swiper.css";
+import "./utils/swiper.css";
+import { Link, useSearchParams } from "react-router-dom";
 
-export default function Home() {
-  const currentRoute = usePathname();
-  const searchParams = useSearchParams();
+const HomePage = () => {
+  // @ts-ignore
+  let [searchParams, setSearchParams] = useSearchParams();
   const getType = searchParams.get("type");
   const linkStyle = `hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1 `;
   const activeStyle = `bg-yl-10/20 text-yl-10 text-yl-10 border-yl-10/20 border-[1px] border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1 `;
   const [dataProgBel, setDataProgBel] = useState<DataProgramBelajar[]>();
   const [dataTestimoni, setDataTestimoni] = useState<DataTestimoni[]>();
-  const [link, setLink] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -61,12 +57,9 @@ export default function Home() {
     fetchTestimoni();
   }, []);
 
-  // console.log(dataProgBel);
-  // console.log(searchParams.get("type"));
-  // console.log(currentRoute);
-
   return (
     <>
+      {console.log(searchParams.get("type"))}
       {/* Hero Section */}
       <section id="hero">
         <div className="grid grid-cols-2 w-full mb-4">
@@ -194,7 +187,7 @@ export default function Home() {
 
               {/* Button Type */}
               <div className="flex flex-row gap-x-4">
-                <Link href={"/#programs"}>
+                <Link to={"/#programs"}>
                   <div
                     className={
                       !searchParams.get("type") ? activeStyle : linkStyle
@@ -204,7 +197,7 @@ export default function Home() {
                     Semua
                   </div>
                 </Link>
-                <Link href={"/?type=program_belajar#programs"}>
+                <Link to={"/?type=program_belajar#programs"}>
                   <div
                     className={
                       searchParams.get("type") === "program_belajar"
@@ -216,7 +209,7 @@ export default function Home() {
                     Program Belajar
                   </div>
                 </Link>
-                <Link href={"/?type=paket_belajar#programs"}>
+                <Link to={"/?type=paket_belajar#programs"}>
                   <div
                     className={
                       searchParams.get("type") === "paket_belajar"
@@ -315,7 +308,7 @@ export default function Home() {
                     </div>
                   </div>
                   <Link
-                    href={`https://api.whatsapp.com/send?phone=62895339096458&text=Halo%20Kak%20Emi!%20Saya%20tertarik%20untuk%20bergabung%20dengan%20Yessles!`}
+                    to={`https://api.whatsapp.com/send?phone=62895339096458&text=Halo%20Kak%20Emi!%20Saya%20tertarik%20untuk%20bergabung%20dengan%20Yessles!`}
                     data-action="share/whatsapp/share"
                     target="_blank"
                   >
@@ -627,4 +620,6 @@ export default function Home() {
       </section>
     </>
   );
-}
+};
+
+export default HomePage;

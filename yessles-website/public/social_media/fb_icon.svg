@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="TEXT" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.88 270.67">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #337fff;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="m164.18,147.51l5.3-34.56h-33.15v-22.42c0-9.45,4.63-18.67,19.48-18.67h15.07v-29.42s-13.68-2.34-26.76-2.34c-27.31,0-45.15,16.55-45.15,46.51v26.34h-30.35v34.56h30.35v83.53h37.36v-83.53h27.85Z"/>
+</svg>
