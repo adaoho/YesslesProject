@@ -13,6 +13,7 @@ export type DataProgramBelajar = {
   tm: number;
   alias: string;
   type: string;
+  matapelajaran: number;
 };
 
 export type DataTestimoni = {
@@ -22,6 +23,31 @@ export type DataTestimoni = {
   position: string;
   rating: number;
   image: string;
+};
+
+export type DataArtikel = {
+  id: string;
+  title: string;
+  publication_date: string;
+  author: string;
+  authorProfile: string;
+  content: string;
+  thumbnail: string;
+};
+
+export type DataClass = {
+  label: string;
+  icon: string;
+};
+
+export type DataClassType = {
+  title: string;
+  class: DataClass[];
+};
+
+export type DataProgramNavbar = {
+  type_name: string;
+  type: DataClassType[];
 };
 
 export type ResponseData = {

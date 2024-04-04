@@ -13,7 +13,7 @@ export default function Modal({
     <>
       <div
         onClick={onClose}
-        className={`fixed inset-0 flex justify-center items-center transition-colors bg-[#00000050] backdrop-blur-sm z-40
+        className={`fixed inset-0 flex justify-center items-center transition-colors bg-[#00000050] backdrop-blur-sm z-30
            ${open ? "visible" : "invisible"}
           `}
       >
@@ -22,7 +22,11 @@ export default function Modal({
           onClick={(e) => e.stopPropagation()}
           className={`
               ${bgcolor} rounded-md shadow p-3 duration-500
-              ${open ? "scale-100 opacity-100" : "scale-125 opacity-0"}
+              ${
+                open
+                  ? "scale-100 opacity-100 transition-all"
+                  : "scale-125 opacity-0"
+              }
             `}
         >
           <button

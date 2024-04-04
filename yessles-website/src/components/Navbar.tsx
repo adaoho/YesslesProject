@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+import NavbarDropDown from "./NavbarDropDown";
+import { useNavigate } from "react-router-dom";
 
-const NavbarComp = () => {
+const NavbarComp = ({ noScroll }: any) => {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,21 +31,43 @@ const NavbarComp = () => {
       : ""
   }`;
 
+  const navBarButtonDropDown =
+    "h-[35px] outline outline-yl-60 outline-2 bg-white/20 px-5 rounded-3xl text-yl-60 font-lexend text-[14px] hover:bg-yl-60 transition-all hover:text-white";
+
   return (
     <>
-      <div className={navbarClass}>
-        <div className="flex">
+      <div className={noScroll ? `navbarDefault` : navbarClass}>
+        <div className="flex cursor-pointer" onClick={() => navigate("/")}>
           <img src="/yessles_logo.svg" alt="" />
         </div>
         <div className="flex flex-row gap-x-4 z-10">
-          <button className={navbarButton}>Tentang Yessles</button>
-          <button className={navbarButton}>Article</button>
-          <button className="h-[35px] bg-yl-60 px-5 rounded-3xl text-white font-lexend text-[14px] flex justify-center items-center">
-            Program Belajar
+          <button
+            onClick={() => navigate("/tentang")}
+            className={noScroll ? `navbarButtonDefault` : navbarButton}
+          >
+            Tentang Yessles
+          </button>
+          <button
+            onClick={() => navigate("/article")}
+            className={noScroll ? `navbarButtonDefault` : navbarButton}
+          >
+            Article
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="h-[35px] bg-yl-60 px-5 rounded-3xl text-white font-lexend text-[14px] flex justify-center items-center hover:bg-yl-30 transition-all"
+          >
+            Program & Paket Belajar
             <span className="material-symbols-outlined">arrow_drop_down</span>
           </button>
         </div>
       </div>
+
+      <NavbarDropDown
+        navBarButtonDropDown={navBarButtonDropDown}
+        open={open}
+        setOpen={setOpen}
+      />
     </>
   );
 };
