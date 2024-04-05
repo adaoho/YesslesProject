@@ -75,6 +75,21 @@
   }
 }
 
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up-animation {
+  animation: fadeUp 0.5s ease-out;
+}
+
 .linkstyle {
   @apply hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1;
 }

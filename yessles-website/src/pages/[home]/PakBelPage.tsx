@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { DataFaq, DataPakBelPage, DataSistemBelajar } from "./utils/TypePage";
 import { generateSliceIndexes, toMoneyRP } from "@/utils/Static";
+import Aos from "aos";
 
 const PakBelPage = () => {
   const [nameChat, setNameChat] = useState<string>("");
@@ -83,6 +84,17 @@ const PakBelPage = () => {
 
   console.log(activeLink);
 
+  useEffect(() => {
+    Aos.init({
+      disable: false,
+      duration: 700,
+      easing: "ease-out-cubic",
+      once: false,
+      startEvent: "load",
+      disableMutationObserver: false,
+    });
+  }, []);
+
   // FAQ & SISTEM BELAJAR
   useEffect(() => {
     const fetchFaq = async () => {
@@ -152,7 +164,7 @@ const PakBelPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section id="hero">
+      <section id="hero" data-aos="fade-up">
         <div className="w-full h-[600px] mt-[9%] px-[8%] flex flex-col justify-start items-center gap-y-5">
           <div className="flex flex-row justify-between items-start w-full">
             <h1 className="text-[42px] font-lexend font-bold text-left w-[45%] leading-[50px] text-yl-20">

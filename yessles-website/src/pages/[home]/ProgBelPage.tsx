@@ -53,6 +53,7 @@ const ProgBelPage = () => {
   }, []);
 
   useEffect(() => {
+    Aos.refresh();
     program_belajar.forEach((data) => {
       if (data.slug === slug) {
         setDataPage(data);
@@ -62,7 +63,7 @@ const ProgBelPage = () => {
 
   const scrollToSection = (elementRef: any) => {
     window.scrollTo({
-      top: elementRef.current.offsetTop - 125,
+      top: elementRef.current.offsetTop - 130,
       behavior: "smooth",
     });
   };
@@ -83,93 +84,97 @@ const ProgBelPage = () => {
 
   useEffect(() => {
     Aos.init({
-      disable: "phone",
+      disable: false,
       duration: 700,
       easing: "ease-out-cubic",
+      once: false,
+      startEvent: "load",
+      disableMutationObserver: false,
     });
   }, []);
 
   return (
     <>
       {/* Hero Section */}
-      <section id="hero" data-aos="fade-up">
-        <div className="w-full h-[600px] mt-[9%] px-[8%] flex flex-col justify-start items-center gap-y-5">
-          <div className="flex flex-row justify-between items-start w-full">
-            <h1 className="text-[42px] font-lexend font-bold text-left w-[45%] leading-[50px] text-yl-20">
-              {data?.hero?.title}
-            </h1>
-            <h1 className="text-[14px] text-left  w-[50%] leading-7">
-              {data?.hero?.description}
-            </h1>
-          </div>
+      <div
+        data-aos="fade-up"
+        className="fade-up-animation w-full h-[600px] mt-[9%] px-[8%] flex flex-col justify-start items-center gap-y-5"
+      >
+        <div className="flex flex-row justify-between items-start w-full">
+          <h1 className="text-[42px] font-lexend font-bold text-left w-[45%] leading-[50px] text-yl-20">
+            {data?.hero?.title}
+          </h1>
+          <h1 className="text-[14px] text-left  w-[50%] leading-7">
+            {data?.hero?.description}
+          </h1>
+        </div>
 
-          <div className="bg-black rounded-xl w-full h-[440px] mt-4 flex flex-row justify-start items-start p-6 gap-x-8">
-            <div className="rounded-xl bg-yellow-50 w-[55%] h-full overflow-hidden items-center justify-center flex relative">
-              <div className="absolute bottom-0 bg-gradient-to-t from-black/40 to-white/0 w-full h-full"></div>
-              <img
-                src={data?.hero?.thumbnail}
-                className="w-full h-full object-cover"
-              />
+        <div className="bg-black rounded-xl w-full h-[440px] mt-4 flex flex-row justify-start items-start p-6 gap-x-8">
+          <div className="rounded-xl bg-yellow-50 w-[55%] h-full overflow-hidden items-center justify-center flex relative">
+            <div className="absolute bottom-0 bg-gradient-to-t from-black/40 to-white/0 w-full h-full"></div>
+            <img
+              src={data?.hero?.thumbnail}
+              className="w-full h-full object-cover"
+            />
 
-              <div className="absolute bottom-0 right-0 p-4 gap-y-2 flex flex-col items-end">
-                <h1 className="text-white text-[12px] underline">
-                  Opsi Mata Pelajaran Scroll di Bawah
-                </h1>
-                <div className="flex flex-row gap-x-2">
-                  {data?.mapel?.opsi
-                    .map((data: any) => (
-                      <div className="px-3 py-1 rounded-md bg-yl-10/30 text-white">
-                        {data?.label}
-                      </div>
-                    ))
-                    .slice(startIndex, endIndex)}
-                  <div className="px-3 py-1 rounded-md bg-yl-10/30 text-white">
-                    dll
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-y-6 h-full py-4 w-[55%] text-white">
-              <h1 className="text-white text-[32px] font-lexend font-bold leading-[42px]">
-                The Highly Curated Business & Industries with Big Impact
+            <div className="absolute bottom-0 right-0 p-4 gap-y-2 flex flex-col items-end">
+              <h1 className="text-white text-[12px] underline">
+                Opsi Mata Pelajaran Scroll di Bawah
               </h1>
-
-              <div className="flex flex-row gap-x-2 justify-start items-center">
-                <h1 className="font-lexend font-light underline">
-                  Kenali Sistem Belajar yang ada di Yessles
-                </h1>
-              </div>
-
-              <div className="flex flex-row gap-x-4">
-                {sistemBelajar
-                  ?.map((data, index) => (
-                    <div
-                      key={index}
-                      className="w-full h-[140px] border-dashed border-gray-200 border-[2px] rounded-lg flex justify-center items-start flex-col px-3 py-2 gap-y-1"
-                    >
-                      <h1 className="text-[13px] font-bold text-yl-10">
-                        {data?.title}
-                      </h1>
-                      <h1 className="text-[11px] font-light">
-                        {data?.description}
-                      </h1>
+              <div className="flex flex-row gap-x-2">
+                {data?.mapel?.opsi
+                  .map((data: any) => (
+                    <div className="px-3 py-1 rounded-md bg-yl-10/30 text-white">
+                      {data?.label}
                     </div>
                   ))
                   .slice(startIndex, endIndex)}
-              </div>
-
-              <div
-                onClick={() => scrollToSection(mata_pelajaran)}
-                className="w-full bg-yl-40 text-white flex justify-center items-center py-2 rounded-lg font-lexend hover:bg-yl-10 transition-all gap-x-2"
-              >
-                <AiOutlineDown className="text-[18px]" />
-                <h1>Kenali lebih Lanjut</h1>
+                <div className="px-3 py-1 rounded-md bg-yl-10/30 text-white">
+                  dll
+                </div>
               </div>
             </div>
           </div>
+
+          <div className="flex flex-col gap-y-6 h-full py-4 w-[55%] text-white">
+            <h1 className="text-white text-[32px] font-lexend font-bold leading-[42px]">
+              The Highly Curated Business & Industries with Big Impact
+            </h1>
+
+            <div className="flex flex-row gap-x-2 justify-start items-center">
+              <h1 className="font-lexend font-light underline">
+                Kenali Sistem Belajar yang ada di Yessles
+              </h1>
+            </div>
+
+            <div className="flex flex-row gap-x-4">
+              {sistemBelajar
+                ?.map((data, index) => (
+                  <div
+                    key={index}
+                    className="w-full h-[140px] border-dashed border-gray-200 border-[2px] rounded-lg flex justify-center items-start flex-col px-3 py-2 gap-y-1"
+                  >
+                    <h1 className="text-[13px] font-bold text-yl-10">
+                      {data?.title}
+                    </h1>
+                    <h1 className="text-[11px] font-light">
+                      {data?.description}
+                    </h1>
+                  </div>
+                ))
+                .slice(startIndex, endIndex)}
+            </div>
+
+            <div
+              onClick={() => scrollToSection(mata_pelajaran)}
+              className="w-full bg-yl-40 text-white flex justify-center items-center py-2 rounded-lg font-lexend hover:bg-yl-10 transition-all gap-x-2"
+            >
+              <AiOutlineDown className="text-[18px]" />
+              <h1>Kenali lebih Lanjut</h1>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
       <section id="new_form">
         <div className="flex flex-row w-full h-full px-[8%] gap-x-4 font-lexend mt-8">

@@ -171,7 +171,6 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                                                   { replace: true }
                                                 );
                                             setOpen(!open);
-                                            navigate(0);
                                           }}
                                           key={index}
                                           className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
@@ -219,14 +218,17 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                                             selection == 1
                                               ? navigate(
                                                   `/program/${data.slug}`,
-                                                  { replace: true }
+                                                  {
+                                                    replace: true,
+                                                  }
                                                 )
                                               : navigate(
                                                   `/paket/${data.slug}`,
-                                                  { replace: true }
+                                                  {
+                                                    replace: true,
+                                                  }
                                                 );
                                             setOpen(!open);
-                                            navigate(0);
                                           }}
                                           key={index}
                                           className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
@@ -249,11 +251,15 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                                             selection == 1
                                               ? navigate(
                                                   `/program/${data.slug}`,
-                                                  { replace: true }
+                                                  {
+                                                    replace: true,
+                                                  }
                                                 )
                                               : navigate(
                                                   `/paket/${data.slug}`,
-                                                  { replace: true }
+                                                  {
+                                                    replace: true,
+                                                  }
                                                 );
                                             setOpen(!open);
                                           }}
