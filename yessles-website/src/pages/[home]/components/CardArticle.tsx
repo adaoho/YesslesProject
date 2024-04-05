@@ -1,5 +1,3 @@
-import { DataArtikel } from "../utils/TypeDefs";
-
 const CardArticle = ({ data }: any) => {
   return (
     <>
