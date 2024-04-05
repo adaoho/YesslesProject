@@ -1,3 +1,4 @@
+import { AiFillCaretDown } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import NavbarDropDown from "./NavbarDropDown";
 import { useNavigate } from "react-router-dom";
@@ -55,10 +56,10 @@ const NavbarComp = ({ noScroll }: any) => {
           </button>
           <button
             onClick={() => setOpen(!open)}
-            className="h-[35px] bg-yl-60 px-5 rounded-3xl text-white font-lexend text-[14px] flex justify-center items-center hover:bg-yl-30 transition-all"
+            className="h-[35px] bg-yl-60 px-5 rounded-3xl text-white font-lexend text-[14px] flex justify-center items-center hover:bg-yl-30 transition-all gap-x-2"
           >
             Program & Paket Belajar
-            <span className="material-symbols-outlined">arrow_drop_down</span>
+            <AiFillCaretDown />
           </button>
         </div>
       </div>

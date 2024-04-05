@@ -1,0 +1,134 @@
+{
+  "program_yessles": [
+    {
+      "pendidikan": "Prasekolah",
+      "alias": "Prasekolah",
+      "thumbnail": "/program_yessles/pic_1.JPG",
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 100,
+      "type": "program_belajar",
+      "matapelajaran": 7
+    },
+    {
+      "pendidikan": "Taman Kanak-Kanak",
+      "alias": "TK",
+      "thumbnail": "/program_yessles/pic_2.JPG",
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar",
+      "matapelajaran": 9
+    },
+    {
+      "pendidikan": "Sekolah Dasar",
+      "alias": "SD",
+      "thumbnail": "/program_yessles/pic_3.JPG",
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar",
+      "matapelajaran": 14
+    },
+    {
+      "pendidikan": "Sekolah Menengah Pertama",
+      "alias": "SMP",
+      "thumbnail": "/program_yessles/pic_4.JPG",
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar",
+      "matapelajaran": 5
+    },
+    {
+      "pendidikan": "Sekolah Menengah Atas",
+      "alias": "SMA",
+      "thumbnail": "/program_yessles/pic_5.JPG",
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar",
+      "matapelajaran": 10
+    },
+    {
+      "pendidikan": "Softskill",
+      "alias": "SOFTSKILL",
+      "thumbnail": "/program_yessles/pic_6.JPG",
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar",
+      "matapelajaran": 7
+    },
+    {
+      "pendidikan": "Umum",
+      "alias": "UMUM",
+      "thumbnail": "/program_yessles/pic_7.JPG",
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "program_belajar",
+      "matapelajaran": 9
+    },
+    {
+      "pendidikan": "Paket Sahabat Belajar",
+      "alias": "Paket Belajar",
+      "thumbnail": "/paket_belajar/paket_belajar_1.png",
+      "priceStart": 5.9,
+      "durasiBelajar": 12,
+      "icon": "history_edu",
+      "tm": 100,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Sobat Belajar",
+      "alias": "Paket Belajar",
+      "thumbnail": "/paket_belajar/paket_belajar_2.png",
+      "priceStart": 3.05,
+      "durasiBelajar": 6,
+      "icon": "history_edu",
+      "tm": 50,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Sohib Belajar",
+      "alias": "Paket Belajar",
+      "thumbnail": "/paket_belajar/paket_belajar_3.png",
+      "priceStart": 1.89,
+      "durasiBelajar": 3,
+      "icon": "history_edu",
+      "tm": 30,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Konco Belajar",
+      "alias": "Paket Belajar",
+      "thumbnail": "/paket_belajar/paket_belajar_4.png",
+      "priceStart": 975,
+      "durasiBelajar": 1,
+      "icon": "history_edu",
+      "tm": 15,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Kawan Belajar",
+      "alias": "Paket Belajar",
+      "thumbnail": "/paket_belajar/paket_belajar_5.png",
+      "priceStart": 650,
+      "durasiBelajar": 1,
+      "icon": "history_edu",
+      "tm": 10,
+      "type": "paket_belajar"
+    },
+    {
+      "pendidikan": "Paket Teman Belajar",
+      "alias": "Paket Belajar",
+      "thumbnail": "/paket_belajar/paket_belajar_6.png",
+      "priceStart": 325,
+      "durasiBelajar": 1,
+      "icon": "history_edu",
+      "tm": 5,
+      "type": "paket_belajar"
+    }
+  ]
+}

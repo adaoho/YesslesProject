@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { DataProgramBelajar } from "../utils/TypeDefs";
+// import { DataProgramBelajar } from "../utils/TypeDefs";
 
-const CardProgramYessles = ({ data }: { data: DataProgramBelajar }) => {
+const CardProgramYessles = ({ data }: any) => {
   // console.log(data, "<<< card");
   let navigate = useNavigate();
 

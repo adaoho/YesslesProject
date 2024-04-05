@@ -3,100 +3,31 @@ import { AiOutlineDown } from "react-icons/ai";
 import { BiUserPin } from "react-icons/bi";
 import { RiUserSmileFill } from "react-icons/ri";
 import { FiUserCheck } from "react-icons/fi";
-import {
-  DataArtikel,
-  DataProgramBelajar,
-  DataTestimoni,
-} from "./utils/TypeDefs";
 import { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
+import { testimoni } from "@/database/testimoni.json";
+import { articles } from "@/database/articles.json";
 import CardArticle from "./components/CardArticle";
-import CardProgramYessles from "./components/CardProgramYessles";
 import CardTestimoni from "./components/CardTestimoni";
 import Modal from "../../components/Modal";
-import { Link, useSearchParams } from "react-router-dom";
 import Aos from "aos";
+import Footer from "./components/Footer";
+import Subscription from "./components/Subscription";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./utils/swiper.css";
 import "aos/dist/aos.css";
+import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
 
 const HomePage = () => {
-  // @ts-ignore
-  let [searchParams, setSearchParams] = useSearchParams();
-  const [dataProgBel, setDataProgBel] = useState<DataProgramBelajar[]>();
-  const [dataTestimoni, setDataTestimoni] = useState<DataTestimoni[]>();
-  const [dataArtikel, setDataArtikel] = useState<DataArtikel[]>();
   const [open, setOpen] = useState(false);
-  //@ts-ignore
-  const [selectProgram, setSelectProgram] = useState<any>(1);
   let ref = useRef<null | HTMLDivElement>(null);
 
   const handleScroll = () => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const onOptionSelectProgram = (e: any) => {
-    setSelectProgram(e.target.value);
-  };
-
-  useEffect(() => {
-    const fetchProgramBelajar = async () => {
-      let response;
-      if (selectProgram == 2) {
-        response = await fetch(
-          `http://localhost:3001/program_yessles?type_like=program_belajar`,
-          {
-            cache: "no-store",
-          }
-        );
-      } else if (selectProgram == 3) {
-        response = await fetch(
-          `http://localhost:3001/program_yessles?type_like=paket_belajar`,
-          {
-            cache: "no-store",
-          }
-        );
-      } else {
-        response = await fetch(`http://localhost:3001/program_yessles`, {
-          cache: "no-store",
-        });
-      }
-
-      const responseJson: DataProgramBelajar[] = await response?.json();
-      setDataProgBel(responseJson);
-    };
-
-    fetchProgramBelajar();
-  }, [selectProgram]);
-
-  useEffect(() => {
-    const fetchTestimoni = async () => {
-      const response = await fetch(`http://localhost:3001/testimoni`, {
-        cache: "no-store",
-      });
-
-      const responseJson: DataTestimoni[] = await response?.json();
-      setDataTestimoni(responseJson);
-    };
-
-    fetchTestimoni();
-  }, []);
-
-  useEffect(() => {
-    const fetchArtikel = async () => {
-      const response = await fetch(`http://localhost:3001/articles`, {
-        cache: "no-store",
-      });
-
-      const responseJson: DataArtikel[] = await response?.json();
-      setDataArtikel(responseJson);
-    };
-
-    fetchArtikel();
-  }, []);
-
   useEffect(() => {
     Aos.init({
       disable: "phone",
@@ -146,7 +77,6 @@ const HomePage = () => {
                       id="1"
                       value="1"
                       className="peer hidden"
-                      onChange={onOptionSelectProgram}
                     />
                     <label
                       htmlFor="1"
@@ -170,7 +100,6 @@ const HomePage = () => {
                       id="2"
                       value="2"
                       className="peer hidden"
-                      onChange={onOptionSelectProgram}
                     />
                     <label
                       htmlFor="2"
@@ -195,7 +124,6 @@ const HomePage = () => {
                       id="3"
                       value="3"
                       className="peer hidden"
-                      onChange={onOptionSelectProgram}
                     />
                     <label
                       htmlFor="3"
@@ -306,96 +234,8 @@ const HomePage = () => {
       </section>
 
       {/* Program Yessles */}
-      <section id="programs" ref={ref}>
-        <div
-          className="flex w-[100dvw] h-[700px] items-center pt-[8%]"
-          data-aos="fade-up"
-        >
-          <div className="flex w-full flex-col">
-            {/* Header Section Program */}
-            <div className="flex flex-row bg-blue-gray-200 h-full w-full justify-between items-center px-[8%]">
-              <div className="flex flex-col relative ">
-                <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-3"></div>
-                <h1 className="text-[18px] text-yl-30">
-                  Program & Paket Belajar
-                </h1>
-                <h1 className="text-[30px] font-bold text-yl-60 font-lexend">
-                  Belajar di Yessles
-                </h1>
-              </div>
-
-              {/* Button Type */}
-              <div className="flex flex-row gap-x-2">
-                <div className="flex flex-row gap-x-2">
-                  <input
-                    type="radio"
-                    name="group_id"
-                    id="1"
-                    value="1"
-                    className="peer hidden"
-                    onChange={onOptionSelectProgram}
-                  />
-                  <label
-                    htmlFor="1"
-                    className={`${
-                      selectProgram == 1 ? `activestyle` : `linkstyle`
-                    }`}
-                  >
-                    <span className="material-symbols-outlined">apps</span>
-                    Semua Program
-                  </label>
-                </div>
-                <div className="flex flex-row gap-x-2">
-                  <input
-                    type="radio"
-                    name="group_id"
-                    id="2"
-                    value="2"
-                    className="peer hidden"
-                    onChange={onOptionSelectProgram}
-                  />
-                  <label
-                    htmlFor="2"
-                    className={`${
-                      selectProgram == 2 ? `activestyle` : `linkstyle`
-                    }`}
-                  >
-                    <span className="material-symbols-outlined">school</span>
-                    Program Belajar
-                  </label>
-                </div>
-                <div className="flex flex-row gap-x-2">
-                  <input
-                    type="radio"
-                    name="group_id"
-                    id="3"
-                    value="3"
-                    className="peer hidden"
-                    onChange={onOptionSelectProgram}
-                  />
-                  <label
-                    htmlFor="3"
-                    className={`${
-                      selectProgram == 3 ? `activestyle` : `linkstyle`
-                    }`}
-                  >
-                    <span className="material-symbols-outlined">package</span>
-                    Paket Belajar
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            {/* Caraousel */}
-            <div className="flex flex-row pl-[8%] w-screen mt-2 overflow-x-auto gap-x-8">
-              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5 pr-[8%] snap-x snap-mandatory">
-                {dataProgBel?.map((programBel, index) => (
-                  <CardProgramYessles key={index} data={programBel} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      <section id="programs" ref={ref} data-aos="fade-up">
+        <CarouselProgramBelajar />
       </section>
 
       {/* Kenapa Harus Belajar di Yessles */}
@@ -560,7 +400,7 @@ const HomePage = () => {
             modules={[Pagination, Autoplay]}
             className="mySwiper"
           >
-            {dataTestimoni?.map((data, index) => (
+            {testimoni?.map((data, index) => (
               <SwiperSlide key={index}>
                 <CardTestimoni testimoni={data} />
               </SwiperSlide>
@@ -588,7 +428,7 @@ const HomePage = () => {
           <div className="grid grid-cols-2 w-full h-fit py-10">
             {/* Left Section */}
             <div className="h-[525px] flex flex-col w-full justify-between ">
-              {dataArtikel?.slice(1, 4).map((data, index) => (
+              {articles?.slice(1, 4).map((data, index) => (
                 <CardArticle key={index} data={data} />
               ))}
             </div>
@@ -631,170 +471,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Nodemailer Subscription */}
-      <section id="subscription" className="hidden">
-        <div
-          className="flex w-[100dvw] h-[350px] items-center px-[8%] flex-col pb-[6%] justify-center"
-          data-aos="fade-up"
-        >
-          {/* Banner Button */}
-          <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] gap-y-6 overflow-hidden relative">
-            <img
-              src="/subscribe_banner.svg"
-              alt=""
-              className="absolute -z-10 w-full object-cover"
-            />
-            <h1 className="font-lexend font-bold text-[28px] w-[30%] text-center leading-9 text-yl-60">
-              Ketahui Lebih Jauh Program Yessles
-            </h1>
-            {/* Input Email */}
-            <div className="flex flex-row bg-white w-fit h-fit px-1 pl-5 justify-center items-center gap-x-2 rounded-[17px] py-1 text-yl-60 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <span className="material-symbols-outlined">mail</span>
-              <input
-                placeholder="Ketik email kamu di sini ..."
-                type="text"
-                className="w-[250px] focus:outline-none px-4 font-lexend placeholder:text-yl-40/50"
-              />
-              <button className="bg-yl-10 text-white px-4 py-2 rounded-[13px]">
-                Kirimkan Email
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <section id="footer">
-        <div className="flex w-screen h-[235px] px-[6%] text-gray-500 bottom-0">
-          <div className="border-t-[1px] w-full h-full flex flex-row items-start pb-[4%] pt-[2%] gap-x-3 border-yl-40/30 border-dashed">
-            {/* Coloumn 1 */}
-            <div className="flex flex-col col-span-2 gap-y-6 w-[50%] h-fit">
-              <img src="/yessles_logo.svg" alt="" className="w-[148px]" />
-              <h1 className="text-gray-500 font-light -mt-2 font-lexend text-[12px] w-48">
-                Yessles Bimbingan Belajar Privat No.1 di Madiun.
-              </h1>
-              <div className="flex flex-row gap-x-2 w-fit items-center justify-center">
-                <button
-                  onClick={() =>
-                    window.open("https://www.hacktiv8.com/", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/ig_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/fb_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/tik_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/wa_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/yb_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-              </div>
-            </div>
-
-            {/* Hyperlink Footer */}
-            <div className="flex flex-row w-[64%] text-gray-500 h-fit">
-              <div className="flex flex-col gap-y-5 w-[80%] h-fit justify-start">
-                <div className="flex flex-col text-[11px] gap-y-1">
-                  <h1 className="font-bold text-[13px] underline">
-                    Program Belajar
-                  </h1>
-                  <h1>Program Belajar</h1>
-                  <h1>Sistem Belajar</h1>
-                  <h1>Paket Belajar</h1>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-y-5 w-[70%] h-fit justify-start">
-                <div className="flex flex-col text-[11px] gap-y-1">
-                  <h1 className="font-bold text-[13px] underline">Article</h1>
-                  <h1>New Article</h1>
-                  <h1>Popular Article</h1>
-                  <h1>Most Read</h1>
-                  <h1>Tips & Tricks</h1>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-y-2 w-[70%] h-fit text-[11px]">
-                <h1 className="font-bold text-[13px] underline">Contact</h1>
-                <div className="flex flex-col gap-y-1">
-                  <h1>
-                    Jl. Bali No.1C, Madiun Lor, Kec. Kartoharjo, Kota Madiun,
-                    Jawa Timur 63122
-                  </h1>
-                  <h1>(+62) 899 4944 728</h1>
-                  <h1>haloyessles@gmail.com</h1>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col col-span-2 gap-y-2 w-[60%] h-fit ml-[5%] ">
-              <h1 className=" font-bold text-[14px] text-eb-10">
-                Jadi Bagian dari +200 Students Kami
-              </h1>
-              <h1 className="text-gray-500 font-light -mt-2 text-[13px] font-lexend">
-                Ketahui Lebih Jauh Program Yessles
-              </h1>
-              <form className="flex flex-row gap-x-2 w-[100%] py-2 items-center justify-center">
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Ketik Email Kamu ..."
-                  autoComplete="off"
-                  className="w-full bg-gray-300 rounded-md px-4 text-gray-900 text-[14px] font-bold font-lexend py-3 placeholder-yl-40/60"
-                />
-                <button
-                  type="submit"
-                  className="w-[40%] h-full py-3 bg-yl-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 hover:bg-yl-30 transition-all"
-                >
-                  <span className="material-symbols-outlined">mail</span>
-                  <p>send</p>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Subscription className="hidden" />
+      <Footer />
     </>
   );
 };

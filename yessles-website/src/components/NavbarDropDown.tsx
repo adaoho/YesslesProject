@@ -1,12 +1,12 @@
 import { MdOutlineSchool } from "react-icons/md";
-import { Fragment, useEffect, useState } from "react";
-import { DataProgramNavbar } from "@/pages/[home]/utils/TypeDefs";
+import { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { program_navbar } from "@/database/program_navbar.json";
+import { AiFillCaretDown } from "react-icons/ai";
 
 const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
   const [selection, setSelection] = useState<number>(1);
   const [selectionType, setSelectionType] = useState<number>(1);
-  const [data, setData] = useState<DataProgramNavbar[]>([]);
   let navigate = useNavigate();
 
   const onChangeSelection = (e: any) => {
@@ -16,38 +16,6 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
   const onChangeSelectionType = (e: any) => {
     setSelectionType(e.target.value);
   };
-
-  useEffect(() => {
-    if (selection == 1) {
-      const fetchDataNavbar = async () => {
-        const response = await fetch(
-          `http://localhost:3001/program_navbar?type_name_like=program_belajar`,
-          {
-            cache: "no-store",
-          }
-        );
-
-        const responseJson: DataProgramNavbar[] = await response?.json();
-        setData(responseJson);
-      };
-
-      fetchDataNavbar();
-    } else if (selection == 2) {
-      const fetchDataNavbar = async () => {
-        const response = await fetch(
-          `http://localhost:3001/program_navbar?type_name_like=paket_belajar`,
-          {
-            cache: "no-store",
-          }
-        );
-
-        const responseJson: DataProgramNavbar[] = await response?.json();
-        setData(responseJson);
-      };
-
-      fetchDataNavbar();
-    }
-  }, [selection]);
 
   return (
     <>
@@ -74,12 +42,10 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                   <button className={navBarButtonDropDown}>Article</button>
                   <button
                     onClick={() => setOpen(!open)}
-                    className="h-[35px] bg-yl-60 px-5 rounded-3xl text-white font-lexend text-[14px] flex justify-center items-center hover:bg-yl-30 transition-all"
+                    className="h-[35px] gap-x-2 bg-yl-60 px-5 rounded-3xl text-white font-lexend text-[14px] flex justify-center items-center hover:bg-yl-30 transition-all"
                   >
                     Program & Paket Belajar
-                    <span className="material-symbols-outlined">
-                      arrow_drop_down
-                    </span>
+                    <AiFillCaretDown />
                   </button>
                 </div>
               </div>
@@ -183,85 +149,128 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                       selectionType == 1 ? `w-full` : `w-full`
                     }  justify-start items-start flex-wrap h-fit gap-y-4 gap-x-3`}
                   >
-                    {selectionType == 1 ? (
+                    {selection == 1 ? (
                       <>
-                        {data?.map((data, index) => (
-                          <Fragment key={index}>
-                            {data?.type.map((data, index) => (
+                        {program_navbar?.map(
+                          (data, index) =>
+                            data.type_name === "program_belajar" && (
                               <Fragment key={index}>
-                                {data.title === "privat" &&
-                                  data?.class.map((data, index) => (
-                                    <div
-                                      onClick={() => {
-                                        let label = data?.label
-                                          .toLowerCase()
-                                          .split(" ")
-                                          .join("-");
-                                        selection == 1
-                                          ? navigate(`/program/${label}`)
-                                          : navigate(`/paket/${label}`);
-                                        setOpen(!open);
-                                      }}
-                                      key={index}
-                                      className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
-                                    >
-                                      <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
-                                        <MdOutlineSchool className="size-6 text-white" />
-                                      </div>
-                                      {data.label.split(" ").length === 4 ? (
-                                        <>
-                                          {data.label
-                                            .split(" ")
-                                            .slice(0, 2)
-                                            .join(" ")}{" "}
-                                          <br />{" "}
-                                          {data.label
-                                            .split(" ")
-                                            .slice(2, 4)
-                                            .join(" ")}
-                                        </>
-                                      ) : (
-                                        data.label
-                                      )}
-                                    </div>
-                                  ))}
+                                {data?.type.map((data, index) => (
+                                  <Fragment key={index}>
+                                    {data.title === "privat" &&
+                                      data?.class.map((data, index) => (
+                                        <div
+                                          onClick={() => {
+                                            selection == 1
+                                              ? navigate(
+                                                  `/program/${data.slug}`,
+                                                  { replace: true }
+                                                )
+                                              : navigate(
+                                                  `/paket/${data.slug}`,
+                                                  { replace: true }
+                                                );
+                                            setOpen(!open);
+                                            navigate(0);
+                                          }}
+                                          key={index}
+                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
+                                        >
+                                          <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
+                                            <MdOutlineSchool className="size-6 text-white" />
+                                          </div>
+                                          {data.label.split(" ").length ===
+                                          4 ? (
+                                            <>
+                                              {data.label
+                                                .split(" ")
+                                                .slice(0, 2)
+                                                .join(" ")}{" "}
+                                              <br />{" "}
+                                              {data.label
+                                                .split(" ")
+                                                .slice(2, 4)
+                                                .join(" ")}
+                                            </>
+                                          ) : (
+                                            data.label
+                                          )}
+                                        </div>
+                                      ))}
+                                  </Fragment>
+                                ))}
                               </Fragment>
-                            ))}
-                          </Fragment>
-                        ))}
+                            )
+                        )}
                       </>
                     ) : (
                       <>
-                        {data?.map((data, index) => (
-                          <Fragment key={index}>
-                            {data?.type.map((data, index) => (
+                        {program_navbar?.map(
+                          (data, index) =>
+                            data.type_name === "paket_belajar" && (
                               <Fragment key={index}>
-                                {data.title === "semi_privat" &&
-                                  data?.class.map((data, index) => (
-                                    <div
-                                      onClick={() => {
-                                        let label = data?.label
-                                          .toLowerCase()
-                                          .split(" ")
-                                          .join("-");
-                                        selection == 1
-                                          ? navigate(`/program/${label}`)
-                                          : navigate(`/paket/${label}`);
-                                        setOpen(!open);
-                                      }}
-                                      key={index}
-                                      className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
-                                    >
-                                      <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
-                                        <MdOutlineSchool className="size-6 text-white" />
-                                      </div>
-                                      {data.label}
-                                    </div>
-                                  ))}
+                                {data?.type.map((data, index) => (
+                                  <Fragment key={index}>
+                                    {data.title === "semi_privat" &&
+                                      selectionType == 2 &&
+                                      data?.class.map((data, index) => (
+                                        <div
+                                          onClick={() => {
+                                            selection == 1
+                                              ? navigate(
+                                                  `/program/${data.slug}`,
+                                                  { replace: true }
+                                                )
+                                              : navigate(
+                                                  `/paket/${data.slug}`,
+                                                  { replace: true }
+                                                );
+                                            setOpen(!open);
+                                            navigate(0);
+                                          }}
+                                          key={index}
+                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
+                                        >
+                                          <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
+                                            <MdOutlineSchool className="size-6 text-white" />
+                                          </div>
+                                          {data.label}
+                                        </div>
+                                      ))}
+                                  </Fragment>
+                                ))}
+                                {data?.type.map((data, index) => (
+                                  <Fragment key={index}>
+                                    {data.title === "privat" &&
+                                      selectionType == 1 &&
+                                      data?.class.map((data, index) => (
+                                        <div
+                                          onClick={() => {
+                                            selection == 1
+                                              ? navigate(
+                                                  `/program/${data.slug}`,
+                                                  { replace: true }
+                                                )
+                                              : navigate(
+                                                  `/paket/${data.slug}`,
+                                                  { replace: true }
+                                                );
+                                            setOpen(!open);
+                                          }}
+                                          key={index}
+                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
+                                        >
+                                          <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
+                                            <MdOutlineSchool className="size-6 text-white" />
+                                          </div>
+                                          {data.label}
+                                        </div>
+                                      ))}
+                                  </Fragment>
+                                ))}
                               </Fragment>
-                            ))}
-                          </Fragment>
-                        ))}
+                            )
+                        )}
                       </>
                     )}
                   </div>

@@ -1,6 +1,6 @@
 import { DataArtikel } from "../utils/TypeDefs";
 
-const CardArticle = ({ data }: { data: DataArtikel }) => {
+const CardArticle = ({ data }: any) => {
   return (
     <>
       {/* Card Article */}

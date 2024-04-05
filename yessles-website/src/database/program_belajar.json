@@ -1,0 +1,321 @@
+{
+  "program_belajar": [
+    {
+      "id": 1,
+      "slug": "prasekolah",
+      "type": "Prasekolah",
+      "hero": {
+        "title": "Prasekolah bersama Yessles",
+        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
+        "description": "Dengan pendekatan bermain dan pengalaman, anak-anak dapat aktif belajar melalui beragam aktivitas kreatif dan interaktif di lingkungan yang aman dan mendukung.",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "mapel": {
+        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "opsi": [
+          {
+            "label": "Montessori",
+            "sub_label": "",
+            "status": true
+          },
+          {
+            "label": "Pengenalan Huruf",
+            "sub_label": "",
+            "status": true
+          },
+          {
+            "label": "Pengenalan Angka",
+            "sub_label": "",
+            "status": true
+          },
+          {
+            "label": "Pengenalan B. Inggris",
+            "sub_label": "",
+            "status": true
+          },
+          {
+            "label": "Hafalan Doa",
+            "sub_label": "",
+            "status": true
+          },
+          {
+            "label": "Menyanyi",
+            "sub_label": "",
+            "status": true
+          },
+          {
+            "label": "Menggambar",
+            "sub_label": "",
+            "status": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "slug": "taman-kanak-kanak",
+      "type": "Taman Kanak-Kanak",
+      "hero": {
+        "title": "Siswa Taman Kanak Kanak di Yessles",
+        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "mapel": {
+        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "opsi": [
+          {
+            "label": "Montessori",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Membaca",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Menulis",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Calistung",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Mengaji",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Hafalan Doa",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Bahasa Inggris",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Menggambar",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Menyanyi",
+            "status": true,
+            "sub_label": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "slug": "sekolah-dasar-sd",
+      "type": "Sekolah Dasar (SD)",
+      "hero": {
+        "title": "Siswa Sekolah Dasar di Yessles",
+        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "mapel": {
+        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "opsi": [
+          {
+            "label": "Semua Mata Pelajaran",
+            "status": true,
+            "sub_label": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "slug": "sekolah-menengah-pertama-smp",
+      "type": "Sekolah Menengah Pertama (SMP)",
+      "hero": {
+        "title": "Siswa Sekolah Menengah Pertama di Yessles",
+        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "mapel": {
+        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "opsi": [
+          {
+            "label": "IPA",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "IPS",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Bahasa Indonesia",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Bahasa Inggris",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Matematika",
+            "status": true,
+            "sub_label": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "slug": "sekolah-menengah-atas-sma",
+      "type": "Sekolah Menengah Atas (SMA)",
+      "hero": {
+        "title": "Siswa Sekolah Menengah Atas di Yessles",
+        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "mapel": {
+        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "opsi": [
+          {
+            "label": "Matematika",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Bahasa Inggris",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Bahasa Indonesia",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Fisika",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Kimia",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Biologi",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Ekonomi",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Sosiologi",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Akuntansi",
+            "status": true,
+            "sub_label": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "slug": "softskill",
+      "type": "Softskill",
+      "hero": {
+        "title": "Asah Softskill Kamu di Yessles",
+        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "mapel": {
+        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "opsi": [
+          {
+            "label": "Vocal",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Musik",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Design",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Copywriting",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Illustration",
+            "status": true,
+            "sub_label": ""
+          },
+          {
+            "label": "Dan lain-lain",
+            "status": true,
+            "sub_label": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "slug": "umum",
+      "type": "Umum",
+      "hero": {
+        "title": "Asah Softskill Kamu di Yessles",
+        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "mapel": {
+        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "opsi": [
+          {
+            "label": "UTBK - SNM - SBM - MANDIRI",
+            "status": true,
+            "sub_label": "(TBK & TPS)"
+          },
+          {
+            "label": "Kedinasan",
+            "status": true,
+            "sub_label": "(SKD, TPA, & Psikologi)"
+          },
+          {
+            "label": "CPNS",
+            "status": true,
+            "sub_label": "(SKD)"
+          },
+          {
+            "label": "Bahasa Inggris",
+            "status": true,
+            "sub_label": "(Conversation & TOEFL Preparation"
+          }
+        ]
+      }
+    }
+  ]
+}

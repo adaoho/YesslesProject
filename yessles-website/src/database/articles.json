@@ -1,0 +1,40 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Mengasah Potensi Anak Melalui Pendidikan Inklusif: Peran Orang Tua",
+      "publication_date": "2024-02-03",
+      "author": "Dian Pratiwi",
+      "authorProfile": "https://ik.imagekit.io/9nm0rr5hka/Yessles/profile_4.png?updatedAt=1709279130623",
+      "content": "Memberikan pemahaman yang kuat tentang kebutuhan anak dan lingkungan pendidikan yang mendukung, orang tua dapat membantu anak-anak mereka mencapai potensi maksimal mereka.",
+      "thumbnail": "https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"
+    },
+    {
+      "id": 2,
+      "title": "Teknologi dalam Pendidikan: Panduan Orang Tua untuk Membimbing Anak",
+      "publication_date": "2024-01-28",
+      "author": "Ahmad Santoso",
+      "authorProfile": "https://ik.imagekit.io/9nm0rr5hka/Yessles/profile_1.png?updatedAt=1709279130705",
+      "content": "Dari pengawasan penggunaan gadget hingga memilih aplikasi pendidikan yang sesuai, orang tua memiliki peran penting dalam mengarahkan anak-anak mereka menuju pemanfaatan teknologi yang bermanfaat.",
+      "thumbnail": "https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_1.png?updatedAt=1709279422961"
+    },
+    {
+      "id": 3,
+      "title": "Membangun Karakter Mulia: Peran Keluarga dalam Pendidikan Moral",
+      "publication_date": "2024-01-12",
+      "author": "Siti Aisyah",
+      "authorProfile": "https://ik.imagekit.io/9nm0rr5hka/Yessles/profile_3.png?updatedAt=1709279130689",
+      "content": "Pentingnya pendidikan moral dalam pembentukan karakter anak, serta bagaimana sekolah dan keluarga dapat bekerja sama untuk membantu anak-anak mengembangkan nilai-nilai moral yang kuat.",
+      "thumbnail": "https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_3.png?updatedAt=1709279423026"
+    },
+    {
+      "id": 4,
+      "title": "Menjadi Mitra dalam Pendidikan: Strategi Orang Tua untuk Belajar Anak",
+      "publication_date": "2024-02-06",
+      "author": "Bambang Susanto",
+      "authorProfile": "https://ik.imagekit.io/9nm0rr5hka/Yessles/profile_2.png?updatedAt=1709279130641",
+      "content": "Menciptakan lingkungan belajar yang mendukung hingga memberikan dukungan emosional dan motivasi, orang tua dapat membantu anak-anak memperoleh keterampilan yang diperlukan untuk belajar secara mandiri dan berhasil dalam pendidikan mereka.",
+      "thumbnail": "https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_2.png?updatedAt=1709279422919"
+    }
+  ]
+}

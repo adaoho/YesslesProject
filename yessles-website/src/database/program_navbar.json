@@ -1,0 +1,141 @@
+{
+  "program_navbar": [
+    {
+      "type_name": "program_belajar",
+      "type": [
+        {
+          "title": "privat",
+          "class": [
+            {
+              "label": "Prasekolah",
+              "icon": "MdOutlineSchool",
+              "slug": "prasekolah"
+            },
+            {
+              "label": "Taman Kanak-Kanak",
+              "icon": "MdOutlineSchool",
+              "slug": "taman-kanak-kanak"
+            },
+            {
+              "label": "Sekolah Dasar (SD)",
+              "icon": "MdOutlineSchool",
+              "slug": "sekolah-dasar-sd"
+            },
+            {
+              "label": "Sekolah Menengah Pertama (SMP)",
+              "icon": "MdOutlineSchool",
+              "slug": "sekolah-menengah-pertama-smp"
+            },
+            {
+              "label": "Sekolah Menengah Atas (SMA)",
+              "icon": "MdOutlineSchool",
+              "slug": "sekolah-menengah-atas-sma"
+            },
+            {
+              "label": "Softskill",
+              "icon": "MdOutlineSchool",
+              "slug": "softskill"
+            },
+            { "label": "Umum", "icon": "MdOutlineSchool", "slug": "umum" }
+          ]
+        },
+        {
+          "title": "semi_privat",
+          "class": [
+            {
+              "label": "Prasekolah",
+              "icon": "MdOutlineSchool",
+              "slug": "prasekolah"
+            },
+            {
+              "label": "Taman Kanak-Kanak",
+              "icon": "MdOutlineSchool",
+              "slug": "taman-kanak-kanak"
+            },
+            {
+              "label": "Sekolah Dasar (SD)",
+              "icon": "MdOutlineSchool",
+              "slug": "sekolah-dasar-sd"
+            },
+            {
+              "label": "Sekolah Menengah Pertama (SMP)",
+              "icon": "MdOutlineSchool",
+              "slug": "sekolah-menengah-pertama-smp"
+            },
+            {
+              "label": "Sekolah Menengah Atas (SMA)",
+              "icon": "MdOutlineSchool",
+              "slug": "sekolah-menengah-atas-sma"
+            },
+            {
+              "label": "Softskill",
+              "icon": "MdOutlineSchool",
+              "slug": "softskill"
+            },
+            { "label": "Umum", "icon": "MdOutlineSchool", "slug": "umum" }
+          ]
+        }
+      ]
+    },
+    {
+      "type_name": "paket_belajar",
+      "type": [
+        {
+          "title": "privat",
+          "class": [
+            {
+              "label": "Paket Sahabat Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-sahabat-belajar"
+            },
+            {
+              "label": "Paket Sobat Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-sobat-belajar"
+            },
+            {
+              "label": "Paket Sohib Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-sohib-belajar"
+            },
+            {
+              "label": "Paket Konco Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-konco-belajar"
+            },
+            {
+              "label": "Paket Kawan Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-kawan-belajar"
+            },
+            {
+              "label": "Paket Teman Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-teman-belajar"
+            }
+          ]
+        },
+        {
+          "title": "semi_privat",
+          "class": [
+            {
+              "label": "Paket Konco Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-konco-belajar"
+            },
+            {
+              "label": "Paket Kawan Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-kawan-belajar"
+            },
+            {
+              "label": "Paket Teman Belajar",
+              "icon": "MdOutlineSchool",
+              "slug": "paket-teman-belajar"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

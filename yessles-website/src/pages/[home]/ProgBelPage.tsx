@@ -3,74 +3,40 @@ import { IoMdSchool } from "react-icons/io";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { AiOutlineDown } from "react-icons/ai";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import CardProgramYessles from "./components/CardProgramYessles";
-import { DataProgramBelajar } from "./utils/TypeDefs";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DataFaq, DataProgBelPage, DataSistemBelajar } from "./utils/TypePage";
 import { generateSliceIndexes } from "@/utils/Static";
+import { program_yessles } from "@/database/program.json";
+import { faq } from "@/database/faq.json";
+import { sistem_belajar as sistemBelajar } from "@/database/sistem_belajar.json";
+import Footer from "./components/Footer";
+import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
+import { program_belajar } from "@/database/program_belajar.json";
+import Aos from "aos";
 
 const ProgBelPage = () => {
   const [nameChat, setNameChat] = useState<string>("");
-  const [dataProgBel, setDataProgBel] = useState<DataProgramBelajar[]>();
-  const [dataPaketBel, setDataPaketBel] = useState<DataProgramBelajar[]>();
-  const [selectProgram, setSelectProgram] = useState<any>(2);
   const [activeLink, setActiveLink] = useState<string | null>(null);
-  const [dataSistemBelajar, setDataSistemBelajar] =
-    useState<DataSistemBelajar[]>();
-  const [dataFaq, setDataFaq] = useState<DataFaq[]>();
-  const [dataPage, setDataPage] = useState<DataProgBelPage[]>();
+  const [dataPage, setDataPage] = useState<any>();
   const [startIndex, endIndex] = generateSliceIndexes();
-  // const indexes = generateUniqueIndexes();
-
   const { slug } = useParams();
   const mata_pelajaran = useRef<null | HTMLDivElement>(null);
   const sistem_belajar = useRef<null | HTMLDivElement>(null);
   const paket_belajar = useRef<null | HTMLDivElement>(null);
   const kenapa_yessles = useRef<null | HTMLDivElement>(null);
   const navigate = useNavigate();
-  const data = dataPage?.at(0);
-
-  useEffect(() => {
-    const fetchProgramBelajar = async () => {
-      let response;
-      if (selectProgram == 2) {
-        response = await fetch(
-          `http://localhost:3001/program_yessles?type_like=program_belajar`,
-          {
-            cache: "no-store",
-          }
-        );
-      } else if (selectProgram == 3) {
-        response = await fetch(
-          `http://localhost:3001/program_yessles?type_like=paket_belajar`,
-          {
-            cache: "no-store",
-          }
-        );
-      } else {
-        response = await fetch(`http://localhost:3001/program_yessles`, {
-          cache: "no-store",
-        });
-      }
-
-      const responseJson: DataProgramBelajar[] = await response?.json();
-      setDataProgBel(responseJson);
-    };
-
-    fetchProgramBelajar();
-  }, [selectProgram]);
+  const data = dataPage;
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const sections = document.querySelectorAll("section");
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop - 128;
+        const sectionTop = section.offsetTop - 130;
         const sectionBottom = sectionTop + section.offsetHeight;
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
           setActiveLink(section.id);
@@ -86,58 +52,12 @@ const ProgBelPage = () => {
     };
   }, []);
 
-  // FAQ & SISTEM BELAJAR
   useEffect(() => {
-    const fetchFaq = async () => {
-      const response = await fetch(`http://localhost:3001/faq`, {
-        cache: "no-store",
-      });
-
-      const responseJson: DataFaq[] = await response?.json();
-      setDataFaq(responseJson);
-    };
-
-    const fetchSistemBelajar = async () => {
-      const response = await fetch(`http://localhost:3001/sistem_belajar`, {
-        cache: "no-store",
-      });
-
-      const responseJson: DataSistemBelajar[] = await response?.json();
-      setDataSistemBelajar(responseJson);
-    };
-
-    const fetchPaketBelajar = async () => {
-      const response = await fetch(
-        `http://localhost:3001/program_yessles?type_like=paket_belajar`,
-        {
-          cache: "no-store",
-        }
-      );
-
-      const responseJson: DataProgramBelajar[] = await response?.json();
-      setDataPaketBel(responseJson);
-    };
-
-    fetchPaketBelajar();
-    fetchFaq();
-    fetchSistemBelajar();
-  }, []);
-
-  // DATA PAGE
-  useEffect(() => {
-    const fetchPage = async () => {
-      const response = await fetch(
-        `http://localhost:3001/program_belajar?slug_like=${slug}`,
-        {
-          cache: "no-store",
-        }
-      );
-
-      const responseJson: DataProgBelPage[] = await response?.json();
-      setDataPage(responseJson);
-    };
-
-    fetchPage();
+    program_belajar.forEach((data) => {
+      if (data.slug === slug) {
+        setDataPage(data);
+      }
+    });
   }, [slug]);
 
   const scrollToSection = (elementRef: any) => {
@@ -145,10 +65,6 @@ const ProgBelPage = () => {
       top: elementRef.current.offsetTop - 125,
       behavior: "smooth",
     });
-  };
-
-  const onOptionSelectProgram = (e: any) => {
-    setSelectProgram(e.target.value);
   };
 
   const nameChange = (element: any) => {
@@ -165,10 +81,18 @@ const ProgBelPage = () => {
     );
   };
 
+  useEffect(() => {
+    Aos.init({
+      disable: "phone",
+      duration: 700,
+      easing: "ease-out-cubic",
+    });
+  }, []);
+
   return (
     <>
       {/* Hero Section */}
-      <section id="hero">
+      <section id="hero" data-aos="fade-up">
         <div className="w-full h-[600px] mt-[9%] px-[8%] flex flex-col justify-start items-center gap-y-5">
           <div className="flex flex-row justify-between items-start w-full">
             <h1 className="text-[42px] font-lexend font-bold text-left w-[45%] leading-[50px] text-yl-20">
@@ -193,7 +117,7 @@ const ProgBelPage = () => {
                 </h1>
                 <div className="flex flex-row gap-x-2">
                   {data?.mapel?.opsi
-                    .map((data) => (
+                    .map((data: any) => (
                       <div className="px-3 py-1 rounded-md bg-yl-10/30 text-white">
                         {data?.label}
                       </div>
@@ -218,7 +142,7 @@ const ProgBelPage = () => {
               </div>
 
               <div className="flex flex-row gap-x-4">
-                {dataSistemBelajar
+                {sistemBelajar
                   ?.map((data, index) => (
                     <div
                       key={index}
@@ -250,7 +174,10 @@ const ProgBelPage = () => {
       <section id="new_form">
         <div className="flex flex-row w-full h-full px-[8%] gap-x-4 font-lexend mt-8">
           {/* Sidebar */}
-          <div className="sticky top-28 shadow-xl w-[240px] h-[350px] gap-y-4 flex flex-col rounded-md justify-between">
+          <div
+            className="sticky top-28 shadow-xl w-[240px] h-[350px] gap-y-4 flex flex-col rounded-md justify-between"
+            data-aos="fade-up"
+          >
             <div className="w-full bg-yl-60 h-[65px] rounded-t-md absolute flex justify-center items-center px-6">
               <h1 className="text-left text-white font-bold">{data?.type}</h1>
             </div>
@@ -307,6 +234,7 @@ const ProgBelPage = () => {
               className="w-full h-fit mb-12"
               ref={mata_pelajaran}
               id="mata_pelajaran"
+              data-aos="fade-up"
             >
               <div className="flex flex-col relative">
                 {/* <h1 className="text-[14px] text-yl-30">Mata Pelajaran</h1> */}
@@ -316,7 +244,7 @@ const ProgBelPage = () => {
               </div>
 
               <div className="grid grid-cols-3 w-full h-fit gap-2 mt-4">
-                {data?.mapel?.opsi.map((data) => (
+                {data?.mapel?.opsi.map((data: any) => (
                   <>
                     {/* Component Mata Pelajaran */}
                     <div className="w-full h-[130px] bg-yl-60/20 rounded-lg flex justify-center items-center text-yl-60 flex-col">
@@ -335,6 +263,7 @@ const ProgBelPage = () => {
               className="w-full h-fit mb-12"
               ref={sistem_belajar}
               id="sistem_belajar"
+              data-aos="fade-up"
             >
               <div className="flex flex-col relative mb-4">
                 {/* <h1 className="text-[14px] text-yl-30">Program Yessles</h1> */}
@@ -345,7 +274,7 @@ const ProgBelPage = () => {
 
               <div className="grid grid-cols-3 gap-4 w-full font-lexend">
                 {/* Card Sistem Belajar */}
-                {dataSistemBelajar?.map((data, index) => (
+                {sistemBelajar?.map((data, index) => (
                   <Fragment key={index}>
                     <div className="w-full h-[120px] border-solid border-yl-60 border-2 flex flex-col rounded-lg justify-center px-[8%] items-start">
                       <h1 className="underline">{data?.title}</h1>
@@ -363,6 +292,7 @@ const ProgBelPage = () => {
               className="w-full h-fit mb-12"
               ref={paket_belajar}
               id="paket_belajar"
+              data-aos="fade-up"
             >
               <div className="flex flex-col relative">
                 {/* <h1 className="text-[14px] text-yl-30">Program Yessles</h1> */}
@@ -372,51 +302,54 @@ const ProgBelPage = () => {
               </div>
 
               <div className="grid grid-cols-3 gap-2 w-full font-lexend mt-4">
-                {dataPaketBel?.map((data, index) => (
-                  <div
-                    onClick={() => {
-                      let label = data?.pendidikan
-                        .toLowerCase()
-                        .split(" ")
-                        .join("-");
-                      navigate(`/paket/${label}`);
-                    }}
-                    key={index}
-                    className="relative w-full h-[130px] bg-yl-40/10 rounded-xl flex flex-row p-2 justify-start items-center gap-x-3 group hover:bg-yl-60 transition-all"
-                  >
-                    <div className="overflow-hidden w-fit h-full flex rounded-xl">
-                      <img
-                        src={data.thumbnail}
-                        alt=""
-                        className="object-contain w-full h-full"
-                      />
-                    </div>
-                    <div className="flex flex-col h-full w-fit items-start justify-start py-2 group-hover:text-white">
-                      <h1 className="font-lexend font-bold text-[16px]">
-                        {data.pendidikan}
-                      </h1>
-                      <h1 className="text-yl-30 text-[13px] group-hover:text-white">
-                        {data?.tm}x Tatap Muka
-                      </h1>
-                      {data.priceStart && (
-                        <h1 className="text-gray-900 text-[13px] font-light font-lexend w-[80%] mt-4 group-hover:text-white ">
-                          Mulai dari <br />
-                          {data.priceStart.toString().split(".").length > 1
-                            ? `Rp ${data.priceStart}jt`
-                            : `Rp ${data.priceStart}rb`}
-                          /
-                          {data.durasiBelajar === 12
-                            ? "tahun"
-                            : `${data.durasiBelajar} bulan`}
-                        </h1>
-                      )}
-                    </div>
+                {program_yessles?.map(
+                  (data, index) =>
+                    data.type === "paket_belajar" && (
+                      <div
+                        onClick={() => {
+                          let label = data?.pendidikan
+                            .toLowerCase()
+                            .split(" ")
+                            .join("-");
+                          navigate(`/paket/${label}`);
+                        }}
+                        key={index}
+                        className="relative w-full h-[130px] bg-yl-40/10 rounded-xl flex flex-row p-2 justify-start items-center gap-x-3 group hover:bg-yl-60 transition-all"
+                      >
+                        <div className="overflow-hidden w-fit h-full flex rounded-xl">
+                          <img
+                            src={data.thumbnail}
+                            alt=""
+                            className="object-contain w-full h-full"
+                          />
+                        </div>
+                        <div className="flex flex-col h-full w-fit items-start justify-start py-2 group-hover:text-white">
+                          <h1 className="font-lexend font-bold text-[16px]">
+                            {data.pendidikan}
+                          </h1>
+                          <h1 className="text-yl-30 text-[13px] group-hover:text-white">
+                            {data?.tm}x Tatap Muka
+                          </h1>
+                          {data.priceStart && (
+                            <h1 className="text-gray-900 text-[13px] font-light font-lexend w-[80%] mt-4 group-hover:text-white ">
+                              Mulai dari <br />
+                              {data.priceStart.toString().split(".").length > 1
+                                ? `Rp ${data.priceStart}jt`
+                                : `Rp ${data.priceStart}rb`}
+                              /
+                              {data.durasiBelajar === 12
+                                ? "tahun"
+                                : `${data.durasiBelajar} bulan`}
+                            </h1>
+                          )}
+                        </div>
 
-                    <div className="absolute right-4 bottom-4">
-                      <BsFillArrowUpRightCircleFill className="text-yl-10 text-[20px] group-hover:text-yl-30 group-hover:scale-125 transition-all " />
-                    </div>
-                  </div>
-                ))}
+                        <div className="absolute right-4 bottom-4">
+                          <BsFillArrowUpRightCircleFill className="text-yl-10 text-[20px] group-hover:text-yl-30 group-hover:scale-125 transition-all " />
+                        </div>
+                      </div>
+                    )
+                )}
               </div>
             </section>
 
@@ -424,6 +357,7 @@ const ProgBelPage = () => {
             <section
               className="w-full h-fit"
               ref={kenapa_yessles}
+              data-aos="fade-up"
               id="kenapa_yessles"
             >
               <div className="flex flex-col relative">
@@ -433,7 +367,7 @@ const ProgBelPage = () => {
                 </h1>
               </div>
 
-              {dataFaq?.map((data, index) => (
+              {faq?.map((data, index) => (
                 <Accordion key={index} type="single" collapsible>
                   <AccordionItem value={`item-${index + 1}`}>
                     <AccordionTrigger>{data?.question}</AccordionTrigger>
@@ -447,57 +381,16 @@ const ProgBelPage = () => {
       </section>
 
       {/* Program Yessles */}
-      <section id="programs">
-        <div className="flex w-full h-[700px] items-center mt-[100px]">
-          <div className="flex w-full flex-col">
-            {/* Header Section Program */}
-            <div className="flex flex-row bg-blue-gray-200 h-full w-full justify-between items-center px-[8%]">
-              <div className="flex flex-col relative ">
-                {/* <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-3"></div> */}
-                {/* <h1 className="text-[18px] text-yl-30">Program Yessles</h1> */}
-                <h1 className="text-[30px] font-bold text-yl-20 font-lexend">
-                  Pilih Program Yessles Lainnya
-                </h1>
-              </div>
-
-              {/* Button Type */}
-              <div className="flex flex-row gap-x-2">
-                <div className="flex flex-row gap-x-2">
-                  <input
-                    type="radio"
-                    name="group_id"
-                    id="2"
-                    value="2"
-                    className="peer hidden"
-                    onChange={onOptionSelectProgram}
-                  />
-                  <label
-                    htmlFor="2"
-                    className={`${
-                      selectProgram == 2 ? `activestyle` : `linkstyle`
-                    }`}
-                  >
-                    <span className="material-symbols-outlined">school</span>
-                    Program Belajar
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            {/* Caraousel */}
-            <div className="flex flex-row pl-[8%] w-screen mt-2 overflow-x-auto gap-x-8">
-              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5 pr-[8%] snap-x snap-mandatory">
-                {dataProgBel?.map((programBel, index) => (
-                  <CardProgramYessles key={index} data={programBel} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      <section id="program" data-aos="fade-up">
+        <CarouselProgramBelajar
+          programButton={2}
+          showButton={2}
+          hideButton={true}
+        />
       </section>
 
       {/* Nodemailer Subscription */}
-      <section id="subscription">
+      <section id="subscription" data-aos="fade-up">
         <div className="flex w-[100dvw] h-[350px] items-center px-[8%] flex-col pb-[6%] justify-center mt-8">
           {/* Banner Button */}
           <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">
@@ -537,137 +430,7 @@ const ProgBelPage = () => {
       </section>
 
       {/* Footer */}
-      <section id="footer">
-        <div className="flex w-screen h-[235px] px-[6%] text-gray-500 bottom-0">
-          <div className="border-t-[1px] w-full h-full flex flex-row items-start pb-[4%] pt-[2%] gap-x-3 border-yl-40/30 border-dashed">
-            {/* Coloumn 1 */}
-            <div className="flex flex-col col-span-2 gap-y-6 w-[50%] h-fit">
-              <img src="/yessles_logo.svg" alt="" className="w-[148px]" />
-              <h1 className="text-gray-500 font-light -mt-2 font-lexend text-[12px] w-48">
-                Yessles Bimbingan belajar privat berbasi psikologi.
-              </h1>
-              <div className="flex flex-row gap-x-2 w-fit items-center justify-center">
-                <button
-                  onClick={() =>
-                    window.open("https://www.hacktiv8.com/", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/ig_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/fb_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/tik_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/wa_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/yb_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-              </div>
-            </div>
-
-            {/* Hyperlink Footer */}
-            <div className="flex flex-row w-[64%] text-gray-500 h-fit">
-              <div className="flex flex-col gap-y-5 w-[80%] h-fit justify-start">
-                <div className="flex flex-col text-[11px] gap-y-1">
-                  <h1 className="font-bold text-[13px] underline">
-                    Program Belajar
-                  </h1>
-                  <h1>Program Belajar</h1>
-                  <h1>Sistem Belajar</h1>
-                  <h1>Paket Belajar</h1>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-y-5 w-[70%] h-fit justify-start">
-                <div className="flex flex-col text-[11px] gap-y-1">
-                  <h1 className="font-bold text-[13px] underline">Article</h1>
-                  <h1>New Article</h1>
-                  <h1>Popular Article</h1>
-                  <h1>Most Read</h1>
-                  <h1>Tips & Tricks</h1>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-y-2 w-[70%] h-fit text-[11px]">
-                <h1 className="font-bold text-[13px] underline">Contact</h1>
-                <div className="flex flex-col gap-y-1">
-                  <h1>
-                    Jl. Bali No.1C, Madiun Lor, Kec. Kartoharjo, Kota Madiun,
-                    Jawa Timur 63122
-                  </h1>
-                  <h1>(+62) 899 4944 728</h1>
-                  <h1>haloyessles@gmail.com</h1>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col col-span-2 gap-y-2 w-[60%] h-fit ml-[5%] ">
-              <h1 className=" font-bold text-[14px] text-eb-10">
-                Jadi Bagian dari +200 Students Kami
-              </h1>
-              <h1 className="text-gray-500 font-light -mt-2 text-[13px] font-lexend">
-                Ketahui Lebih Jauh Program Yessles
-              </h1>
-              <form className="flex flex-row gap-x-2 w-[100%] py-2 items-center justify-center">
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Ketik Email Kamu ..."
-                  autoComplete="off"
-                  className="w-full bg-gray-300 rounded-md px-4 text-gray-900 text-[14px] font-bold font-lexend py-3 placeholder-yl-40/60"
-                />
-                <button
-                  type="submit"
-                  className="w-[40%] h-full py-3 bg-yl-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 hover:bg-yl-30 transition-all"
-                >
-                  <span className="material-symbols-outlined">mail</span>
-                  <p>send</p>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Footer />
     </>
   );
 };
