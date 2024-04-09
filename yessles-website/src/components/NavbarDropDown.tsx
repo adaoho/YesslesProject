@@ -21,7 +21,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
     <>
       {open && (
         <>
-          <div className="w-screen h-screen fixed z-10 top-0 flex flex-col">
+          <div className="w-screen h-screen fixed z-10 top-0 flex flex-col animate-fade animate-duration-200">
             {/* Drop Down Section */}
             <div className="bg-white/90 flex flex-col justify-between items-center relative z-50 top-0 shadow-lg backdrop-blur-md duration-500 opacity-100 w-screen h-[49%]">
               {/* Menu as from Navbar */}
@@ -307,7 +307,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
 
             {/* Background Black */}
             <div
-              className="h-[51%] bg-black/70 w-full"
+              className="h-[51%] bg-black/70 w-full animate-fade animate-duration-100"
               onClick={() => setOpen(!open)}
             ></div>
           </div>
