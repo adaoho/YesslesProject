@@ -49,16 +49,17 @@ const HomePage = () => {
     <>
       {/* Hero Section */}
       <section id="hero">
+        {/* Background Blur */}
         <div className="absolute flex top-0">
           <img src="/bg_color_blur.png" alt="" />
         </div>
-        <div className="grid grid-cols-2 w-full mb-4">
+        <div className="flex flex-row w-full mb-4 relative">
           {/* Part Title */}
           <div
-            className="flex w-[50dvw] h-[720px] items-center"
+            className="flex w-[50%] h-[720px] items-center "
             data-aos="fade-right"
           >
-            <div className="flex flex-col w-[560px] pl-[120px] gap-y-4 relative h-[450px]">
+            <div className="flex flex-col w-[560px] pl-[15%] gap-y-4 relative h-[450px]">
               <h1 className="text-[45px] font-lexend font-bold leading-[45px] text-gray-800">
                 Bimbel Privat Nomor 1 di Madiun
               </h1>
@@ -177,15 +178,15 @@ const HomePage = () => {
 
           {/* Fixed Background Image */}
           <div
-            className="flex flex-col relative w-[50dvw] h-[720px] items-center justify-center"
+            className="flex flex-col w-[38%] xl:w-[48%] 2xl:w-[50%] h-[720px] items-center justify-center absolute -right-3 xl:right-0"
             data-aos="fade-left"
           >
             <img
               src="/background_utama.png"
-              className="w-full h-full absolute -z-10 object-cover rounded-bl-[60px]"
+              className="w-full h-full -z-10 object-cover rounded-bl-[60px] absolute right-0"
             />
 
-            <div className="absolute bottom-20 right-0 px-4 w-[700px] max-h-24 flex-row flex overflow-x-auto overflow-hidden gap-x-3">
+            <div className="absolute bottom-20 right-0 px-4 w-[380px] xl:w-[600px] 2xl:w-[700px] max-h-24 flex-row flex overflow-x-auto overflow-hidden gap-x-3 ">
               {/* card home */}
               <div className="flex">
                 <div className="flex flex-row items-center h-[80px] w-[282px] rounded-3xl bg-white p-6 gap-x-4">
@@ -276,7 +277,7 @@ const HomePage = () => {
                 <h1 className="font-lexend font-bold text-[17px] underline">
                   Sistem Belajar
                 </h1>
-                <div className="grid grid-cols-2">
+                <div className="grid xl:grid-cols-2 gap-y-2">
                   <div className="flex flex-row gap-x-2">
                     <span className="material-symbols-outlined">group</span>
                     <p>1 Tutor untuk 1 Siswa</p>
@@ -288,7 +289,7 @@ const HomePage = () => {
                     <p>Garansi ganti tutor</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-2">
+                <div className="grid xl:grid-cols-2 gap-y-2">
                   <div className="flex flex-row gap-x-2">
                     <span className="material-symbols-outlined">menu_book</span>
                     <p>Waktu belajar fleksibel</p>
@@ -305,7 +306,7 @@ const HomePage = () => {
                 <div className="divider pr-[15%]"></div>
 
                 {/* Contact Whatsapp */}
-                <div className="flex flex-row justify-start items-center gap-x-4">
+                <div className="flex flex-col xl:flex-row justify-start items-start xl:items-center gap-x-4  gap-y-4">
                   <div className="flex flex-row gap-x-3">
                     <img
                       src="/profile_contact.png"
@@ -321,29 +322,32 @@ const HomePage = () => {
                       </h1>
                     </div>
                   </div>
-                  <Link
-                    to={`https://api.whatsapp.com/send?phone=628994944728&text=Halo%20Kak!%20Mohon%20info%20cara%20bergabung%20di%20Yessles?`}
-                    data-action="share/whatsapp/share"
-                    target="_blank"
-                  >
-                    <div className="flex flex-row gap-x-2 bg-yl-60 ml-2 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-10 hover:scale-105 transition-all">
-                      <img
-                        src="/whatsapp-icon.svg"
-                        alt=""
-                        className="w-5 h-5"
-                      />
-                      <p>Daftar</p>
-                    </div>
-                  </Link>
-                  <Link
-                    to={`https://drive.google.com/drive/folders/1MmdXrQ4MedPhI1SvNPppSa566knWbemc?usp=sharing`}
-                    target="_blank"
-                  >
-                    <div className="flex flex-row gap-x-2 -ml-2 bg-yl-60 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-30 hover:scale-105 transition-all">
-                      <CgNotes className="size-5" />
-                      <p>Test Gaya Belajar</p>
-                    </div>
-                  </Link>
+
+                  <div className="flex flex-row gap-x-3">
+                    <Link
+                      to={`https://api.whatsapp.com/send?phone=628994944728&text=Halo%20Kak!%20Mohon%20info%20cara%20bergabung%20di%20Yessles?`}
+                      data-action="share/whatsapp/share"
+                      target="_blank"
+                    >
+                      <div className="flex flex-row gap-x-2 bg-yl-60  xl:ml-2 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-10 hover:scale-105 transition-all">
+                        <img
+                          src="/whatsapp-icon.svg"
+                          alt=""
+                          className="w-5 h-5"
+                        />
+                        <p>Daftar</p>
+                      </div>
+                    </Link>
+                    <Link
+                      to={`https://drive.google.com/drive/folders/1MmdXrQ4MedPhI1SvNPppSa566knWbemc?usp=sharing`}
+                      target="_blank"
+                    >
+                      <div className="flex flex-row gap-x-2 -ml-2 bg-yl-60 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-30 hover:scale-105 transition-all">
+                        <CgNotes className="size-5" />
+                        <p>Test Gaya Belajar</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -353,7 +357,7 @@ const HomePage = () => {
               <img
                 src="/image_4_home.png"
                 alt=""
-                className="w-full h-full grayscale group-hover:grayscale-0 transition-all"
+                className="w-full h-full grayscale object-cover group-hover:grayscale-0 transition-all"
               />
               <button
                 onClick={() => setOpen(true)}
@@ -436,7 +440,7 @@ const HomePage = () => {
           </div>
 
           {/* Article Section */}
-          <div className="grid grid-cols-2 w-full h-fit py-10">
+          <div className="grid xl:grid-cols-2 w-full h-fit py-10">
             {/* Left Section */}
             <div className="h-[525px] flex flex-col w-full justify-between ">
               {articles?.slice(1, 4).map((data, index) => (
@@ -445,7 +449,7 @@ const HomePage = () => {
             </div>
 
             {/* Right Section */}
-            <div className="h-full flex justify-start flex-col gap-y-4 group">
+            <div className="h-full hidden justify-start flex-col gap-y-4 group xl:flex">
               <div className="w-full h-full overflow-hidden rounded-lg">
                 <img
                   src="https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"
