@@ -26,8 +26,17 @@ const HomePage = () => {
   let ref = useRef<null | HTMLDivElement>(null);
 
   const handleScroll = () => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    const element = ref.current;
+    if (element) {
+      const offsetTop = 30; // Set your desired offset here
+      const elementTop = element.offsetTop - offsetTop;
+      window.scrollTo({
+        top: elementTop,
+        behavior: "smooth",
+      });
+    }
   };
+
   useEffect(() => {
     Aos.init({
       disable: "phone",
@@ -363,7 +372,7 @@ const HomePage = () => {
         {/* Modal Popup Video */}
         <Modal open={open} onClose={() => setOpen(false)} bgcolor="bg-white">
           <iframe
-            className="w-[960px] h-[480px]"
+            className="w-[1060px] h-[590px]"
             src="https://www.youtube.com/embed/CDZrI7cQZiE?si=9_KqKhiQhjoAPyRs"
             rel="0"
             allowFullScreen
@@ -419,9 +428,11 @@ const HomePage = () => {
             <h1 className="text-[30px] font-bold text-yl-60 font-lexend mb-4">
               Cerita Yessles
             </h1>
-            <div className="flex flex-row font-lexend text-[14px] px-4 py-2 bg-yl-10 text-white rounded-xl mb-4">
-              Jelajahi Artikel
-            </div>
+            <Link to={"/article"}>
+              <div className="flex flex-row font-lexend text-[14px] px-4 py-2 bg-yl-60 hover:bg-yl-10 transition-all text-white rounded-xl mb-4">
+                Jelajahi Artikel di Yessles
+              </div>
+            </Link>
           </div>
 
           {/* Article Section */}
@@ -434,12 +445,14 @@ const HomePage = () => {
             </div>
 
             {/* Right Section */}
-            <div className="h-full flex justify-start flex-col gap-y-4">
-              <img
-                src="https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"
-                alt=""
-                className="w-full h-[284px] object-cover rounded-2xl"
-              />
+            <div className="h-full flex justify-start flex-col gap-y-4 group">
+              <div className="w-full h-full overflow-hidden rounded-lg">
+                <img
+                  src="https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"
+                  alt=""
+                  className="w-full h-[284px] object-cover rounded-2xl group-hover:scale-105 transition-all"
+                />
+              </div>
               <div className="flex flex-row items-center gap-x-2">
                 <img
                   src="https://ik.imagekit.io/9nm0rr5hka/Yessles/profile_4.png?updatedAt=1709279130623"

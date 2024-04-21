@@ -17,9 +17,9 @@ import Footer from "./components/Footer";
 import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
 import { program_belajar } from "@/database/program_belajar.json";
 import Aos from "aos";
+import Subscription from "./components/Subscription";
 
 const ProgBelPage = () => {
-  const [nameChat, setNameChat] = useState<string>("");
   const [activeLink, setActiveLink] = useState<string | null>(null);
   const [dataPage, setDataPage] = useState<any>();
   const [startIndex, endIndex] = generateSliceIndexes();
@@ -66,20 +66,6 @@ const ProgBelPage = () => {
       top: elementRef.current.offsetTop - 130,
       behavior: "smooth",
     });
-  };
-
-  const nameChange = (element: any) => {
-    const { value } = element.target;
-    setNameChat(value);
-  };
-
-  const onSubmitChat = (e: any) => {
-    e.preventDefault();
-    window.open(
-      `https://api.whatsapp.com/send?phone=628994944728&text=Halo%20Kak,%20Saya%20${nameChat}!%20Mohon%20info%20cara%20bergabung%20di%20Yessles?`,
-      "_blank",
-      "rel=noopener noreferrer"
-    );
   };
 
   useEffect(() => {
@@ -179,10 +165,7 @@ const ProgBelPage = () => {
       <section id="new_form">
         <div className="flex flex-row w-full h-full px-[8%] gap-x-4 font-lexend mt-8">
           {/* Sidebar */}
-          <div
-            className="sticky top-28 shadow-xl w-[240px] h-[350px] gap-y-4 flex flex-col rounded-md justify-between"
-            data-aos="fade-up"
-          >
+          <div className="sticky top-28 shadow-xl w-[240px] h-[350px] gap-y-4 flex flex-col rounded-md justify-between">
             <div className="w-full bg-yl-60 h-[65px] rounded-t-md absolute flex justify-center items-center px-6">
               <h1 className="text-left text-white font-bold">{data?.type}</h1>
             </div>
@@ -239,7 +222,6 @@ const ProgBelPage = () => {
               className="w-full h-fit mb-12"
               ref={mata_pelajaran}
               id="mata_pelajaran"
-              data-aos="fade-up"
             >
               <div className="flex flex-col relative">
                 {/* <h1 className="text-[14px] text-yl-30">Mata Pelajaran</h1> */}
@@ -395,44 +377,7 @@ const ProgBelPage = () => {
       </section>
 
       {/* Nodemailer Subscription */}
-      <section id="subscription" data-aos="fade-up">
-        <div className="flex w-[100dvw] h-[350px] items-center px-[8%] flex-col pb-[6%] justify-center mt-8">
-          {/* Banner Button */}
-          <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">
-            <img
-              src="/subscribe_banner.svg"
-              alt=""
-              className="absolute -z-10 w-full object-cover"
-            />
-            <h1 className="font-lexend font-bold text-[28px] w-[30%] text-center leading-9 text-yl-20">
-              Ayo Daftar Sekarang!
-            </h1>
-            <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20 mt-2">
-              Segera amankan jadwalmu, karena jadwal les di Yessles berlaku
-              REAL-TIME (tidak ada sistem keep jadwal)
-            </h1>
-            <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20">
-              Untuk Permintaan les, dilayani sesuai jadwal tutor yang tersedia
-              ya..
-            </h1>
-            {/* Input Email */}
-            <div className="mt-4 flex flex-row bg-white w-fit h-fit px-1 pl-5 justify-center items-center gap-x-2 rounded-[17px] py-1 text-yl-20 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <span className="material-symbols-outlined">chat</span>
-              <form onSubmit={onSubmitChat}>
-                <input
-                  placeholder="Ketik nama kamu di sini ya.. "
-                  type="text"
-                  className="w-[250px] focus:outline-none px-4 font-lexend placeholder:text-yl-40/50"
-                  onChange={nameChange}
-                />
-                <button className="bg-yl-10 text-white px-4 py-2 rounded-[13px]">
-                  Kirimkan Chat
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Subscription other={true} />
 
       {/* Footer */}
       <Footer />

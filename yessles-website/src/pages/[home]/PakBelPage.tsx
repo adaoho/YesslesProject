@@ -452,7 +452,7 @@ const PakBelPage = () => {
           {/* Banner Button */}
           <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">
             <img
-              src="/subscribe_banner.svg"
+              src="/subscribe_banner.png"
               alt=""
               className="absolute -z-10 w-full object-cover"
             />

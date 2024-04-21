@@ -36,10 +36,24 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                   <img src="/yessles_logo.svg" alt="" />
                 </div>
                 <div className="flex flex-row gap-x-4 z-10">
-                  <button className={navBarButtonDropDown}>
+                  <button
+                    className={navBarButtonDropDown}
+                    onClick={() => {
+                      navigate("/tentang");
+                      setOpen(!open);
+                    }}
+                  >
                     Tentang Yessles
                   </button>
-                  <button className={navBarButtonDropDown}>Article</button>
+                  <button
+                    className={navBarButtonDropDown}
+                    onClick={() => {
+                      navigate("/article");
+                      setOpen(!open);
+                    }}
+                  >
+                    Article
+                  </button>
                   <button
                     onClick={() => setOpen(!open)}
                     className="h-[35px] gap-x-2 bg-yl-60 px-5 rounded-3xl text-white font-lexend text-[14px] flex justify-center items-center hover:bg-yl-30 transition-all"
