@@ -53,7 +53,7 @@ const HomePage = () => {
         <div className="absolute flex top-0">
           <img src="/bg_color_blur.png" alt="" />
         </div>
-        <div className="flex flex-row w-full mb-4 relative">
+        <div className="flex flex-row w-screen mb-4 relative">
           {/* Part Title */}
           <div
             className="flex w-[50%] h-[720px] items-center "
@@ -186,7 +186,7 @@ const HomePage = () => {
               className="w-full h-full -z-10 object-cover rounded-bl-[60px] absolute right-0"
             />
 
-            <div className="absolute bottom-20 right-0 px-4 w-[380px] xl:w-[600px] 2xl:w-[700px] max-h-24 flex-row flex overflow-x-auto overflow-hidden gap-x-3 ">
+            <div className="absolute bottom-20 right-0 px-4 w-[380px] lg:w-[400px] xl:w-[630px] 2xl:w-[730px] max-h-24 flex-row flex overflow-x-auto overflow-hidden gap-x-3 ">
               {/* card home */}
               <div className="flex">
                 <div className="flex flex-row items-center h-[80px] w-[282px] rounded-3xl bg-white p-6 gap-x-4">
