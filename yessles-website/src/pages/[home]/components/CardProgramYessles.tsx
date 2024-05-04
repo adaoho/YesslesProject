@@ -5,13 +5,14 @@ const CardProgramYessles = ({ data }: any) => {
   // console.log(data, "<<< card");
   let navigate = useNavigate();
 
+  console.log(data, "<<< from data");
+
   return (
     <div
       onClick={() => {
-        let label = data?.pendidikan.toLowerCase().split(" ").join("-");
         data?.type === "program_belajar"
-          ? navigate(`/program/${label}`)
-          : navigate(`/paket/${label}`);
+          ? navigate(`/program/${data.slug}`)
+          : navigate(`/paket/${data.slug}`);
       }}
       className="snap-start flex h-[478px] w-[320px] flex-col group transition-all"
     >

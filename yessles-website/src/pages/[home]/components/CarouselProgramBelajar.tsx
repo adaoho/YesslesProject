@@ -1,3 +1,6 @@
+import { TbPackage } from "react-icons/tb";
+import { MdOutlineSchool } from "react-icons/md";
+import { TbLayoutDashboard } from "react-icons/tb";
 import { program_yessles } from "@/database/program.json";
 import { useState } from "react";
 import CardProgramYessles from "./CardProgramYessles";
@@ -36,8 +39,8 @@ const CarouselProgramBelajar = ({
                         selectProgram == 1 ? `activestyle` : `linkstyle`
                       }`}
                     >
-                      <span className="material-symbols-outlined">school</span>
-                      Program Belajar
+                      <TbLayoutDashboard className="size-5" />
+                      Semua
                     </button>
                   </div>
                   <div className="flex flex-row gap-x-2">
@@ -47,7 +50,7 @@ const CarouselProgramBelajar = ({
                         selectProgram == 2 ? `activestyle` : `linkstyle`
                       }`}
                     >
-                      <span className="material-symbols-outlined">school</span>
+                      <MdOutlineSchool className="size-6" />
                       Program Belajar
                     </button>
                   </div>
@@ -58,7 +61,7 @@ const CarouselProgramBelajar = ({
                         selectProgram == 3 ? `activestyle` : `linkstyle`
                       }`}
                     >
-                      <span className="material-symbols-outlined">package</span>
+                      <TbPackage className="size-6" />
                       Paket Belajar
                     </button>
                   </div>
@@ -73,8 +76,8 @@ const CarouselProgramBelajar = ({
                       selectProgram == 1 ? `activestyle` : `linkstyle`
                     }`}
                   >
-                    <span className="material-symbols-outlined">school</span>
-                    Program Belajar
+                    <TbLayoutDashboard className="size-5" />
+                    Semua
                   </button>
                 </div>
               )}
@@ -86,7 +89,7 @@ const CarouselProgramBelajar = ({
                       selectProgram == 2 ? `activestyle` : `linkstyle`
                     }`}
                   >
-                    <span className="material-symbols-outlined">school</span>
+                    <MdOutlineSchool className="size-5" />
                     Program Belajar
                   </button>
                 </div>
@@ -99,7 +102,7 @@ const CarouselProgramBelajar = ({
                       selectProgram == 3 ? `activestyle` : `linkstyle`
                     }`}
                   >
-                    <span className="material-symbols-outlined">package</span>
+                    <TbPackage className="size-6" />
                     Paket Belajar
                   </button>
                 </div>

@@ -153,10 +153,7 @@ const HomePage = () => {
                 </div>
               </form>
 
-              <Link
-                to={`https://drive.google.com/drive/folders/1MmdXrQ4MedPhI1SvNPppSa566knWbemc?usp=sharing`}
-                target="_blank"
-              >
+              <Link to={`https://bit.ly/tesgayabelajaryessles`} target="_blank">
                 <div className="flex flex-row w-[520px] gap-x-2 justify-center items-center group">
                   <div className="border-b-[1px] w-[30%] group-hover:w-[30%] h-2 border-gray-500 border-dashed mb-1"></div>
                   <h1 className="font-lexend text-[14px] underline px-4 py-1 bg-yl-30 transition-all rounded-lg text-white hover:bg-yl-10 hover:scale-110">
@@ -339,7 +336,7 @@ const HomePage = () => {
                       </div>
                     </Link>
                     <Link
-                      to={`https://drive.google.com/drive/folders/1MmdXrQ4MedPhI1SvNPppSa566knWbemc?usp=sharing`}
+                      to={`https://bit.ly/tesgayabelajaryessles`}
                       target="_blank"
                     >
                       <div className="flex flex-row gap-x-2 -ml-2 bg-yl-60 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-30 hover:scale-105 transition-all">

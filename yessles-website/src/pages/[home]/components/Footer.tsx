@@ -108,10 +108,7 @@ const Footer = () => {
               <div className="flex flex-col gap-y-2 w-[70%] h-fit text-[11px]">
                 <h1 className="font-bold text-[13px] underline">Contact</h1>
                 <div className="flex flex-col gap-y-1">
-                  <h1>
-                    Jl. Bali No.1C, Madiun Lor, Kec. Kartoharjo, Kota Madiun,
-                    Jawa Timur 63122
-                  </h1>
+                  <h1>Jl. Bali No. 1C, Kota Madiun, Jawa Timur, 63122.</h1>
                   <h1>(+62) 899 4944 728</h1>
                   <h1>haloyessles@gmail.com</h1>
                 </div>

@@ -2,6 +2,7 @@
   "program_yessles": [
     {
       "pendidikan": "Prasekolah",
+      "slug": "prasekolah",
       "alias": "Prasekolah",
       "thumbnail": "/program_yessles/pic_1.JPG",
       "durasiBelajar": 12,
@@ -12,6 +13,7 @@
     },
     {
       "pendidikan": "Taman Kanak-Kanak",
+      "slug": "taman-kanak-kanak",
       "alias": "TK",
       "thumbnail": "/program_yessles/pic_2.JPG",
       "durasiBelajar": 12,
@@ -22,6 +24,7 @@
     },
     {
       "pendidikan": "Sekolah Dasar",
+      "slug": "sekolah-dasar-sd",
       "alias": "SD",
       "thumbnail": "/program_yessles/pic_3.JPG",
       "durasiBelajar": 12,
@@ -32,6 +35,7 @@
     },
     {
       "pendidikan": "Sekolah Menengah Pertama",
+      "slug": "sekolah-menengah-pertama-smp",
       "alias": "SMP",
       "thumbnail": "/program_yessles/pic_4.JPG",
       "durasiBelajar": 12,
@@ -42,6 +46,7 @@
     },
     {
       "pendidikan": "Sekolah Menengah Atas",
+      "slug": "sekolah-menengah-atas-sma",
       "alias": "SMA",
       "thumbnail": "/program_yessles/pic_5.JPG",
       "durasiBelajar": 12,
@@ -52,6 +57,7 @@
     },
     {
       "pendidikan": "Softskill",
+      "slug": "softskill",
       "alias": "SOFTSKILL",
       "thumbnail": "/program_yessles/pic_6.JPG",
       "durasiBelajar": 12,
@@ -62,6 +68,7 @@
     },
     {
       "pendidikan": "Umum",
+      "slug": "umum",
       "alias": "UMUM",
       "thumbnail": "/program_yessles/pic_7.JPG",
       "durasiBelajar": 12,
@@ -72,6 +79,7 @@
     },
     {
       "pendidikan": "Paket Sahabat Belajar",
+      "slug": "paket-sahabat-belajar",
       "alias": "Paket Belajar",
       "thumbnail": "/paket_belajar/paket_belajar_1.png",
       "priceStart": 5.9,
@@ -82,6 +90,7 @@
     },
     {
       "pendidikan": "Paket Sobat Belajar",
+      "slug": "paket-sobat-belajar",
       "alias": "Paket Belajar",
       "thumbnail": "/paket_belajar/paket_belajar_2.png",
       "priceStart": 3.05,
@@ -92,6 +101,7 @@
     },
     {
       "pendidikan": "Paket Sohib Belajar",
+      "slug": "paket-sohib-belajar",
       "alias": "Paket Belajar",
       "thumbnail": "/paket_belajar/paket_belajar_3.png",
       "priceStart": 1.89,
@@ -102,6 +112,7 @@
     },
     {
       "pendidikan": "Paket Konco Belajar",
+      "slug": "paket-konco-belajar",
       "alias": "Paket Belajar",
       "thumbnail": "/paket_belajar/paket_belajar_4.png",
       "priceStart": 975,
@@ -112,6 +123,7 @@
     },
     {
       "pendidikan": "Paket Kawan Belajar",
+      "slug": "paket-kawan-belajar",
       "alias": "Paket Belajar",
       "thumbnail": "/paket_belajar/paket_belajar_5.png",
       "priceStart": 650,
@@ -122,6 +134,7 @@
     },
     {
       "pendidikan": "Paket Teman Belajar",
+      "slug": "paket-teman-belajar",
       "alias": "Paket Belajar",
       "thumbnail": "/paket_belajar/paket_belajar_6.png",
       "priceStart": 325,

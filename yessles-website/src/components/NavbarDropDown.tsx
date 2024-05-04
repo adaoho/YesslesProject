@@ -309,7 +309,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                   </h1>
                 </div>
                 <Link
-                  to={`https://drive.google.com/drive/folders/1MmdXrQ4MedPhI1SvNPppSa566knWbemc?usp=sharing`}
+                  to={`https://bit.ly/tesgayabelajaryessles`}
                   target="_blank"
                 >
                   <div className="bg-yl-10 text-white px-4 py-1 rounded-md hover:bg-yl-30 hover:text-white transition-all hover:scale-105 text-[16px]">
