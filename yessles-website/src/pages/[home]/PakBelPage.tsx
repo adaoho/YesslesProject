@@ -13,8 +13,6 @@ import { DataFaq, DataPakBelPage, DataSistemBelajar } from "./utils/TypePage";
 import { generateSliceIndexes, toMoneyRP } from "@/utils/Static";
 import Aos from "aos";
 import Footer from "./components/Footer";
-import Subscription from "./components/Subscription";
-import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
 
 const PakBelPage = () => {
   const [nameChat, setNameChat] = useState<string>("");
@@ -400,15 +398,94 @@ const PakBelPage = () => {
       </section>
 
       {/* Program Yessles */}
-      <section id="programs" data-aos="fade-up">
-        <CarouselProgramBelajar
-          programButton={3}
-          showButton={3}
-          hideButton={true}
-        />
+      <section id="programs">
+        <div className="flex w-full h-[700px] items-center mt-[100px]">
+          <div className="flex w-full flex-col">
+            {/* Header Section Program */}
+            <div className="flex flex-row bg-blue-gray-200 h-full w-full justify-between items-center px-[8%]">
+              <div className="flex flex-col relative ">
+                {/* <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-3"></div> */}
+                {/* <h1 className="text-[18px] text-yl-30">Program Yessles</h1> */}
+                <h1 className="text-[30px] font-bold text-yl-60 font-lexend">
+                  Pilih Paket Belajar Yessles Lainnya
+                </h1>
+              </div>
+
+              {/* Button Type */}
+              <div className="flex flex-row gap-x-2">
+                <div className="flex flex-row gap-x-2">
+                  <input
+                    type="radio"
+                    name="group_id"
+                    id="3"
+                    value="3"
+                    className="peer hidden"
+                    onChange={onOptionSelectProgram}
+                  />
+                  <label
+                    htmlFor="3"
+                    className={`${
+                      selectProgram == 3 ? `activestyle` : `linkstyle`
+                    }`}
+                  >
+                    <span className="material-symbols-outlined">school</span>
+                    Paket Belajar
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            {/* Caraousel */}
+            <div className="flex flex-row pl-[8%] w-screen mt-2 overflow-x-auto gap-x-8">
+              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5 pr-[8%] snap-x snap-mandatory">
+                {dataProgBel?.map((programBel, index) => (
+                  <CardProgramYessles key={index} data={programBel} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <Subscription other={true} />
+      {/* Nodemailer Subscription */}
+      <section id="subscription">
+        <div className="flex w-[100dvw] h-[350px] items-center px-[8%] flex-col pb-[6%] justify-center mt-8">
+          {/* Banner Button */}
+          <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">
+            <img
+              src="/subscribe_banner.png"
+              alt=""
+              className="absolute -z-10 w-full object-cover"
+            />
+            <h1 className="font-lexend font-bold text-[28px] w-[30%] text-center leading-9 text-yl-20">
+              Ayo Daftar Sekarang!
+            </h1>
+            <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20 mt-2">
+              Segera amankan jadwalmu, karena jadwal les di Yessles berlaku
+              REAL-TIME (tidak ada sistem keep jadwal)
+            </h1>
+            <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20">
+              Untuk Permintaan les, dilayani sesuai jadwal tutor yang tersedia
+              ya..
+            </h1>
+            {/* Input Email */}
+            <div className="mt-4 flex flex-row bg-white w-fit h-fit px-1 pl-5 justify-center items-center gap-x-2 rounded-[17px] py-1 text-yl-20 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+              <span className="material-symbols-outlined">chat</span>
+              <form onSubmit={onSubmitChat}>
+                <input
+                  placeholder="Ketik nama kamu di sini ya.. "
+                  type="text"
+                  className="w-[250px] focus:outline-none px-4 font-lexend placeholder:text-yl-40/50"
+                  onChange={nameChange}
+                />
+                <button className="bg-yl-10 text-white px-4 py-2 rounded-[13px]">
+                  Kirimkan Chat
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
     </>
   );
