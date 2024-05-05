@@ -183,7 +183,7 @@ const HomePage = () => {
               className="w-full h-full -z-10 object-cover rounded-bl-[60px] absolute right-0"
             />
 
-            <div className="absolute bottom-20 right-0 px-4 w-[380px] lg:w-[400px] xl:w-[630px] 2xl:w-[730px] max-h-24 flex-row flex overflow-x-auto overflow-hidden gap-x-3 ">
+            <div className="absolute bottom-20 right-0 px-4 w-[380px] lg:w-[430px] pl-8  xl:w-[625px] 2xl:w-[730px] max-h-24 flex-row flex overflow-x-auto overflow-hidden gap-x-3 ">
               {/* card home */}
               <div className="flex">
                 <div className="flex flex-row items-center h-[80px] w-[282px] rounded-3xl bg-white p-6 gap-x-4">
@@ -286,7 +286,7 @@ const HomePage = () => {
                     <p>Garansi ganti tutor</p>
                   </div>
                 </div>
-                <div className="grid xl:grid-cols-2 gap-y-2">
+                <div className="grid xl:grid-cols-2 gap-y-2 -mt-2 xl:mt-0">
                   <div className="flex flex-row gap-x-2">
                     <span className="material-symbols-outlined">menu_book</span>
                     <p>Waktu belajar fleksibel</p>
@@ -303,7 +303,7 @@ const HomePage = () => {
                 <div className="divider pr-[15%]"></div>
 
                 {/* Contact Whatsapp */}
-                <div className="flex flex-col xl:flex-row justify-start items-start xl:items-center gap-x-4  gap-y-4">
+                <div className="flex flex-col xl:flex-row justify-start items-start xl:items-center gap-x-4 gap-y-4 mr-7">
                   <div className="flex flex-row gap-x-3">
                     <img
                       src="/profile_contact.png"
@@ -311,7 +311,7 @@ const HomePage = () => {
                       className="w-12 h-12 rounded-full"
                     />
                     <div className="flex flex-col">
-                      <h1 className="text-[15px] font-lexend font-bold text-yl-60">
+                      <h1 className="text-[15px] font-lexend font-bold text-yl-60 truncate">
                         Customer Service
                       </h1>
                       <h1 className="font-lexend text-gray-500 text-[12px]">
@@ -320,7 +320,7 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-row gap-x-3">
+                  <div className="flex flex-row gap-x-5">
                     <Link
                       to={`https://api.whatsapp.com/send?phone=628994944728&text=Halo%20Kak!%20Mohon%20info%20cara%20bergabung%20di%20Yessles?`}
                       data-action="share/whatsapp/share"
@@ -332,7 +332,7 @@ const HomePage = () => {
                           alt=""
                           className="w-5 h-5"
                         />
-                        <p>Daftar</p>
+                        <p className="truncate">Daftar</p>
                       </div>
                     </Link>
                     <Link
@@ -340,8 +340,8 @@ const HomePage = () => {
                       target="_blank"
                     >
                       <div className="flex flex-row gap-x-2 -ml-2 bg-yl-60 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-30 hover:scale-105 transition-all">
-                        <CgNotes className="size-5" />
-                        <p>Test Gaya Belajar</p>
+                        <CgNotes className="size-5 " />
+                        <p className="xl:truncate">Test Gaya Belajar</p>
                       </div>
                     </Link>
                   </div>

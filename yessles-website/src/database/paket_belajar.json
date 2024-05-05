@@ -1,0 +1,319 @@
+{
+  "paket_program_belajar": [
+    {
+      "id": 1,
+      "slug": "paket-sahabat-belajar",
+      "title": "Paket Sahabat Belajar",
+      "hero": {
+        "title": "Sahabat Belajar bagi Yess Student",
+        "sub_title": "100 Kali Tatap Muka, Mulai dari 5,9jt/Tahun!",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "price": [
+        {
+          "pendidikan": "Prasekolah",
+          "min_price": 5900000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Taman Kanak-Kanak (TK)",
+          "min_price": 5900000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Dasar (SD)",
+          "min_price": 6400000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
+          "min_price": 6900000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Atas (SMA)",
+          "min_price": 7400000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Umum",
+          "min_price": 7900000,
+          "max_price": 0
+        }
+      ],
+      "ketentuan": [
+        {
+          "description": "Minimal pengambilan jadwal 3 mata pelajaran/3 pertemuan tiap minggu"
+        },
+        {
+          "description": "Durasi pemakaian maksimal 1 Tahun/12 Bulan"
+        },
+        {
+          "description": "Paket kuota yang melebihi masa berlaku (tidak habis) tidak dapat diuangkan dan sisa kuota yang tersedia HANGUS"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "paket-sobat-belajar",
+      "title": "Paket Sobat Belajar",
+      "hero": {
+        "title": "Sobat Belajar bagi Yess Student",
+        "sub_title": "50 Kali Tatap Muka, Mulai dari 3,05jt/6 Bulan!",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "price": [
+        {
+          "pendidikan": "Prasekolah",
+          "min_price": 3050000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Taman Kanak-Kanak (TK)",
+          "min_price": 3050000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Dasar (SD)",
+          "min_price": 3300000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
+          "min_price": 3550000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Atas (SMA)",
+          "min_price": 3800000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Umum",
+          "min_price": 4050000,
+          "max_price": 0
+        }
+      ],
+      "ketentuan": [
+        {
+          "description": "Minimal pengambilan jadwal 3 mata pelajaran/3 pertemuan tiap minggu"
+        },
+        {
+          "description": "Durasi pemakaian maksimal 6 Bulan"
+        },
+        {
+          "description": "Paket kuota yang melebihi masa berlaku (tidak habis) tidak dapat diuangkan dan sisa kuota yang tersedia HANGUS"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "paket-sohib-belajar",
+      "title": "Paket Sohib Belajar",
+      "hero": {
+        "title": "Sohib Belajar bagi Yess Student",
+        "sub_title": "30 Kali Tatap Muka, Mulai dari 1.89jt/3 Bulan!",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "price": [
+        {
+          "pendidikan": "Prasekolah",
+          "min_price": 1890000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Taman Kanak-Kanak (TK)",
+          "min_price": 1890000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Dasar (SD)",
+          "min_price": 2040000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
+          "min_price": 2190000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Atas (SMA)",
+          "min_price": 2340000,
+          "max_price": 0
+        },
+        {
+          "pendidikan": "Umum",
+          "min_price": 2490000,
+          "max_price": 0
+        }
+      ],
+      "ketentuan": [
+        {
+          "description": "Minimal pengambilan jadwal 3 mata pelajaran/3 pertemuan tiap minggu"
+        },
+        {
+          "description": "Durasi pemakaian maksimal 3 Bulan"
+        },
+        {
+          "description": "Paket kuota yang melebihi masa berlaku (tidak habis) tidak dapat diuangkan dan sisa kuota yang tersedia HANGUS"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "paket-konco-belajar",
+      "title": "Paket Konco Belajar",
+      "hero": {
+        "title": "Konco Belajar bagi Yess Student",
+        "sub_title": "15 Kali Tatap Muka, Mulai dari 975rb/1 Bulan!",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "price": [
+        {
+          "pendidikan": "Prasekolah",
+          "min_price": 65000,
+          "max_price": 975000
+        },
+        {
+          "pendidikan": "Taman Kanak-Kanak (TK)",
+          "min_price": 65000,
+          "max_price": 975000
+        },
+        {
+          "pendidikan": "Sekolah Dasar (SD)",
+          "min_price": 70000,
+          "max_price": 1050000
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
+          "min_price": 75000,
+          "max_price": 1125000
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Atas (SMA)",
+          "min_price": 80000,
+          "max_price": 1200000
+        },
+        {
+          "pendidikan": "Umum",
+          "min_price": 85000,
+          "max_price": 1275000
+        }
+      ],
+      "ketentuan": [
+        {
+          "description": "Pengambilan jadwal 3 mata pelajaran/ 3 pertemuan tiap minggu"
+        },
+        {
+          "description": "Durasi pemakaian maksimal 1 Bulan"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "paket-kawan-belajar",
+      "title": "Paket Kawan Belajar",
+      "hero": {
+        "title": "Kawan Belajar bagi Yess Student",
+        "sub_title": "10 Kali Tatap Muka, Mulai dari 650rb/1 Bulan!",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "price": [
+        {
+          "pendidikan": "Prasekolah",
+          "min_price": 65000,
+          "max_price": 650000
+        },
+        {
+          "pendidikan": "Taman Kanak-Kanak (TK)",
+          "min_price": 65000,
+          "max_price": 650000
+        },
+        {
+          "pendidikan": "Sekolah Dasar (SD)",
+          "min_price": 70000,
+          "max_price": 700000
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
+          "min_price": 75000,
+          "max_price": 750000
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Atas (SMA)",
+          "min_price": 80000,
+          "max_price": 800000
+        },
+        {
+          "pendidikan": "Umum",
+          "min_price": 85000,
+          "max_price": 850000
+        }
+      ],
+      "ketentuan": [
+        {
+          "description": "Pengambilan jadwal 2 mata pelajaran/ 2 pertemuan tiap minggu"
+        },
+        {
+          "description": "Durasi pemakaian maksimal 1 Bulan"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "paket-teman-belajar",
+      "title": "Paket Teman Belajar",
+      "hero": {
+        "title": "Teman Belajar bagi Yess Student",
+        "sub_title": "5 Kali Tatap Muka, Mulai dari 325rb/1 Bulan!",
+        "description": "This is description and bla bla",
+        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+      },
+      "price": [
+        {
+          "pendidikan": "Prasekolah",
+          "min_price": 65000,
+          "max_price": 325000
+        },
+        {
+          "pendidikan": "Taman Kanak-Kanak (TK)",
+          "min_price": 65000,
+          "max_price": 325000
+        },
+        {
+          "pendidikan": "Sekolah Dasar (SD)",
+          "min_price": 70000,
+          "max_price": 350000
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
+          "min_price": 75000,
+          "max_price": 375000
+        },
+        {
+          "pendidikan": "Sekolah Mengenah Atas (SMA)",
+          "min_price": 80000,
+          "max_price": 400000
+        },
+        {
+          "pendidikan": "Umum",
+          "min_price": 85000,
+          "max_price": 425000
+        }
+      ],
+      "ketentuan": [
+        {
+          "description": "Pengambilan jadwal 1 mata pelajaran/ 1 pertemuan tiap minggu"
+        },
+        {
+          "description": "Durasi pemakaian maksimal 1 Bulan"
+        }
+      ]
+    }
+  ]
+}

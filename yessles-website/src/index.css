@@ -99,7 +99,7 @@
 }
 
 .navbarDefault {
-  @apply w-screen flex fixed z-10 bg-white/80 px-[8%] py-[23px] justify-between items-center top-0 shadow-lg backdrop-blur-md duration-500 opacity-100;
+  @apply w-screen flex  fixed z-10 bg-white/80 px-[8%] py-[23px] justify-between items-center top-0 shadow-lg backdrop-blur-md duration-500 opacity-100;
 }
 
 .navbarButtonDefault {

@@ -12,6 +12,9 @@ import {
 import { DataFaq, DataPakBelPage, DataSistemBelajar } from "./utils/TypePage";
 import { generateSliceIndexes, toMoneyRP } from "@/utils/Static";
 import Aos from "aos";
+import Footer from "./components/Footer";
+import Subscription from "./components/Subscription";
+import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
 
 const PakBelPage = () => {
   const [nameChat, setNameChat] = useState<string>("");
@@ -397,224 +400,16 @@ const PakBelPage = () => {
       </section>
 
       {/* Program Yessles */}
-      <section id="programs">
-        <div className="flex w-full h-[700px] items-center mt-[100px]">
-          <div className="flex w-full flex-col">
-            {/* Header Section Program */}
-            <div className="flex flex-row bg-blue-gray-200 h-full w-full justify-between items-center px-[8%]">
-              <div className="flex flex-col relative ">
-                {/* <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-3"></div> */}
-                {/* <h1 className="text-[18px] text-yl-30">Program Yessles</h1> */}
-                <h1 className="text-[30px] font-bold text-yl-60 font-lexend">
-                  Pilih Paket Belajar Yessles Lainnya
-                </h1>
-              </div>
-
-              {/* Button Type */}
-              <div className="flex flex-row gap-x-2">
-                <div className="flex flex-row gap-x-2">
-                  <input
-                    type="radio"
-                    name="group_id"
-                    id="3"
-                    value="3"
-                    className="peer hidden"
-                    onChange={onOptionSelectProgram}
-                  />
-                  <label
-                    htmlFor="3"
-                    className={`${
-                      selectProgram == 3 ? `activestyle` : `linkstyle`
-                    }`}
-                  >
-                    <span className="material-symbols-outlined">school</span>
-                    Paket Belajar
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            {/* Caraousel */}
-            <div className="flex flex-row pl-[8%] w-screen mt-2 overflow-x-auto gap-x-8">
-              <div className="overflow-x-auto flex flex-row w-full h-full items-start justify-start py-5 gap-x-5 pr-[8%] snap-x snap-mandatory">
-                {dataProgBel?.map((programBel, index) => (
-                  <CardProgramYessles key={index} data={programBel} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      <section id="programs" data-aos="fade-up">
+        <CarouselProgramBelajar
+          programButton={3}
+          showButton={3}
+          hideButton={true}
+        />
       </section>
 
-      {/* Nodemailer Subscription */}
-      <section id="subscription">
-        <div className="flex w-[100dvw] h-[350px] items-center px-[8%] flex-col pb-[6%] justify-center mt-8">
-          {/* Banner Button */}
-          <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">
-            <img
-              src="/subscribe_banner.png"
-              alt=""
-              className="absolute -z-10 w-full object-cover"
-            />
-            <h1 className="font-lexend font-bold text-[28px] w-[30%] text-center leading-9 text-yl-20">
-              Ayo Daftar Sekarang!
-            </h1>
-            <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20 mt-2">
-              Segera amankan jadwalmu, karena jadwal les di Yessles berlaku
-              REAL-TIME (tidak ada sistem keep jadwal)
-            </h1>
-            <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20">
-              Untuk Permintaan les, dilayani sesuai jadwal tutor yang tersedia
-              ya..
-            </h1>
-            {/* Input Email */}
-            <div className="mt-4 flex flex-row bg-white w-fit h-fit px-1 pl-5 justify-center items-center gap-x-2 rounded-[17px] py-1 text-yl-20 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-              <span className="material-symbols-outlined">chat</span>
-              <form onSubmit={onSubmitChat}>
-                <input
-                  placeholder="Ketik nama kamu di sini ya.. "
-                  type="text"
-                  className="w-[250px] focus:outline-none px-4 font-lexend placeholder:text-yl-40/50"
-                  onChange={nameChange}
-                />
-                <button className="bg-yl-10 text-white px-4 py-2 rounded-[13px]">
-                  Kirimkan Chat
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <section id="footer">
-        <div className="flex w-screen h-[235px] px-[6%] text-gray-500 bottom-0">
-          <div className="border-t-[1px] w-full h-full flex flex-row items-start pb-[4%] pt-[2%] gap-x-3 border-yl-40/30 border-dashed">
-            {/* Coloumn 1 */}
-            <div className="flex flex-col col-span-2 gap-y-6 w-[50%] h-fit">
-              <img src="/yessles_logo.svg" alt="" className="w-[148px]" />
-              <h1 className="text-gray-500 font-light -mt-2 font-lexend text-[12px] w-48">
-                Yessles Bimbingan belajar privat berbasi psikologi.
-              </h1>
-              <div className="flex flex-row gap-x-2 w-fit items-center justify-center">
-                <button
-                  onClick={() =>
-                    window.open("https://www.hacktiv8.com/", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/ig_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/fb_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/tik_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/wa_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-                <button
-                  onClick={() =>
-                    window.open("https://github.com/EcoBucks", "_blank")
-                  }
-                >
-                  <img
-                    src="/social_media/yb_icon.svg"
-                    alt=""
-                    className="w-7 h-7 -mt-2 grayscale hover:grayscale-0 transition-all"
-                  />
-                </button>
-              </div>
-            </div>
-
-            {/* Hyperlink Footer */}
-            <div className="flex flex-row w-[64%] text-gray-500 h-fit">
-              <div className="flex flex-col gap-y-5 w-[80%] h-fit justify-start">
-                <div className="flex flex-col text-[11px] gap-y-1">
-                  <h1 className="font-bold text-[13px] underline">
-                    Program Belajar
-                  </h1>
-                  <h1>Program Belajar</h1>
-                  <h1>Sistem Belajar</h1>
-                  <h1>Paket Belajar</h1>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-y-5 w-[70%] h-fit justify-start">
-                <div className="flex flex-col text-[11px] gap-y-1">
-                  <h1 className="font-bold text-[13px] underline">Article</h1>
-                  <h1>New Article</h1>
-                  <h1>Popular Article</h1>
-                  <h1>Most Read</h1>
-                  <h1>Tips & Tricks</h1>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-y-2 w-[70%] h-fit text-[11px]">
-                <h1 className="font-bold text-[13px] underline">Contact</h1>
-                <div className="flex flex-col gap-y-1">
-                  <h1>2464 Royal Ln. Mesa, New Jersey 45463</h1>
-                  <h1>(671) 555-0110</h1>
-                  <h1>yessles@gmail.com</h1>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col col-span-2 gap-y-2 w-[60%] h-fit ml-[5%] ">
-              <h1 className=" font-bold text-[14px] text-eb-10">
-                Jadi Bagian dari +200 Students Kami
-              </h1>
-              <h1 className="text-gray-500 font-light -mt-2 text-[13px] font-lexend">
-                Ketahui Lebih Jauh Program Yessles
-              </h1>
-              <form className="flex flex-row gap-x-2 w-[100%] py-2 items-center justify-center">
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Ketik Email Kamu ..."
-                  autoComplete="off"
-                  className="w-full bg-gray-300 rounded-md px-4 text-gray-900 text-[14px] font-bold font-lexend py-3 placeholder-yl-40/60"
-                />
-                <button
-                  type="submit"
-                  className="w-[40%] h-full py-3 bg-yl-10 justify-center items-center flex flex-row rounded-lg text-white gap-x-1 px-2 hover:bg-yl-30 transition-all"
-                >
-                  <span className="material-symbols-outlined">mail</span>
-                  <p>send</p>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Subscription other={true} />
+      <Footer />
     </>
   );
 };

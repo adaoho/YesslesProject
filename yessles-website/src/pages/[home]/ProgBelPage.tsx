@@ -87,10 +87,10 @@ const ProgBelPage = () => {
         className="fade-up-animation w-full h-[600px] mt-[9%] px-[8%] flex flex-col justify-start items-center gap-y-5"
       >
         <div className="flex flex-row justify-between items-start w-full">
-          <h1 className="text-[42px] font-lexend font-bold text-left w-[45%] leading-[50px] text-yl-20">
+          <h1 className="text-[42px] font-lexend font-bold text-left w-[55%] leading-[50px] text-yl-20">
             {data?.hero?.title}
           </h1>
-          <h1 className="text-[14px] text-left  w-[50%] leading-7">
+          <h1 className="text-[16px] text-left  w-[60%] leading-7 font-lexend">
             {data?.hero?.description}
           </h1>
         </div>
@@ -123,9 +123,9 @@ const ProgBelPage = () => {
           </div>
 
           <div className="flex flex-col gap-y-6 h-full py-4 w-[55%] text-white">
-            <h1 className="text-white text-[32px] font-lexend font-bold leading-[42px]">
-              The Highly Curated Business & Industries with Big Impact
-            </h1>
+            <p className="text-white text-[32px] font-lexend font-bold leading-[42px]">
+              {data?.hero?.sub_description}
+            </p>
 
             <div className="flex flex-row gap-x-2 justify-start items-center">
               <h1 className="font-lexend font-light underline">

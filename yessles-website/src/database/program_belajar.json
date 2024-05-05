@@ -5,9 +5,9 @@
       "slug": "prasekolah",
       "type": "Prasekolah",
       "hero": {
-        "title": "Prasekolah bersama Yessles",
-        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
-        "description": "Dengan pendekatan bermain dan pengalaman, anak-anak dapat aktif belajar melalui beragam aktivitas kreatif dan interaktif di lingkungan yang aman dan mendukung.",
+        "title": "Prasekolah",
+        "description": "Prasekolah di Yessles bertujuan mengasah keterampilan sosial, emosional, dan motorik anak., sehingga si buah hati menjadi mandiri dan percaya diri.",
+        "sub_description": "Menjadi Percaya Diri bersama Yessles!",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "mapel": {
@@ -56,9 +56,9 @@
       "slug": "taman-kanak-kanak",
       "type": "Taman Kanak-Kanak",
       "hero": {
-        "title": "Siswa Taman Kanak Kanak di Yessles",
-        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
-        "description": "This is description and bla bla",
+        "title": "Taman Kanak-kanak (TK)",
+        "description": "Taman Kanak-kanak di Yessles melatih fokus si buah hati dalam proses belajar, mempersiapkannya menuju jenjang pembelajaran formal berikutnya.",
+        "sub_description": "Kembangkan Potensi si Buah Hati bersama Yessles!",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "mapel": {
@@ -117,9 +117,9 @@
       "slug": "sekolah-dasar-sd",
       "type": "Sekolah Dasar (SD)",
       "hero": {
-        "title": "Siswa Sekolah Dasar di Yessles",
-        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
-        "description": "This is description and bla bla",
+        "title": "Sekolah Dasar (SD)",
+        "description": "Sekolah Dasar di Yessles merupakan fundamental awal bagi perkembangan akademik anak, untuk itulah kami siap menjadi Sahabat Belajar si Buah Hati!",
+        "sub_description": "Sahabat Belajar Pertama si Buah Hati!",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "mapel": {
@@ -138,9 +138,9 @@
       "slug": "sekolah-menengah-pertama-smp",
       "type": "Sekolah Menengah Pertama (SMP)",
       "hero": {
-        "title": "Siswa Sekolah Menengah Pertama di Yessles",
-        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
-        "description": "This is description and bla bla",
+        "title": "Sekolah Menengah \r\n Pertama (SMP)",
+        "description": "Sekolah Menengah Pertama di Yessles tidak hanya membawa nilai pelajaran akademik, namun juga membangun keterampilan berpikir kritis dan analitis.",
+        "sub_description": "Berpola Pikir Cerdas \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n bersama Yessles!",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "mapel": {
@@ -179,9 +179,9 @@
       "slug": "sekolah-menengah-atas-sma",
       "type": "Sekolah Menengah Atas (SMA)",
       "hero": {
-        "title": "Siswa Sekolah Menengah Atas di Yessles",
-        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
-        "description": "This is description and bla bla",
+        "title": "Sekolah Menengah Atas (SMA)",
+        "description": "Sekolah Menengah Atas di Yessles menekankan pentingnya manajemen waktu, dan fokus pada tujuan pembelajaran, menjadi individu yang siap menyongsong masa depan!",
+        "sub_description": "Gapai Cita-cita bersama Yessles!",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "mapel": {
@@ -240,9 +240,9 @@
       "slug": "softskill",
       "type": "Softskill",
       "hero": {
-        "title": "Asah Softskill Kamu di Yessles",
-        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
-        "description": "This is description and bla bla",
+        "title": "Softskill",
+        "description": "Yessles membuka program pengembangan Softskill, yang bertujuan membekali para siswa berbagai keahlian sesuai bidang yang diminati.",
+        "sub_description": "Kembangkan kemampuan diri bersama Yessles!",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "mapel": {
@@ -286,9 +286,9 @@
       "slug": "umum",
       "type": "Umum",
       "hero": {
-        "title": "Asah Softskill Kamu di Yessles",
-        "sub_title": "Berfokus pada pengembangan keterampilan akademik awal dan keterampilan hidup",
-        "description": "This is description and bla bla",
+        "title": "Umum",
+        "description": "Di kelas umum, Yessles membantu mempersiapkanmu dengan lebih baik dalam menggapai perguruan tinggi maupun karir impian.",
+        "sub_description": "Sukses bersama Yessles!",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "mapel": {

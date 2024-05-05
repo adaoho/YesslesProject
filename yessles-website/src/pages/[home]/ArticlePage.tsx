@@ -51,7 +51,7 @@ const ArticlePage = () => {
                   className="w-full h-[330px] object-cover rounded-lg group-hover:scale-105 transition-all"
                 />
               </div>
-              <h1 className="font-lexend font-medium text-yl-60 text-[32px] w-[80%] leading-10">
+              <h1 className="font-lexend font-medium text-yl-60 text-[32px] w-[80%] leading-10 ">
                 Mengasah Potensi Anak Melalui Pendidikan Inklusif: Peran Orang
                 Tua
               </h1>

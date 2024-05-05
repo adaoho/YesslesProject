@@ -159,9 +159,9 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
 
                   {/* Content Program Belajar */}
                   <div
-                    className={`flex flex-row ${
+                    className={`grid grid-cols-3 xl:grid-cols-4 mb-7 xl:mb-0 ${
                       selectionType == 1 ? `w-full` : `w-full`
-                    }  justify-start items-start flex-wrap h-fit gap-y-4 gap-x-3`}
+                    }  justify-start items-start h-fit gap-y-4 gap-x-3`}
                   >
                     {selection == 1 ? (
                       <>
@@ -187,7 +187,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                                             setOpen(!open);
                                           }}
                                           key={index}
-                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
+                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-full text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
                                         >
                                           <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
                                             <MdOutlineSchool className="size-6 text-white" />
@@ -245,7 +245,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                                             setOpen(!open);
                                           }}
                                           key={index}
-                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
+                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-full text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
                                         >
                                           <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
                                             <MdOutlineSchool className="size-6 text-white" />
@@ -278,7 +278,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                                             setOpen(!open);
                                           }}
                                           key={index}
-                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-[23%] text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
+                                          className="flex flex-row gap-x-3 justify-start items-center h-[53px] w-full text-[16px] font-bold py-3 rounded-lg px-2 hover:bg-yl-10/30 transition-all"
                                         >
                                           <div className="bg-yl-10 flex justify-center items-center size-10 rounded-lg">
                                             <MdOutlineSchool className="size-6 text-white" />
@@ -298,7 +298,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
               </div>
 
               {/* Test Gaya Belajar */}
-              <div className="w-full bg-yl-60 h-[120px] bottom-0 flex justify-between items-center px-[8%]">
+              <div className="w-full bg-yl-60 h-fit bottom-0 flex justify-between items-center px-[8%] py-4">
                 <div className="flex flex-col">
                   <h1 className="text-white text-[16px] font-bold">
                     Test Gaya Belajar
