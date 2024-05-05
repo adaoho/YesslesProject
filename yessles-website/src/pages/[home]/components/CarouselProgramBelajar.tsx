@@ -4,11 +4,14 @@ import { TbLayoutDashboard } from "react-icons/tb";
 import { program_yessles } from "@/database/program.json";
 import { useState } from "react";
 import CardProgramYessles from "./CardProgramYessles";
+import { toast } from "sonner";
 
 const CarouselProgramBelajar = ({
   programButton = 1,
   hideButton,
   showButton,
+  title,
+  subtitle,
 }: any) => {
   const [selectProgram, setSelectProgram] = useState<any>(programButton);
 
@@ -21,10 +24,10 @@ const CarouselProgramBelajar = ({
             <div className="flex flex-col relative ">
               <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-3"></div>
               <h1 className="text-[18px] text-yl-30">
-                Program & Paket Belajar
+                {title ? title : "Program & Paket Belajar"}
               </h1>
               <h1 className="text-[30px] font-bold text-yl-60 font-lexend">
-                Belajar di Yessles
+                {subtitle ? subtitle : "Belajar di Yessles"}
               </h1>
             </div>
 
@@ -34,7 +37,10 @@ const CarouselProgramBelajar = ({
                 <>
                   <div className="flex flex-row gap-x-2">
                     <button
-                      onClick={() => setSelectProgram(1)}
+                      onClick={() => {
+                        toast.success("Semua Kategori Program & Paket Belajar");
+                        setSelectProgram(1);
+                      }}
                       className={`${
                         selectProgram == 1 ? `activestyle` : `linkstyle`
                       }`}
@@ -45,7 +51,10 @@ const CarouselProgramBelajar = ({
                   </div>
                   <div className="flex flex-row gap-x-2">
                     <button
-                      onClick={() => setSelectProgram(2)}
+                      onClick={() => {
+                        toast.success("Kategori Program Belajar");
+                        setSelectProgram(2);
+                      }}
                       className={`${
                         selectProgram == 2 ? `activestyle` : `linkstyle`
                       }`}
@@ -56,7 +65,10 @@ const CarouselProgramBelajar = ({
                   </div>
                   <div className="flex flex-row gap-x-2">
                     <button
-                      onClick={() => setSelectProgram(3)}
+                      onClick={() => {
+                        toast.success("Kategori Paket Belajar");
+                        setSelectProgram(3);
+                      }}
                       className={`${
                         selectProgram == 3 ? `activestyle` : `linkstyle`
                       }`}

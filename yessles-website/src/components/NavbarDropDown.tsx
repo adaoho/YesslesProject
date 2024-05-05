@@ -134,7 +134,7 @@ const NavbarDropDown = ({ navBarButtonDropDown, open, setOpen }: any) => {
                           Privat
                         </label>
                       </div>
-                      <div className="flex flex-row gap-x-2">
+                      <div className="flex flex-row gap-x-2 text-center">
                         <input
                           type="radio"
                           name="selectiontype"

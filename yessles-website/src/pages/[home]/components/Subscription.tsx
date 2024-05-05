@@ -27,19 +27,17 @@ const Subscription = ({ className, other }: any) => {
                 <img
                   src="/subscribe_banner.png"
                   alt=""
-                  className="absolute -z-10 w-full object-cover"
+                  className="absolute -z-10 w-full object-cover opacity-70"
                 />
-                <h1 className="font-lexend font-bold text-[28px] w-[30%] text-center leading-9 text-yl-20 mb-3">
+                <h1 className="font-lexend font-bold text-[28px] w-full text-center leading-9 text-yl-20 mb-3">
                   Ayo Daftar Sekarang!
                 </h1>
-                <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20 mt-2">
+                <h1 className="font-lexend text-[14px] max-w-[60%] text-center  text-yl-20 mt-2">
                   Segera amankan jadwalmu, karena jadwal les di Yessles berlaku
-                  REAL-TIME (tidak ada sistem keep jadwal)
+                  REAL-TIME (tidak ada sistem keep jadwal). Untuk Permintaan
+                  les, dilayani sesuai jadwal tutor yang tersedia ya..
                 </h1>
-                <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20 mb-3">
-                  Untuk Permintaan les, dilayani sesuai jadwal tutor yang
-                  tersedia ya..
-                </h1>
+                <h1 className="font-lexend text-[14px] w-[70%] text-center  text-yl-20 mb-3"></h1>
                 {/* Input Email */}
                 <div className="mt-4 flex flex-row bg-white w-fit h-fit px-1 pl-5 justify-center items-center gap-x-2 rounded-[17px] py-1 text-yl-20 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
                   <span className="material-symbols-outlined">chat</span>

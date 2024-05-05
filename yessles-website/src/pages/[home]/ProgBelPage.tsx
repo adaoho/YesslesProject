@@ -52,6 +52,11 @@ const ProgBelPage = () => {
     };
   }, []);
 
+  const linkToSemuaMapel = () => {
+    const url = `https://drive.google.com/file/d/1Lw2J9AldSgcy2PSBrXzribur3lFnwF6A/view?usp=sharing`;
+    window.open(url, "_blank", "noopener noreferrer");
+  };
+
   useEffect(() => {
     Aos.refresh();
     program_belajar.forEach((data) => {
@@ -104,9 +109,6 @@ const ProgBelPage = () => {
             />
 
             <div className="absolute bottom-0 right-0 p-4 gap-y-2 flex flex-col items-end">
-              <h1 className="text-white text-[12px] underline">
-                Opsi Mata Pelajaran Scroll di Bawah
-              </h1>
               <div className="flex flex-row gap-x-2">
                 {data?.mapel?.opsi
                   .map((data: any) => (
@@ -115,9 +117,11 @@ const ProgBelPage = () => {
                     </div>
                   ))
                   .slice(startIndex, endIndex)}
-                <div className="px-3 py-1 rounded-md bg-yl-10/30 text-white">
-                  dll
-                </div>
+                {data?.mapel?.opsi.length == 1 && (
+                  <div className="px-3 py-1 rounded-md bg-yl-10/30 text-white">
+                    Semua Mata Pelajaran
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -230,7 +234,7 @@ const ProgBelPage = () => {
                 </h1>
               </div>
 
-              <div className="grid grid-cols-3 w-full h-fit gap-2 mt-4">
+              <div className="grid grid-cols-2 xl:grid-cols-3 w-full h-fit gap-2 mt-4">
                 {data?.mapel?.opsi.map((data: any) => (
                   <>
                     {/* Component Mata Pelajaran */}
@@ -242,12 +246,21 @@ const ProgBelPage = () => {
                     </div>
                   </>
                 ))}
+                <div
+                  onClick={linkToSemuaMapel}
+                  className="w-full h-[130px] bg-yl-60/20 rounded-lg flex justify-center items-center text-yl-60 flex-col hover:bg-yl-10 hover:text-white transition-all"
+                >
+                  <div className="flex flex-row justify-center items-center gap-x-2 w-full px-4">
+                    <BsFillArrowUpRightCircleFill className="size-[25px]" />
+                    <h1 className="text-[18px] ">Lihat Lebih Detail</h1>
+                  </div>
+                </div>
               </div>
             </section>
 
             {/* Sistem Belajar Section */}
             <section
-              className="w-full h-fit mb-12"
+              className="w-full h-fit mb-20"
               ref={sistem_belajar}
               id="sistem_belajar"
               data-aos="fade-up"
@@ -259,11 +272,11 @@ const ProgBelPage = () => {
                 </h1>
               </div>
 
-              <div className="grid grid-cols-3 gap-4 w-full font-lexend">
+              <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 w-full h-full font-lexend">
                 {/* Card Sistem Belajar */}
                 {sistemBelajar?.map((data, index) => (
                   <Fragment key={index}>
-                    <div className="w-full h-[120px] border-solid border-yl-60 border-2 flex flex-col rounded-lg justify-center px-[8%] items-start">
+                    <div className="w-full h-full py-6 border-solid border-yl-60 border-2 flex flex-col rounded-lg justify-center px-[8%] items-start">
                       <h1 className="underline">{data?.title}</h1>
                       <h1 className="text-[18px] font-bold leading-6">
                         {data?.description}
@@ -288,26 +301,22 @@ const ProgBelPage = () => {
                 </h1>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 w-full font-lexend mt-4">
+              <div className="grid grid-cols-2 xl:grid-cols-3 gap-2 w-full font-lexend mt-4">
                 {program_yessles?.map(
                   (data, index) =>
                     data.type === "paket_belajar" && (
                       <div
                         onClick={() => {
-                          let label = data?.pendidikan
-                            .toLowerCase()
-                            .split(" ")
-                            .join("-");
-                          navigate(`/paket/${label}`);
+                          navigate(`/paket/${data?.slug}`);
                         }}
                         key={index}
-                        className="relative w-full h-[130px] bg-yl-40/10 rounded-xl flex flex-row p-2 justify-start items-center gap-x-3 group hover:bg-yl-60 transition-all"
+                        className="relative w-full h-full bg-yl-40/10 rounded-xl flex flex-row p-2 justify-start items-center gap-x-3 group hover:bg-yl-60 transition-all"
                       >
-                        <div className="overflow-hidden w-fit h-full flex rounded-xl">
+                        <div className="overflow-hidden w-fit h-[130px] xl:h-[140px]  flex rounded-xl">
                           <img
                             src={data.thumbnail}
                             alt=""
-                            className="object-contain w-full h-full"
+                            className="object-cover w-full h-full"
                           />
                         </div>
                         <div className="flex flex-col h-full w-fit items-start justify-start py-2 group-hover:text-white">
@@ -325,8 +334,8 @@ const ProgBelPage = () => {
                                 : `Rp ${data.priceStart}rb`}
                               /
                               {data.durasiBelajar === 12
-                                ? "tahun"
-                                : `${data.durasiBelajar} bulan`}
+                                ? "thn"
+                                : `${data.durasiBelajar} bln`}
                             </h1>
                           )}
                         </div>
@@ -373,6 +382,8 @@ const ProgBelPage = () => {
           programButton={2}
           showButton={2}
           hideButton={true}
+          title={"Program Belajar"}
+          subtitle={"Program Belajar Lainnya"}
         />
       </section>
 
