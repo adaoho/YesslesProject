@@ -20,6 +20,7 @@ import "swiper/css/pagination";
 import "./utils/swiper.css";
 import "aos/dist/aos.css";
 import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
+import { toast } from "sonner";
 
 const HomePage = () => {
   const [open, setOpen] = useState(false);
@@ -259,7 +260,7 @@ const HomePage = () => {
                 <div className="bg-yl-30 w-[25px] h-[1px] rounded-[20px] mb-2 absolute -left-8 top-3"></div>
                 <h1 className="text-[18px] text-yl-30">Tentang Yessles</h1>
                 <h1 className="text-[30px] font-bold text-yl-60 font-lexend">
-                  Kenapa Harus Belajar di Yessles?
+                  Kenapa Harus Belajar <br className="xl:hidden" /> di Yessles?
                 </h1>
               </div>
               <p className="text-[15px] text-yl-90 leading-6 font-lexend pr-[8%] mt-3">
@@ -274,7 +275,7 @@ const HomePage = () => {
                 <h1 className="font-lexend font-bold text-[17px] underline">
                   Sistem Belajar
                 </h1>
-                <div className="grid xl:grid-cols-2 gap-y-2">
+                <div className="grid xl:grid-cols-2 gap-y-4 xl:gap-y-2">
                   <div className="flex flex-row gap-x-2">
                     <span className="material-symbols-outlined">group</span>
                     <p>1 Tutor untuk 1 Siswa</p>
@@ -286,7 +287,7 @@ const HomePage = () => {
                     <p>Garansi ganti tutor</p>
                   </div>
                 </div>
-                <div className="grid xl:grid-cols-2 gap-y-2 -mt-2 xl:mt-0">
+                <div className="grid xl:grid-cols-2 gap-y-4 xl:gap-y-2">
                   <div className="flex flex-row gap-x-2">
                     <span className="material-symbols-outlined">menu_book</span>
                     <p>Waktu belajar fleksibel</p>
@@ -320,7 +321,7 @@ const HomePage = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-row gap-x-5">
+                  <div className="flex flex-row gap-x-4">
                     <Link
                       to={`https://api.whatsapp.com/send?phone=628994944728&text=Halo%20Kak!%20Mohon%20info%20cara%20bergabung%20di%20Yessles?`}
                       data-action="share/whatsapp/share"
@@ -332,7 +333,7 @@ const HomePage = () => {
                           alt=""
                           className="w-5 h-5"
                         />
-                        <p className="truncate">Daftar</p>
+                        <p className="">Daftar</p>
                       </div>
                     </Link>
                     <Link
@@ -446,7 +447,12 @@ const HomePage = () => {
             </div>
 
             {/* Right Section */}
-            <div className="h-full hidden justify-start flex-col gap-y-4 group xl:flex">
+            <div
+              onClick={() => {
+                toast.warning("Fitur Artikel Akan Segera Hadir");
+              }}
+              className="h-full hidden justify-start flex-col gap-y-4 group xl:flex"
+            >
               <div className="w-full h-full overflow-hidden rounded-lg">
                 <img
                   src="https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"

@@ -91,11 +91,11 @@
 }
 
 .linkstyle {
-  @apply hover:bg-yl-10/20 hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1;
+  @apply hover:bg-yl-10/20 cursor-pointer hover:text-yl-10 text-yl-70 border-yl-70 border-[1px] hover:border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1;
 }
 
 .activestyle {
-  @apply bg-yl-10/20 text-yl-10 border-[1px] border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1;
+  @apply bg-yl-10/20 text-yl-10  border-[1px] border-yl-10/10 transition-all flex justify-center items-center rounded-[20px] px-[15px] py-[8px] flex-row gap-x-1;
 }
 
 .navbarDefault {

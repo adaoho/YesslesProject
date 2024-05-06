@@ -5,8 +5,10 @@ import App from "./pages/App";
 import { Toaster } from "sonner";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <App />
-    <Toaster richColors expand={true} offset={40} />
-  </React.StrictMode>
+  <>
+    <React.StrictMode>
+      <App />
+      <Toaster richColors expand={true} offset={40} />
+    </React.StrictMode>
+  </>
 );

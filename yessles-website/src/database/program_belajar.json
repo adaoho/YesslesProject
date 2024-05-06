@@ -8,10 +8,10 @@
         "title": "Prasekolah",
         "description": "Prasekolah di Yessles bertujuan mengasah keterampilan sosial, emosional, dan motorik anak., sehingga si buah hati menjadi mandiri dan percaya diri.",
         "sub_description": "Menjadi Percaya Diri bersama Yessles!",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "thumbnail": "/progbel_photo/1_prasekolah.png"
       },
       "mapel": {
-        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "thumbnail": "/progbel_photo/1_prasekolah.png",
         "opsi": [
           {
             "label": "Montessori",
@@ -59,10 +59,10 @@
         "title": "Taman Kanak-kanak (TK)",
         "description": "Taman Kanak-kanak di Yessles melatih fokus si buah hati dalam proses belajar, mempersiapkannya menuju jenjang pembelajaran formal berikutnya.",
         "sub_description": "Kembangkan Potensi si Buah Hati bersama Yessles!",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "thumbnail": "/progbel_photo/2_tk.png"
       },
       "mapel": {
-        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "thumbnail": "/progbel_photo/2_tk.png",
         "opsi": [
           {
             "label": "Montessori",
@@ -120,10 +120,10 @@
         "title": "Sekolah Dasar (SD)",
         "description": "Sekolah Dasar di Yessles merupakan fundamental awal bagi perkembangan akademik anak, untuk itulah kami siap menjadi Sahabat Belajar si Buah Hati!",
         "sub_description": "Sahabat Belajar Pertama si Buah Hati!",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "thumbnail": "/progbel_photo/3_sd.png"
       },
       "mapel": {
-        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "thumbnail": "/progbel_photo/3_sd.png",
         "opsi": [
           {
             "label": "Semua Mata Pelajaran",
@@ -141,10 +141,10 @@
         "title": "Sekolah Menengah \r\n Pertama (SMP)",
         "description": "Sekolah Menengah Pertama di Yessles tidak hanya membawa nilai pelajaran akademik, namun juga membangun keterampilan berpikir kritis dan analitis.",
         "sub_description": "Berpola Pikir Cerdas bersama Yessles!",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "thumbnail": "/progbel_photo/4_smp.png"
       },
       "mapel": {
-        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "thumbnail": "/progbel_photo/4_smp.png",
         "opsi": [
           {
             "label": "IPA",
@@ -182,10 +182,10 @@
         "title": "Sekolah Menengah Atas (SMA)",
         "description": "Sekolah Menengah Atas di Yessles menekankan pentingnya manajemen waktu, dan fokus pada tujuan pembelajaran, menjadi individu yang siap menyongsong masa depan!",
         "sub_description": "Gapai Cita-cita bersama Yessles!",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "thumbnail": "/progbel_photo/5_sma.png"
       },
       "mapel": {
-        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "thumbnail": "/progbel_photo/5_sma.png",
         "opsi": [
           {
             "label": "Matematika",
@@ -243,10 +243,10 @@
         "title": "Softskill",
         "description": "Yessles membuka program pengembangan Softskill, yang bertujuan membekali para siswa berbagai keahlian sesuai bidang yang diminati.",
         "sub_description": "Kembangkan kemampuan diri bersama Yessles!",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "thumbnail": "/progbel_photo/6_softskill.png"
       },
       "mapel": {
-        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "thumbnail": "/progbel_photo/6_softskill.png",
         "opsi": [
           {
             "label": "Vocal",
@@ -289,13 +289,13 @@
         "title": "Umum",
         "description": "Di kelas umum, Yessles membantu mempersiapkanmu dengan lebih baik dalam menggapai perguruan tinggi maupun karir impian.",
         "sub_description": "Sukses bersama Yessles!",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "thumbnail": "/progbel_photo/7_umum.png"
       },
       "mapel": {
-        "thumbnail": "/paket_belajar/paket_belajar_6.png",
+        "thumbnail": "/progbel_photo/7_umum.png",
         "opsi": [
           {
-            "label": "UTBK - SNM - SBM - MANDIRI",
+            "label": "UTBK-SNM-SBM-MANDIRI",
             "status": true,
             "sub_label": "(TBK & TPS)"
           },

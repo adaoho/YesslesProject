@@ -1,6 +1,7 @@
 {
   "name": "yessles-website",
   "private": true,
+  "homepage": "http://yessles.id/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -19,7 +20,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "aos": "^2.3.4",
     "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
+    "clsx": "^2.1.1",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.363.0",
     "react": "^18.2.0",
@@ -28,13 +29,13 @@
     "react-router-dom": "^6.22.0",
     "sonner": "^1.4.41",
     "swiper": "^11.0.6",
-    "tailwind-merge": "^2.2.2",
+    "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-animated": "^1.0.1"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",

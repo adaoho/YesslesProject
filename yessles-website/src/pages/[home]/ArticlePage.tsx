@@ -1,3 +1,4 @@
+import { RiErrorWarningLine } from "react-icons/ri";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
@@ -8,6 +9,7 @@ import CardArticle from "./components/CardArticle";
 import { articles } from "@/database/articles.json";
 import Aos from "aos";
 import { useEffect } from "react";
+import { toast } from "sonner";
 
 const ArticlePage = () => {
   useEffect(() => {
@@ -41,9 +43,14 @@ const ArticlePage = () => {
           </div>
 
           {/* Article Section */}
-          <div className="flex flex-row w-full h-full px-[8%] gap-x-12">
+          <div className="grid grid-cols-2 w-full h-full px-[8%] gap-x-12">
             {/* Left Section */}
-            <div className="h-full flex justify-start flex-col gap-y-6 w-[55%] group ">
+            <div
+              onClick={() => {
+                toast.warning("Fitur Artikel Akan Segera Hadir");
+              }}
+              className="h-full flex justify-start flex-col gap-y-6 w-full group "
+            >
               <div className="w-full h-full overflow-hidden rounded-lg">
                 <img
                   src="https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"
@@ -51,7 +58,7 @@ const ArticlePage = () => {
                   className="w-full h-[330px] object-cover rounded-lg group-hover:scale-105 transition-all"
                 />
               </div>
-              <h1 className="font-lexend font-medium text-yl-60 text-[32px] w-[80%] leading-10 ">
+              <h1 className="font-lexend font-medium text-yl-60 text-[32px] w-full leading-10 ">
                 Mengasah Potensi Anak Melalui Pendidikan Inklusif: Peran Orang
                 Tua
               </h1>
@@ -65,7 +72,7 @@ const ArticlePage = () => {
             </div>
 
             {/* Right Section */}
-            <div className="h-fit flex flex-col justify-between gap-y-9 w-[60%] ">
+            <div className="h-fit flex flex-col justify-between gap-y-9 w-full ">
               <CardArticle data={articles[0]} other={true} />
               <CardArticle data={articles[1]} other={true} />
               <CardArticle data={articles[2]} other={true} />
@@ -79,13 +86,21 @@ const ArticlePage = () => {
             <h1 className="text-[36px] font-raleway font-bold text-yl-60">
               <b className="text-gray-400">Artikel</b> Yessles
             </h1>
-            <div className="flex flex-row gap-x-2 justify-center items-center hover:cursor-pointer hover:underline">
-              <h1>Lebih Banyak Lagi</h1>
-              <IoIosArrowForward className="size-3" />
-            </div>
+            <section id="lebih-banyak" className="hidden">
+              <div className="flex flex-row gap-x-2 justify-center items-center hover:cursor-pointer hover:underline">
+                <h1>Lebih Banyak Lagi</h1>
+                <IoIosArrowForward className="size-3" />
+              </div>
+            </section>
+          </div>
+
+          {/* Will be Available Soon */}
+          <div className="w-full h-fit py-8 flex justify-center items-center text-[20px] text-yl-60 underline gap-x-2">
+            <RiErrorWarningLine />
+            <h1>Akan Segera Hadir</h1>
           </div>
           <div
-            className="grid grid-cols-4 w-full h-fit gap-10 px-[8%]"
+            className=" grid-cols-3 xl:grid-cols-4 w-full h-fit gap-10 px-[8%] hidden"
             data-aos="fade-up"
           >
             <CardArticlePage />
@@ -103,7 +118,7 @@ const ArticlePage = () => {
           </div>
 
           {/* Pagination */}
-          <div className="flex flex-row justify-center items-center gap-x-4 pt-5">
+          <div className=" flex-row justify-center items-center gap-x-4 pt-5 hidden">
             <MdKeyboardArrowLeft />
             <h1>1</h1>
             <h1>2</h1>

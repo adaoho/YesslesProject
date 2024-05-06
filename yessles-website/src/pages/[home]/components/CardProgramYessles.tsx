@@ -12,7 +12,11 @@ const CardProgramYessles = ({ data }: any) => {
       onClick={() => {
         data?.type === "program_belajar"
           ? navigate(`/program/${data.slug}`)
-          : navigate(`/paket/${data.slug}`);
+          : window.open(
+              "https://drive.google.com/file/d/1ZRgUadoHCZhrs9FUWZtN4zIi_f1n166J/view?usp=sharing",
+              "_blank",
+              "rel=noopener noreferrer"
+            );
       }}
       className="snap-start flex h-[478px] w-[320px] flex-col group transition-all"
     >

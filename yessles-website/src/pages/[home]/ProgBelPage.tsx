@@ -2,7 +2,7 @@ import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { AiOutlineDown } from "react-icons/ai";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -28,7 +28,7 @@ const ProgBelPage = () => {
   const sistem_belajar = useRef<null | HTMLDivElement>(null);
   const paket_belajar = useRef<null | HTMLDivElement>(null);
   const kenapa_yessles = useRef<null | HTMLDivElement>(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const data = dataPage;
 
   useEffect(() => {
@@ -307,7 +307,11 @@ const ProgBelPage = () => {
                     data.type === "paket_belajar" && (
                       <div
                         onClick={() => {
-                          navigate(`/paket/${data?.slug}`);
+                          window.open(
+                            "https://drive.google.com/file/d/1ZRgUadoHCZhrs9FUWZtN4zIi_f1n166J/view?usp=sharing",
+                            "_blank",
+                            "rel=noopener noreferrer"
+                          );
                         }}
                         key={index}
                         className="relative w-full h-full bg-yl-40/10 rounded-xl flex flex-row p-2 justify-start items-center gap-x-3 group hover:bg-yl-60 transition-all"
@@ -319,13 +323,15 @@ const ProgBelPage = () => {
                             className="object-cover w-full h-full"
                           />
                         </div>
-                        <div className="flex flex-col h-full w-fit items-start justify-start py-2 group-hover:text-white">
-                          <h1 className="font-lexend font-bold text-[16px]">
-                            {data.pendidikan}
-                          </h1>
-                          <h1 className="text-yl-30 text-[13px] group-hover:text-white">
-                            {data?.tm}x Tatap Muka
-                          </h1>
+                        <div className="flex flex-col h-full w-fit items-start justify-between py-2 group-hover:text-white">
+                          <div className="flex flex-col">
+                            <h1 className="font-lexend font-bold text-[18px] leading-5">
+                              {data.pendidikan}
+                            </h1>
+                            <h1 className="text-yl-30 text-[13px] group-hover:text-white mt-1">
+                              {data?.tm}x Tatap Muka
+                            </h1>
+                          </div>
                           {data.priceStart && (
                             <h1 className="text-gray-900 text-[13px] font-light font-lexend w-[80%] mt-4 group-hover:text-white ">
                               Mulai dari <br />

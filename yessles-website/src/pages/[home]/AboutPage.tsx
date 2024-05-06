@@ -13,19 +13,19 @@ const dataAspects = [
   {
     title: "Psikologi",
     description: `Memahami mood (suasana hati) dan motivasi siswa saat belajar.`,
-    picture: "https://source.unsplash.com/random/900x700/?school",
+    picture: "/program_yessles/pic_14.jpg",
     icon: <MdPsychology className="size-7 text-white" />,
   },
   {
     title: "Gaya Belajar",
     description: "Menyesuaikan pembelajaran sesuai dengan gaya belajar.",
-    picture: "https://source.unsplash.com/random/900x700/?school+2",
+    picture: "/program_yessles/pic_15.jpg",
     icon: <IoMdSchool className="size-7 text-white" />,
   },
   {
     title: "Kepribadian",
     description: `Memahami tipe kepribadian siswa untuk \r\n dapat memberikan pembelajaran yang sesuai.`,
-    picture: "https://source.unsplash.com/random/900x700/?school+3",
+    picture: "/program_yessles/pic_16.jpg",
     icon: <BsPersonHeart className="size-7 py-1 px-1 text-white" />,
   },
 ];
