@@ -1,0 +1,31 @@
+{
+  "testimoni": [
+    {
+      "title": "Yessles Sahabat Belajar si Buah Hati",
+      "comment": "Yessles benar-benar mampu menjadi sahabat belajar buah hati saya, di saat saya perlu fokus menekuni aktivitas sebagai entrepeneur dan konsultan buku anak.",
+      "name": "Fahmi Avani Larasati",
+      "position": "Yess Parent/Entrepreneur",
+      "rating": 4.8,
+      "image": "/testimoni/testimoni_1.png",
+      "thumbnail": "/testimoni/testimoni_1a.png"
+    },
+    {
+      "title": "Yessles Membantuku Berprestasi di Sekolah dan di Luar Sekolah!",
+      "comment": "Bergabung dengan Yessles memungkinkanku untuk mengatur waktu belajar privat sefleksibel mungkin, terutama saat ada kegiatan modeling yang datang mendadak.",
+      "name": "Mutiara Salwa Kirana",
+      "position": "Yess Student/Artist",
+      "rating": 4.6,
+      "image": "/testimoni/testimoni_2.png",
+      "thumbnail": "/testimoni/testimoni_2a.png"
+    },
+    {
+      "title": "Yessles Menempaku Menjadi Pribadi yang Lebih Baik.",
+      "comment": "Menjadi Yess Tutor sangat berpengaruh pada kemampuanku dalam menyampaikan materi dan melakukan inovasi pembelajaran, agar kegiatan belajar mengajar lebih menyenangkan.",
+      "name": "Diniar Mungil Kurniawati",
+      "position": "Alumni Yess Tutor/Dosen",
+      "rating": 5,
+      "image": "/testimoni/testimoni_3.png",
+      "thumbnail": "/testimoni/testimoni_3a.png"
+    }
+  ]
+}

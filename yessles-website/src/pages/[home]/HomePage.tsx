@@ -1,3 +1,4 @@
+import { FaWhatsapp } from "react-icons/fa";
 import { CgNotes } from "react-icons/cg";
 import { AiOutlineDown } from "react-icons/ai";
 import { BiUserPin } from "react-icons/bi";
@@ -334,11 +335,7 @@ const HomePage = () => {
                       target="_blank"
                     >
                       <div className="flex flex-row gap-x-2 bg-yl-60  xl:ml-2 rounded-2xl justify-center items-center px-4 py-2 text-white hover:bg-yl-10 hover:scale-105 transition-all">
-                        <img
-                          src="/whatsapp-icon.svg"
-                          alt=""
-                          className="w-5 h-5"
-                        />
+                        <FaWhatsapp className="size-6" />
                         <p className="">Daftar</p>
                       </div>
                     </Link>

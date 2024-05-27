@@ -81,6 +81,7 @@ export const userLogin =
   (payload: LoginPayload, navigate: NavigateFunction) =>
   async (dispatch: Dispatch) => {
     try {
+      toast("Getting User Information ...");
       const { data } = await endPointAPI.post<LoginResponse>(
         "/user/login",
         payload

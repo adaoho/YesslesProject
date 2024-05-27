@@ -1,0 +1,49 @@
+{
+  "sistem_belajar": [
+    {
+      "id": 1,
+      "title": "Sitem Belajar Privat",
+      "description": "1 Tutor untuk 1 Siswa"
+    },
+    {
+      "id": 2,
+      "title": "Durasi Belajar",
+      "description": "90 Menit / Pertemuan"
+    },
+    {
+      "id": 3,
+      "title": "Metode Belajar",
+      "description": "Online dan Offline"
+    },
+    {
+      "id": 4,
+      "title": "Tempat Belajar di Mana Saja",
+      "description": "Yess Office atau Rumah Siswa (Area dalam Kota Madiun)"
+    },
+    {
+      "id": 5,
+      "title": "Pembatalan/Re-Schedule",
+      "description": "Konfirmasi Maksimal 2 Jam Sebelumnya"
+    },
+    {
+      "id": 6,
+      "title": "Yess Tutor SMP & SMA",
+      "description": "Terpisah Per Mata Pelajaran"
+    },
+    {
+      "id": 7,
+      "title": "Yess Tutor TK & SD",
+      "description": "Mengajar semua Mata Pelajaran atau Materi"
+    },
+    {
+      "id": 8,
+      "title": "Pemberian Materi oleh Yess Tutor",
+      "description": "Menyesuaikan dengan materi siswa di sekolah."
+    },
+    {
+      "id": 9,
+      "title": "Pemberian Materi oleh Yess Tutor",
+      "description": "Siswa bisa request materi di luar materi di sekolah."
+    }
+  ]
+}

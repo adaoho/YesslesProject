@@ -5,6 +5,7 @@ import { program_yessles } from "@/database/program.json";
 import { useState } from "react";
 import CardProgramYessles from "./CardProgramYessles";
 import { toast } from "sonner";
+import { useParams } from "react-router-dom";
 
 const CarouselProgramBelajar = ({
   programButton = 1,
@@ -14,6 +15,7 @@ const CarouselProgramBelajar = ({
   subtitle,
 }: any) => {
   const [selectProgram, setSelectProgram] = useState<any>(programButton);
+  const { slug } = useParams();
 
   return (
     <>
@@ -128,14 +130,16 @@ const CarouselProgramBelajar = ({
               {selectProgram == 2
                 ? program_yessles?.map(
                     (data, index) =>
-                      data?.type === "program_belajar" && (
+                      data?.type === "program_belajar" &&
+                      data?.slug !== slug && (
                         <CardProgramYessles key={index} data={data} />
                       )
                   )
                 : selectProgram == 3
                 ? program_yessles?.map(
                     (data, index) =>
-                      data?.type === "paket_belajar" && (
+                      data?.type === "paket_belajar" &&
+                      data?.slug !== slug && (
                         <CardProgramYessles key={index} data={data} />
                       )
                   )

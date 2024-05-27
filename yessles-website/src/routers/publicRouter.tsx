@@ -7,8 +7,6 @@ import PakBelPage from "@/pages/[home]/PakBelPage";
 import ArticlePage from "@/pages/[home]/ArticlePage";
 import AboutPage from "@/pages/[home]/AboutPage";
 import SubArticlePage from "@/pages/[home]/SubArticlePage";
-import LoginPage from "@/pages/[authentication]/LoginPage";
-import RegisterPage from "@/pages/[authentication]/RegisterPage";
 import NotFound from "@/pages/[authentication]/NotFound";
 
 const publicRouter = createBrowserRouter([
@@ -49,14 +47,6 @@ const publicRouter = createBrowserRouter([
         element: <SubArticlePage />,
       },
     ],
-  },
-  {
-    element: <LoginPage />,
-    path: "/panel/login",
-  },
-  {
-    element: <RegisterPage />,
-    path: "/panel/register",
   },
 ]);
 

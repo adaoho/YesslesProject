@@ -1,0 +1,49 @@
+{
+  "faq": [
+    {
+      "id": 1,
+      "question": "Bagaimana sistem les di Yessles?",
+      "answer": "Sistem pembelajarannya privat, dengan metode Student Centered Learning"
+    },
+    {
+      "id": 2,
+      "question": "Apa itu Student Centered Learning?",
+      "answer": "Pembelajaran yang berorintasi pada siswa. Meliputi apa yang dipelajari maupun metode pembelajaran yang dikehendaki."
+    },
+    {
+      "id": 3,
+      "question": "Selain itu, apa yang membedakan dengan bimbel lainnya?",
+      "answer": "Dengan menggunakan metode Student Centered Learning yang berorientasi pada siswa, tutor akan memberikan pengajaran sesuai dengan kondisi dan kebutuhan masing-masing siswa."
+    },
+    {
+      "id": 4,
+      "question": "Bagaimana kualitas pengajar Yessles?",
+      "answer": "Yessles memiliki sistem penilaian 3G Standart (Good Performance, Good Attitude, Good Looking) untuk menjaga kualitas tutornya."
+    },
+    {
+      "id": 5,
+      "question": "Bagaimana dengan siswa yang kurang fokus dan sulit konsentrasi saat belajar?",
+      "answer": "Dengan sistem privat tutor akan memberikan stimulasi personal lebih maksimal. Contoh, senam otak untuk mengasah fokus dan konsentrasinya."
+    },
+    {
+      "id": 6,
+      "question": "Apakah ada garansi belajar di Yessles?",
+      "answer": "Ada, siswa 99% akan dipilihkan tutor yang cocok dengan anak, 1% kami garansi untuk mendapatkan tutor pengganti sampai cocok."
+    },
+    {
+      "id": 7,
+      "question": "Bagaimana dengan kondisi orang tua sibuk bekerja dan tidak bisa antar jemput?",
+      "answer": "Tutor yessles bisa ke rumah untuk memberikan pengajaran di rumah siswa."
+    },
+    {
+      "id": 8,
+      "question": "Adakah indikator penilaian dari tutor Yessles untuk progress belajar siswa?",
+      "answer": "Penilaian progress belajar dilakukan secara personal oleh tutor terhadap siswanya, dengan mengukur pencapaian siswa dari pertemuan 1 ke pertemuan berikutnya, yang akan di report langsung oleh tutor dengan menggunakan jurnal."
+    },
+    {
+      "id": 9,
+      "question": "Bagaiaman sistem pembayaran les di Yessles?",
+      "answer": "Kami menyediakan berbagai macam paket les, mulai dari bulanan, semesteran, hingga tahunan, sesuai dengan kebutuhan siswa. Mulai dari paket 5 TM (Tatap Muka) sampai 100 TM, agar lebih intensif."
+    }
+  ]
+}

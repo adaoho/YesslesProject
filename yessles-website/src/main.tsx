@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <PersistGate loading={null} persistor={persistor}>
         <HelmetProvider>
           <App />
-          <Toaster richColors expand={true} offset={40} position="top-center" />
+          <Toaster richColors offset={40} position="top-center" />
         </HelmetProvider>
       </PersistGate>
     </Provider>
