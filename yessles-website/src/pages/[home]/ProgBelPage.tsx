@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { generateSliceIndexes } from "@/utils/Static";
+import { generateSliceIndexes } from "@/utils/static";
 import { program_yessles } from "@/database/program.json";
 import { faq } from "@/database/faq.json";
 import { sistem_belajar as sistemBelajar } from "@/database/sistem_belajar.json";
@@ -18,6 +18,7 @@ import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
 import { program_belajar } from "@/database/program_belajar.json";
 import Aos from "aos";
 import Subscription from "./components/Subscription";
+import SeoComp from "@/components/SeoComp";
 
 const ProgBelPage = () => {
   const [activeLink, setActiveLink] = useState<string | null>(null);
@@ -87,6 +88,11 @@ const ProgBelPage = () => {
   return (
     <>
       {/* Hero Section */}
+      <SeoComp
+        title={`Paket Belajar ${data?.hero?.title}`}
+        description={`Paket Belajar ${data?.hero?.title} di Yessles Bimbingan No.1 di Madiun`}
+      />
+
       <div
         data-aos="fade-up"
         className="fade-up-animation w-full h-[600px] mt-[9%] px-[8%] flex flex-col justify-start items-center gap-y-5"

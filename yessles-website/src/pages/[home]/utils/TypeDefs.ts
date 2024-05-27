@@ -35,6 +35,18 @@ export type DataArtikel = {
   thumbnail: string;
 };
 
+export interface dataArtikelPage {
+  id: number;
+  slug: string;
+  title: string;
+  publication_date: string;
+  author: string;
+  authorProfile: string;
+  content: string | TrustedHTML | undefined;
+  thumbnail: string;
+  description: string;
+}
+
 export type DataClass = {
   label: string;
   icon: string;

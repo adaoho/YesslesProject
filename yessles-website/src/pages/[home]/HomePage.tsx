@@ -20,7 +20,8 @@ import "swiper/css/pagination";
 import "./utils/swiper.css";
 import "aos/dist/aos.css";
 import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
-import { toast } from "sonner";
+import { formatDateString } from "../../utils/static";
+import SeoComp from "@/components/SeoComp";
 
 const HomePage = () => {
   const [open, setOpen] = useState(false);
@@ -48,6 +49,11 @@ const HomePage = () => {
 
   return (
     <>
+      <SeoComp
+        title="Yessles: Bimbel No.1 di Madiun"
+        description={`Bimbingan belajar privat yang menerapkan metode belajar "Student Centered Learning"`}
+      />
+
       {/* Hero Section */}
       <section id="hero">
         {/* Background Blur */}
@@ -180,7 +186,7 @@ const HomePage = () => {
             data-aos="fade-left"
           >
             <img
-              src="/background_utama.png"
+              src="/background_utama.jpeg"
               className="w-full h-full -z-10 object-cover rounded-bl-[60px] absolute right-0"
             />
 
@@ -189,7 +195,7 @@ const HomePage = () => {
               <div className="flex">
                 <div className="flex flex-row items-center h-[80px] w-[282px] rounded-3xl bg-white p-6 gap-x-4">
                   <img
-                    src="/image_1_home.jpg"
+                    src="/image_1_home.jpeg"
                     className="h-[56px] w-[56px] object-cover rounded-3xl"
                   />
                   <div className="flex flex-col">
@@ -206,7 +212,7 @@ const HomePage = () => {
               <div className="flex">
                 <div className="flex flex-row items-center h-[80px] w-[262px] rounded-3xl bg-white p-6 gap-x-4">
                   <img
-                    src="/image_2_home.JPG"
+                    src="/image_2_home.jpeg"
                     className="h-[56px] w-[56px] object-cover rounded-3xl"
                   />
                   <div className="flex flex-col">
@@ -223,7 +229,7 @@ const HomePage = () => {
               <div className="flex">
                 <div className="flex flex-row items-center h-[80px] w-[280px] rounded-3xl bg-white p-6 gap-x-4">
                   <img
-                    src="/image_3_home.JPG"
+                    src="/image_3_home.jpeg"
                     className="h-[56px] w-[56px] object-cover rounded-3xl"
                   />
                   <div className="flex flex-col">
@@ -447,46 +453,43 @@ const HomePage = () => {
             </div>
 
             {/* Right Section */}
-            <div
-              onClick={() => {
-                toast.warning("Fitur Artikel Akan Segera Hadir");
-              }}
-              className="h-full hidden justify-start flex-col gap-y-4 group xl:flex"
-            >
-              <div className="w-full h-full overflow-hidden rounded-lg">
-                <img
-                  src="https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"
-                  alt=""
-                  className="w-full h-[284px] object-cover rounded-2xl group-hover:scale-105 transition-all"
-                />
-              </div>
-              <div className="flex flex-row items-center gap-x-2">
-                <img
-                  src="https://ik.imagekit.io/9nm0rr5hka/Yessles/profile_4.png?updatedAt=1709279130623"
-                  alt=""
-                  className="w-8 h-8 rounded-full object-cover"
-                />
-                <p className="font-lexend text-[16px] text-yl-60">
-                  Dian Pratiwi
+            <Link to={"article/" + articles?.at(0)?.slug}>
+              <div className="h-full hidden justify-start flex-col gap-y-4 group xl:flex">
+                <div className="w-full h-[284px] overflow-hidden rounded-xl">
+                  <img
+                    src={articles?.at(0)?.thumbnail}
+                    alt=""
+                    className="w-full h-[284px] object-cover group-hover:scale-105 transition-all"
+                  />
+                </div>
+                <div className="flex flex-row items-center gap-x-2">
+                  <img
+                    src={articles?.at(0)?.authorProfile}
+                    alt=""
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                  <p className="font-lexend text-[16px] text-yl-60">
+                    {articles?.at(0)?.author}
+                  </p>
+                </div>
+                <h1 className="font-lexend font-medium text-yl-60 text-[24px] w-[80%] truncate-multiline-3">
+                  {articles?.at(0)?.title}
+                </h1>
+                <p className="text-yl-40 text-[14px]">
+                  {articles?.at(0)?.description}
                 </p>
+                <div className="flex flex-row text-yl-40 items-center gap-x-1">
+                  <span className="material-icons" style={{ fontSize: 18 }}>
+                    schedule
+                  </span>
+                  <p className="text-[13px] font-lexend">
+                    {articles?.at(0)?.publication_date
+                      ? formatDateString(articles?.at(0)?.publication_date)
+                      : ""}
+                  </p>
+                </div>
               </div>
-              <h1 className="font-lexend font-medium text-yl-60 text-[24px] w-[80%]">
-                Mengasah Potensi Anak Melalui Pendidikan Inklusif: Peran Orang
-                Tua
-              </h1>
-              <p className="text-yl-40 text-[14px]">
-                Dari pengawasan penggunaan gadget hingga memilih aplikasi
-                pendidikan yang sesuai, orang tua memiliki peran penting dalam
-                mengarahkan anak-anak mereka menuju pemanfaatan teknologi yang
-                bermanfaat.
-              </p>
-              <div className="flex flex-row text-yl-40 items-center gap-x-1">
-                <span className="material-icons" style={{ fontSize: 18 }}>
-                  schedule
-                </span>
-                <p className="text-[13px] font-lexend">2024-02-03</p>
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

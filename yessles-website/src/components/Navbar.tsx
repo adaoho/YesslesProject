@@ -41,7 +41,7 @@ const NavbarComp = ({ noScroll }: any) => {
         <div className="flex cursor-pointer" onClick={() => navigate("/")}>
           <img src="/yessles_logo.svg" alt="" />
         </div>
-        <div className="flex flex-row gap-x-4 z-10">
+        <div className="hidden md:flex flex-row gap-x-4 z-10">
           <button
             onClick={() => navigate("/tentang")}
             className={noScroll ? `navbarButtonDefault` : navbarButton}

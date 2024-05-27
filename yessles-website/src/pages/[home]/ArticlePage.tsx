@@ -1,4 +1,3 @@
-import { RiErrorWarningLine } from "react-icons/ri";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
@@ -9,7 +8,8 @@ import CardArticle from "./components/CardArticle";
 import { articles } from "@/database/articles.json";
 import Aos from "aos";
 import { useEffect } from "react";
-import { toast } from "sonner";
+import { formatDateString } from "@/utils/static";
+import SeoComp from "@/components/SeoComp";
 
 const ArticlePage = () => {
   useEffect(() => {
@@ -23,8 +23,12 @@ const ArticlePage = () => {
   return (
     <>
       <section id="hero">
+        <SeoComp
+          title="Article di Yessles"
+          description={`Berbagai Artikel dari Yessles Bimbingan No.1 di Madiun`}
+        />
         <div
-          className="w-full h-fit mt-[5.3%] flex flex-col justify-start items-center gap-y-5 pb-[5%] font-lexend"
+          className="w-full h-fit mt-[7%] lg:mt-[5.3%] flex flex-col justify-start items-center gap-y-5 pb-[5%] font-lexend"
           data-aos="fade-up"
         >
           {/* Breadcrumb */}
@@ -45,37 +49,42 @@ const ArticlePage = () => {
           {/* Article Section */}
           <div className="grid grid-cols-2 w-full h-full px-[8%] gap-x-12">
             {/* Left Section */}
-            <div
-              onClick={() => {
-                toast.warning("Fitur Artikel Akan Segera Hadir");
-              }}
-              className="h-full flex justify-start flex-col gap-y-6 w-full group "
-            >
-              <div className="w-full h-full overflow-hidden rounded-lg">
-                <img
-                  src="https://ik.imagekit.io/9nm0rr5hka/Yessles/thumbnail_4.png?updatedAt=1709279422996"
-                  alt=""
-                  className="w-full h-[330px] object-cover rounded-lg group-hover:scale-105 transition-all"
-                />
+            <Link to={"/article/" + articles?.at(0)?.slug}>
+              <div className="h-full flex justify-start flex-col gap-y-6 w-full group">
+                <div className="w-full h-[330px] overflow-hidden rounded-lg bg-yellow-200">
+                  <img
+                    src={articles?.at(0)?.thumbnail}
+                    alt=""
+                    className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-all"
+                  />
+                </div>
+                <div className="truncate-multiline-2 h-fit">
+                  <h1 className="font-lexend font-medium text-yl-60 text-[32px] w-full">
+                    Menjadi Hulk saat Mengajar{" "}
+                    <br className="hidden lg:block" />
+                    Anak Sendiri
+                  </h1>
+                </div>
+                <div className="flex flex-row text-yl-40 items-center gap-x-3">
+                  <p className="font-lexend text-[16px] text-yl-60">
+                    {articles?.at(0)?.author}
+                  </p>
+                  <p>|</p>
+                  <p className="text-[16px] font-lexend">
+                    {" "}
+                    {articles?.at(0)?.publication_date
+                      ? formatDateString(articles?.at(0)?.publication_date)
+                      : ""}
+                  </p>
+                </div>
               </div>
-              <h1 className="font-lexend font-medium text-yl-60 text-[32px] w-full leading-10 ">
-                Mengasah Potensi Anak Melalui Pendidikan Inklusif: Peran Orang
-                Tua
-              </h1>
-              <div className="flex flex-row text-yl-40 items-center gap-x-3">
-                <p className="font-lexend text-[16px] text-yl-60">
-                  Dian Pratiwi
-                </p>
-                <p>|</p>
-                <p className="text-[16px] font-lexend">2024-02-03</p>
-              </div>
-            </div>
+            </Link>
 
             {/* Right Section */}
             <div className="h-fit flex flex-col justify-between gap-y-9 w-full ">
-              <CardArticle data={articles[0]} other={true} />
               <CardArticle data={articles[1]} other={true} />
               <CardArticle data={articles[2]} other={true} />
+              <CardArticle data={articles[3]} other={true} />
             </div>
           </div>
 
@@ -94,27 +103,14 @@ const ArticlePage = () => {
             </section>
           </div>
 
-          {/* Will be Available Soon */}
-          <div className="w-full h-fit py-8 flex justify-center items-center text-[20px] text-yl-60 underline gap-x-2">
-            <RiErrorWarningLine />
-            <h1>Akan Segera Hadir</h1>
-          </div>
           <div
-            className=" grid-cols-3 xl:grid-cols-4 w-full h-fit gap-10 px-[8%] hidden"
+            className="grid grid-cols-3 xl:grid-cols-4 w-full h-fit gap-10 px-[8%]"
             data-aos="fade-up"
           >
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
-            <CardArticlePage />
+            {articles?.map((data, index) => (
+              //@ts-ignore
+              <CardArticlePage key={index} data={data} />
+            ))}
           </div>
 
           {/* Pagination */}

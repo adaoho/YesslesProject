@@ -25,7 +25,7 @@ const Subscription = ({ className, other }: any) => {
               {/* Banner Button */}
               <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">
                 <img
-                  src="/subscribe_banner.png"
+                  src="/subscribe_banner.jpeg"
                   alt=""
                   className="absolute -z-10 w-full object-cover opacity-70"
                 />
@@ -68,7 +68,7 @@ const Subscription = ({ className, other }: any) => {
               {/* Banner Button */}
               <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] gap-y-6 overflow-hidden relative">
                 <img
-                  src="/subscribe_banner.png"
+                  src="/subscribe_banner.jpeg"
                   alt=""
                   className="absolute -z-10 w-full object-cover"
                 />

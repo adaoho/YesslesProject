@@ -8,24 +8,25 @@ import "aos/dist/aos.css";
 import Footer from "./components/Footer";
 import CardAboutAspect from "./components/CardAboutAspect";
 import Modal from "../../components/Modal";
+import SeoComp from "@/components/SeoComp";
 
 const dataAspects = [
   {
     title: "Psikologi",
     description: `Memahami mood (suasana hati) dan motivasi siswa saat belajar.`,
-    picture: "/program_yessles/pic_14.jpg",
+    picture: "/program_yessles/pic_14.jpeg",
     icon: <MdPsychology className="size-7 text-white" />,
   },
   {
     title: "Gaya Belajar",
     description: "Menyesuaikan pembelajaran sesuai dengan gaya belajar.",
-    picture: "/program_yessles/pic_15.jpg",
+    picture: "/program_yessles/pic_15.jpeg",
     icon: <IoMdSchool className="size-7 text-white" />,
   },
   {
     title: "Kepribadian",
     description: `Memahami tipe kepribadian siswa untuk \r\n dapat memberikan pembelajaran yang sesuai.`,
-    picture: "/program_yessles/pic_16.jpg",
+    picture: "/program_yessles/pic_16.jpeg",
     icon: <BsPersonHeart className="size-7 py-1 px-1 text-white" />,
   },
 ];
@@ -46,6 +47,10 @@ const AboutPage = () => {
         <img src="/bg_color_blur.png" alt="" />
       </div>
       <section id="hero" data-aos="fade-up">
+        <SeoComp
+          title="Tentang Yessles"
+          description={`Yessles Bimbingan No.1 di Madiun`}
+        />
         <div className="flex flex-col w-screen h-full px-[8%] pt-[6.5%] pb-[3%] ">
           {/* Hero Title */}
           <div className="flex flex-col justify-center w-full h-[200px] items-center text-[#383838] font-lexend">
@@ -64,7 +69,7 @@ const AboutPage = () => {
           <div className="flex w-full flex-row gap-x-6 h-full">
             {dataAspects.map((data, index) => (
               <Fragment key={index}>
-                <CardAboutAspect data={data} />
+                <CardAboutAspect key={index} data={data} />
               </Fragment>
             ))}
           </div>

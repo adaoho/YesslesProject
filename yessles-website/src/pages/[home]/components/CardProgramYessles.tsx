@@ -5,8 +5,6 @@ const CardProgramYessles = ({ data }: any) => {
   // console.log(data, "<<< card");
   let navigate = useNavigate();
 
-  console.log(data, "<<< from data");
-
   return (
     <div
       onClick={() => {

@@ -1,3 +1,4 @@
+import { FiAlertCircle } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,62 +10,114 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Formik, Form } from "formik";
+import { useDispatch } from "react-redux";
+import { userLogin } from "@/features/user/userSlice";
+import { loginValues } from "@/utils/initialValue";
+import { userLoginSchema } from "@/utils/schemas";
+import { useState } from "react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const LoginPage = () => {
-  let navigate = useNavigate();
+  const [seePassword, setSeePassword] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onSeePassword = () => {
+    setSeePassword(!seePassword);
+  };
   return (
     <>
-      <div className="flex justify-center items-center w-screen h-screen">
-        <Card className="mx-auto max-w-sm">
-          <CardHeader>
-            <CardTitle className="text-2xl mb-4">Login to Yessles</CardTitle>
-            <CardDescription>
-              Enter your email below to login to your account
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
+      <Formik
+        initialValues={loginValues}
+        validationSchema={userLoginSchema}
+        autoComplete={"off"}
+        onSubmit={(values) => {
+          //@ts-ignore
+          dispatch(userLogin(values, navigate));
+        }}
+      >
+        {(props) => {
+          // @ts-ignore
+          const { values, handleChange, errors, handleSubmit } = props;
+
+          return (
+            <Form onSubmit={handleSubmit}>
+              <div className="flex justify-center items-center w-screen h-screen">
+                <Card className="mx-auto max-w-sm">
+                  <CardHeader>
+                    <CardTitle className="text-2xl mb-4">
+                      Login to Yessles Panel
+                    </CardTitle>
+                    <CardDescription>
+                      Masukkan Email serta Password Akun Kamu
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-4">
+                      <div className="grid gap-2">
+                        <Label htmlFor="email">Email</Label>
+                        <Input
+                          autoComplete="off"
+                          id="email"
+                          type="email"
+                          name="email"
+                          onChange={handleChange}
+                          placeholder="e.g kamu@yessles.id"
+                        />
+                        {errors.email && (
+                          <div className="flex flex-row gap-x-2 items-center text-[12px] text-yl-30">
+                            <FiAlertCircle /> <p>{errors.email}</p>
+                          </div>
+                        )}
+                      </div>
+                      <div className="grid gap-2 relative">
+                        <div className="flex items-center">
+                          <Label htmlFor="password">Password</Label>
+                        </div>
+                        <div className="relative">
+                          <Input
+                            autoComplete="off"
+                            id="password"
+                            type={seePassword ? "text" : "password"}
+                            name="password"
+                            onChange={handleChange}
+                            placeholder="ketik password ... "
+                          />
+                          <div
+                            className="absolute right-3 top-[24%] text-gray-600 active:scale-90 transition-all"
+                            onClick={onSeePassword}
+                          >
+                            {seePassword ? (
+                              <AiFillEyeInvisible className="size-5" />
+                            ) : (
+                              <AiFillEye className="size-5" />
+                            )}
+                          </div>
+                        </div>
+                        {errors.password && (
+                          <div className="flex flex-row gap-x-2 items-center text-[12px] text-yl-30">
+                            <FiAlertCircle /> <p>{errors.password}</p>
+                          </div>
+                        )}
+                      </div>
+                      <Button type="submit" className="w-full">
+                        Login
+                      </Button>
+                    </div>
+                    <div className="mt-4 text-center text-sm">
+                      Belum Punya Akun?{" "}
+                      <Link to={"/panel/register"} className="underline">
+                        Registrasi
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <Link
-                    to={"/"}
-                    className="ml-auto inline-block text-sm underline"
-                  >
-                    Forgot your password?
-                  </Link>
-                </div>
-                <Input id="password" type="password" required />
-              </div>
-              <Button
-                onClick={() => navigate("/dashboard")}
-                type="submit"
-                className="w-full"
-              >
-                Login
-              </Button>
-              <Button variant="outline" className="w-full">
-                Login with Google
-              </Button>
-            </div>
-            <div className="mt-4 text-center text-sm">
-              Don&apos;t have an account?{" "}
-              <Link to={"/register"} className="underline">
-                Sign up
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+            </Form>
+          );
+        }}
+      </Formik>
     </>
   );
 };

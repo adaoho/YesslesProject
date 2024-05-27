@@ -10,9 +10,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { DataFaq, DataPakBelPage, DataSistemBelajar } from "./utils/TypePage";
-import { generateSliceIndexes, toMoneyRP } from "@/utils/Static";
+import { generateSliceIndexes, toMoneyRP } from "../../utils/static";
 import Aos from "aos";
 import Footer from "./components/Footer";
+import SeoComp from "@/components/SeoComp";
 
 const PakBelPage = () => {
   const [nameChat, setNameChat] = useState<string>("");
@@ -166,6 +167,11 @@ const PakBelPage = () => {
     <>
       {/* Hero Section */}
       <section id="hero" data-aos="fade-up">
+        <SeoComp
+          title="Paket Belajar"
+          description={`Yessles Bimbingan No.1 di Madiun`}
+        />
+
         <div className="w-full h-[600px] mt-[9%] px-[8%] flex flex-col justify-start items-center gap-y-5">
           <div className="flex flex-row justify-between items-start w-full">
             <h1 className="text-[42px] font-lexend font-bold text-left w-[45%] leading-[50px] text-yl-20">
@@ -453,7 +459,7 @@ const PakBelPage = () => {
           {/* Banner Button */}
           <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">
             <img
-              src="/subscribe_banner.png"
+              src="/subscribe_banner.jpeg"
               alt=""
               className="absolute -z-10 w-full object-cover"
             />
