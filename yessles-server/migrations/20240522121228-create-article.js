@@ -13,13 +13,19 @@ module.exports = {
         type: Sequelize.STRING,
       },
       body: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       slug: {
         type: Sequelize.STRING,
       },
       thumbnail: {
         type: Sequelize.STRING,
+      },
+      thumbnail_id: {
+        type: Sequelize.STRING,
+      },
+      description: {
+        type: Sequelize.TEXT,
       },
       UserId: {
         type: Sequelize.INTEGER,

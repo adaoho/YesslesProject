@@ -1,5 +1,3 @@
-"use client";
-
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { Table } from "@tanstack/react-table";
 
@@ -9,6 +7,10 @@ import { DataTableViewOptions } from "./data-table-view-options";
 
 import { statuses } from "../data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
+import { MdOutlineRefresh } from "react-icons/md";
+import { userGetbyAdmin } from "@/features/user/userSlice";
+import { useDispatch } from "react-redux";
+import { toast } from "sonner";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
@@ -18,6 +20,16 @@ export function DataTableToolbar<TData>({
   table,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
+  const dispatch = useDispatch();
+  const fetchData = async () => {
+    try {
+      // @ts-ignore
+      await dispatch(userGetbyAdmin());
+      toast.success(`Success Refresh Users`);
+    } catch (error: any) {
+      toast.error(`${error.response.data.message}`);
+    }
+  };
 
   return (
     <div className="flex items-center justify-between">
@@ -50,7 +62,18 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
+      <div className="flex gap-x-2">
+        <Button
+          variant="outline"
+          size="sm"
+          className="ml-auto hidden h-8 lg:flex"
+          onClick={() => fetchData()}
+        >
+          <MdOutlineRefresh className="mr-2 h-4 w-4" />
+          Refresh
+        </Button>
+        <DataTableViewOptions table={table} />
+      </div>
     </div>
   );
 }

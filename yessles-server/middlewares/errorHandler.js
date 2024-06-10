@@ -36,6 +36,34 @@ function errorHandler(err, req, res, next) {
       status = 400;
       message = "Email already registered!";
       break;
+
+    // ! Create Article Error
+    case "titleEmpty":
+      status = 400;
+      message = "Title Can't be Empty";
+      break;
+    case "bodyEmpty":
+      status = 400;
+      message = "Body Can't be Empty";
+      break;
+    case "userInactive":
+      status = 400;
+      message = "User is Inactive";
+      break;
+    case "InvalidUser":
+      status = 400;
+      message = "Invalid User ID Action";
+      break;
+    case "slugAlreadyCreate":
+      status = 400;
+      message = "Article Title Already Created";
+      break;
+    case "thumbnailEmpty":
+      status = 400;
+      message = "Thumbnail Can't be Empty";
+      break;
+
+    // ? Other Error
     case "InvalidLogin":
       status = 401;
       message = "Invalid email/password";

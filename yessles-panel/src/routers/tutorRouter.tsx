@@ -5,6 +5,8 @@ import MainPage from "@/pages/[dashboard]/pages/[main]/MainPage";
 import { toast } from "sonner";
 import NotFound from "@/pages/[authentication]/NotFound";
 import DashLayout from "@/pages/[dashboard]/layout/DashLayout";
+import ArticlePanel from "@/pages/[dashboard]/pages/[articles]/ArticlePanel";
+import ArticleForm from "@/pages/[dashboard]/pages/[articles]/ArticleForm";
 
 const tutorRouter = createBrowserRouter([
   {
@@ -17,6 +19,18 @@ const tutorRouter = createBrowserRouter([
       {
         path: "/",
         element: <MainPage />,
+      },
+      {
+        path: "/articles",
+        element: <ArticlePanel />,
+      },
+      {
+        path: "/articles/new-article",
+        element: <ArticleForm />,
+      },
+      {
+        path: "/articles/edit-article/:slug",
+        element: <ArticleForm />,
       },
     ],
     loader: async () => {

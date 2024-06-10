@@ -1,7 +1,8 @@
+import { BiLinkExternal } from "react-icons/bi";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 import { HiUsers } from "react-icons/hi";
 import { Button } from "@/components/ui/button";
-import { Bell, Home } from "lucide-react";
+import { Home } from "lucide-react";
 import { RiArticleLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import {
@@ -16,27 +17,35 @@ import { useSelector } from "react-redux";
 
 const SidebarDash = () => {
   const { userData, items } = useSelector((state: any) => state.user);
+  const articleItems = useSelector((state: any) => state.article.items);
   const userRole = userData?.role;
+
   const getUserLength = items.filter(
+    (item: any) => item.status === "ACTIVE"
+  ).length;
+
+  const getArticleLength = articleItems.filter(
     (item: any) => item.status === "ACTIVE"
   ).length;
 
   return (
     <>
-      <div className="hidden border-r bg-muted/40 md:block top-0 sticky ">
+      <div className="hidden border-r bg-muted/40 md:block top-0 sticky">
         {/* SideBar */}
-        <div className="flex h-full max-h-screen flex-col gap-2">
+        <div className="flex h-full max-h-screen flex-col gap-2 relative">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-            <Link
-              to={"https://yessles.id"}
-              className="flex items-center gap-2 font-semibold"
-            >
+            <div className="flex items-center gap-2 font-semibold">
               <img src="/yessles_logo_icon.svg" alt="" className="size-7" />
               <span className="">Yessles Panel</span>
-            </Link>
-            <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
-              <Bell className="h-4 w-4" />
-              <span className="sr-only">Toggle notifications</span>
+            </div>
+            <Button
+              variant="outline"
+              size="icon"
+              className="ml-auto h-8 w-8 text-yl-60 hover:bg-yl-10 hover:text-white transition-all"
+            >
+              <Link to={"https://yessles.id"} target="_blank">
+                <BiLinkExternal className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
           <div className="flex-1">
@@ -61,18 +70,18 @@ const SidebarDash = () => {
                 </Link>
               )}
               <Link
-                to={"/article"}
+                to={"/articles"}
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <RiArticleLine className="h-4 w-4" />
                 Articles
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
+                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-yl-10">
+                  {getArticleLength}
                 </Badge>
               </Link>
             </nav>
           </div>
-          <div className="mt-auto p-4 ">
+          <div className="mt-auto p-4 absolute bottom-0">
             <Card className="py-4">
               <CardHeader className="p-2 pt-0 md:p-4">
                 <CardTitle>Alami Kendala?</CardTitle>

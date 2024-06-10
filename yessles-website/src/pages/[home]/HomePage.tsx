@@ -9,7 +9,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { testimoni } from "@/database/testimoni.json";
-import { articles } from "@/database/articles.json";
 import CardArticle from "./components/CardArticle";
 import CardTestimoni from "./components/CardTestimoni";
 import Modal from "../../components/Modal";
@@ -23,6 +22,8 @@ import "aos/dist/aos.css";
 import CarouselProgramBelajar from "./components/CarouselProgramBelajar";
 import { formatDateString } from "../../utils/static";
 import SeoComp from "@/components/SeoComp";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { endPoint } from "@/utils/endpoint";
 
 const HomePage = () => {
   const [open, setOpen] = useState(false);
@@ -39,6 +40,26 @@ const HomePage = () => {
       });
     }
   };
+
+  const getArticle = async () => {
+    try {
+      const res = await fetch(
+        endPoint + "/article/article-active?page=1&limit=12&search="
+      );
+
+      return await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const { data } = useQuery({
+    queryKey: ["article"],
+    queryFn: () => getArticle(),
+    placeholderData: keepPreviousData,
+  });
+
+  const dataArtikel = data?.data?.items;
 
   useEffect(() => {
     Aos.init({
@@ -444,44 +465,44 @@ const HomePage = () => {
           <div className="grid xl:grid-cols-2 w-full h-fit py-10">
             {/* Left Section */}
             <div className="h-[525px] flex flex-col w-full justify-between ">
-              {articles?.slice(1, 4).map((data, index) => (
+              {dataArtikel?.slice(1, 4).map((data: any, index: number) => (
                 <CardArticle key={index} data={data} />
               ))}
             </div>
 
             {/* Right Section */}
-            <Link to={"article/" + articles?.at(0)?.slug}>
+            <Link to={"article/" + dataArtikel?.at(0)?.slug}>
               <div className="h-full hidden justify-start flex-col gap-y-4 group xl:flex">
                 <div className="w-full h-[284px] overflow-hidden rounded-xl">
                   <img
-                    src={articles?.at(0)?.thumbnail}
+                    src={dataArtikel?.at(0)?.thumbnail}
                     alt=""
                     className="w-full h-[284px] object-cover group-hover:scale-105 transition-all"
                   />
                 </div>
                 <div className="flex flex-row items-center gap-x-2">
                   <img
-                    src={articles?.at(0)?.authorProfile}
+                    src={dataArtikel?.at(0)?.User?.profile_picture}
                     alt=""
                     className="w-8 h-8 rounded-full object-cover"
                   />
                   <p className="font-lexend text-[16px] text-yl-60">
-                    {articles?.at(0)?.author}
+                    {dataArtikel?.at(0)?.User?.full_name}
                   </p>
                 </div>
                 <h1 className="font-lexend font-medium text-yl-60 text-[24px] w-[80%] truncate-multiline-3">
-                  {articles?.at(0)?.title}
+                  {dataArtikel?.at(0)?.title}
                 </h1>
                 <p className="text-yl-40 text-[14px]">
-                  {articles?.at(0)?.description}
+                  {dataArtikel?.at(0)?.description}
                 </p>
                 <div className="flex flex-row text-yl-40 items-center gap-x-1">
                   <span className="material-icons" style={{ fontSize: 18 }}>
                     schedule
                   </span>
                   <p className="text-[13px] font-lexend">
-                    {articles?.at(0)?.publication_date
-                      ? formatDateString(articles?.at(0)?.publication_date)
+                    {dataArtikel?.at(0)?.createdAt
+                      ? formatDateString(dataArtikel?.at(0)?.createdAt)
                       : ""}
                   </p>
                 </div>

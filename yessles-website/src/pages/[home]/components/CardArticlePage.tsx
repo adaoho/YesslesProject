@@ -22,19 +22,17 @@ const CardArticlePage = ({ data }: dataArtikelPage) => {
               {data?.title}
             </h1>
             <h1 className="text-gray-400 text-[13px]">
-              {data?.publication_date
-                ? formatDateString(data?.publication_date)
-                : ""}
+              {data?.createdAt ? formatDateString(data?.createdAt) : ""}
             </h1>
           </div>
           {/* Account Author */}
           <div className="flex flex-row gap-x-2 justify-between items-center w-full mt-4">
             <div className="flex flex-row gap-x-2 items-center">
               <div className="size-7 rounded-full overflow-hidden">
-                <img src={data?.authorProfile} />
+                <img src={data?.User?.profile_picture} />
               </div>
               <h1 className="font-lexend text-[12px] group-hover:text-yl-60">
-                {data?.author}
+                {data?.User?.full_name}
               </h1>
             </div>
             <BsFillArrowUpRightCircleFill className="size-6 group-hover:text-yl-10 transition-all" />

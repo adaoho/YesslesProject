@@ -46,7 +46,7 @@ const LoginPage = () => {
               <div className="flex justify-center items-center w-screen h-screen">
                 <Card className="mx-auto max-w-sm">
                   <CardHeader>
-                    <CardTitle className="text-2xl mb-4">
+                    <CardTitle className="text-2xl">
                       Login to Yessles Panel
                     </CardTitle>
                     <CardDescription>
@@ -101,7 +101,11 @@ const LoginPage = () => {
                           </div>
                         )}
                       </div>
-                      <Button type="submit" className="w-full">
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={Object.keys(errors).length > 0 ? true : false}
+                      >
                         Login
                       </Button>
                     </div>

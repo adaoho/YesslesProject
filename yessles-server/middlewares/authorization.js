@@ -1,7 +1,6 @@
-const { where } = require("sequelize");
-const { User } = require("../models");
+const { User, Article } = require("../models");
 
-async function authorization(req, res, next) {
+async function authorizationRole(req, res, next) {
   try {
     const { id } = req.user;
 
@@ -22,6 +21,36 @@ async function authorization(req, res, next) {
   }
 }
 
-module.exports = { authorization };
+async function authorizationArticle(req, res, next) {
+  try {
+    const UserId = req.user.id;
+    const { articleId } = req.params;
 
-// "http://localhost:3000/api/users?page=1&limit=10&search=example"
+    const findArticle = await Article.findByPk(articleId);
+    if (!findArticle) throw { name: "NotFound" };
+
+    const findUser = await User.findByPk(UserId);
+    if (!findUser) throw { name: "NotFound" };
+
+    if (findUser.role === "admin") {
+      next();
+    } else {
+      const findArticle = await Article.findOne({
+        where: {
+          id: articleId,
+          UserId,
+        },
+      });
+
+      if (!findArticle) {
+        throw { name: `InvalidUser` };
+      }
+
+      next();
+    }
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { authorizationRole, authorizationArticle };

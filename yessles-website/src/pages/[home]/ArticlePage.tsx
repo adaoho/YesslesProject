@@ -5,13 +5,37 @@ import CardArticlePage from "./components/CardArticlePage";
 import { Link } from "react-router-dom";
 import Footer from "./components/Footer";
 import CardArticle from "./components/CardArticle";
-import { articles } from "@/database/articles.json";
 import Aos from "aos";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { formatDateString } from "@/utils/static";
 import SeoComp from "@/components/SeoComp";
+import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { endPoint } from "@/utils/endpoint";
 
 const ArticlePage = () => {
+  const [page, setPage] = useState(1);
+
+  const getArticle = async (page: number) => {
+    try {
+      const res = await fetch(
+        endPoint + "/article/article-active?page=" + page + "&limit=12&search="
+      );
+
+      return await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const { data } = useQuery({
+    queryKey: ["article", page],
+    queryFn: () => getArticle(page),
+    placeholderData: keepPreviousData,
+  });
+
+  const dataArtikel = data?.data?.items;
+  const totalPage = data?.data?.totalPages;
+
   useEffect(() => {
     Aos.init({
       disable: "phone",
@@ -19,6 +43,9 @@ const ArticlePage = () => {
       easing: "ease-out-cubic",
     });
   }, []);
+
+  const buttonActive = `flex py-1 rounded-lg text-yl-10 items-center border-yl-10 border hover:bg-yl-10 hover:text-white transition-all`;
+  const buttonInactive = `flex py-1 rounded-lg text-gray-500 items-center border-gray-500 border transition-all`;
 
   return (
     <>
@@ -49,31 +76,29 @@ const ArticlePage = () => {
           {/* Article Section */}
           <div className="grid grid-cols-2 w-full h-full px-[8%] gap-x-12">
             {/* Left Section */}
-            <Link to={"/article/" + articles?.at(0)?.slug}>
+            <Link to={"/article/" + dataArtikel?.at(0)?.slug}>
               <div className="h-full flex justify-start flex-col gap-y-6 w-full group">
                 <div className="w-full h-[330px] overflow-hidden rounded-lg bg-yellow-200">
                   <img
-                    src={articles?.at(0)?.thumbnail}
+                    src={dataArtikel?.at(0)?.thumbnail}
                     alt=""
                     className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-all"
                   />
                 </div>
                 <div className="truncate-multiline-2 h-fit">
                   <h1 className="font-lexend font-medium text-yl-60 text-[32px] w-full">
-                    Menjadi Hulk saat Mengajar{" "}
-                    <br className="hidden lg:block" />
-                    Anak Sendiri
+                    {dataArtikel?.at(0)?.title}
                   </h1>
                 </div>
                 <div className="flex flex-row text-yl-40 items-center gap-x-3">
                   <p className="font-lexend text-[16px] text-yl-60">
-                    {articles?.at(0)?.author}
+                    {dataArtikel?.at(0)?.User?.full_name}
                   </p>
                   <p>|</p>
                   <p className="text-[16px] font-lexend">
                     {" "}
-                    {articles?.at(0)?.publication_date
-                      ? formatDateString(articles?.at(0)?.publication_date)
+                    {dataArtikel?.at(0)?.createdAt
+                      ? formatDateString(dataArtikel?.at(0)?.createdAt)
                       : ""}
                   </p>
                 </div>
@@ -82,9 +107,9 @@ const ArticlePage = () => {
 
             {/* Right Section */}
             <div className="h-fit flex flex-col justify-between gap-y-9 w-full ">
-              <CardArticle data={articles[1]} other={true} />
-              <CardArticle data={articles[2]} other={true} />
-              <CardArticle data={articles[3]} other={true} />
+              <CardArticle data={dataArtikel?.at(1)} other={true} />
+              <CardArticle data={dataArtikel?.at(2)} other={true} />
+              <CardArticle data={dataArtikel?.at(3)} other={true} />
             </div>
           </div>
 
@@ -107,20 +132,35 @@ const ArticlePage = () => {
             className="grid grid-cols-3 xl:grid-cols-4 w-full h-fit gap-10 px-[8%]"
             data-aos="fade-up"
           >
-            {articles?.map((data, index) => (
+            {dataArtikel?.map((data: any, index: number) => (
               //@ts-ignore
               <CardArticlePage key={index} data={data} />
             ))}
           </div>
 
           {/* Pagination */}
-          <div className=" flex-row justify-center items-center gap-x-4 pt-5 hidden">
-            <MdKeyboardArrowLeft />
-            <h1>1</h1>
-            <h1>2</h1>
-            <h1>3</h1>
-            <MdKeyboardArrowRight />
-          </div>
+          {totalPage > 1 && (
+            <div className="flex flex-row justify-center items-center gap-x-4 w-full mt-14">
+              <button
+                onClick={() => setPage((old) => old - 1)}
+                disabled={page === 1}
+                className={`${page == 1 ? buttonInactive : buttonActive} pr-3`}
+              >
+                <MdKeyboardArrowLeft className="size-7" />
+                Prev
+              </button>
+              <button
+                onClick={() => setPage((old) => old + 1)}
+                disabled={page === totalPage}
+                className={`${
+                  page == totalPage ? buttonInactive : buttonActive
+                } pl-3`}
+              >
+                Next
+                <MdKeyboardArrowRight className="size-7" />
+              </button>
+            </div>
+          )}
         </div>
       </section>
 

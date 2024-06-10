@@ -121,3 +121,21 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@media (min-width: 480px) {
+  .ql-editor {
+    height: 120px !important;
+  }
+}
+
+@media (min-width: 1080px) {
+  .ql-editor {
+    height: 220px !important;
+  }
+}
+
+@media (min-width: 1452px) {
+  .ql-editor {
+    height: 270px !important;
+  }
+}

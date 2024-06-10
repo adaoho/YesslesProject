@@ -50,3 +50,10 @@ export const formatDateString = (dateString: string | any): string => {
   };
   return new Intl.DateTimeFormat("en-GB", options).format(date);
 };
+
+export function removeSurroundingQuotes(str: string) {
+  if (str?.startsWith('"') && str?.endsWith('"')) {
+    return str.slice(1, -1);
+  }
+  return str;
+}

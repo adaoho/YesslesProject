@@ -3,6 +3,7 @@ import endPointAPI from "@/utils/endpoint";
 import { toast } from "sonner";
 import { Dispatch } from "redux";
 import { NavigateFunction } from "react-router-dom";
+import { getAllArticles } from "../article/articleSlice";
 
 const initialState = {
   userData: {},
@@ -81,7 +82,7 @@ export const userLogin =
   (payload: LoginPayload, navigate: NavigateFunction) =>
   async (dispatch: Dispatch) => {
     try {
-      toast("Getting User Information ...");
+      toast.info("Getting User Information ...");
       const { data } = await endPointAPI.post<LoginResponse>(
         "/user/login",
         payload
@@ -96,11 +97,35 @@ export const userLogin =
   };
 
 export const userRegister =
-  (payload: RegisterPayload, navigate: NavigateFunction) =>
+  (
+    payload: RegisterPayload,
+    profile_picture: any,
+    navigate: NavigateFunction
+  ) =>
   async (_dispatch: Dispatch) => {
+    const token = localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+    };
     try {
-      await endPointAPI.post<RegisterResponse>("/user/register", payload);
-      toast.success(`Register Success, Please Login`);
+      toast.info(`Process Creating your Account`);
+
+      await endPointAPI.post<RegisterResponse>(
+        "/user/register",
+        {
+          email: payload.email,
+          full_name: payload.full_name,
+          password: payload.password,
+          profile_picture,
+        },
+        config
+      );
+      toast.success(
+        `Register Success, Please Contact Yessles Admin to Activate Account`
+      );
       navigate("/login");
     } catch (error) {
       toast.error(`Invalid Email or Password`);
@@ -120,6 +145,21 @@ export const userGetbyAdmin =
         config
       );
       dispatch(setUserItems(data.data));
+    } catch (error: any) {
+      toast.error(`${error.response.data.message}`);
+    }
+  };
+
+export const userGetById =
+  () =>
+  async (dispatch: Dispatch): Promise<void> => {
+    const token = localStorage.getItem("access_token");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    try {
+      const { data } = await endPointAPI.get<any>("/user/get-user-id", config);
+      dispatch(setUserData(data.data));
     } catch (error: any) {
       toast.error(`${error.response.data.message}`);
     }
@@ -148,7 +188,13 @@ export const userChangeStatus =
   };
 
 export const userChangeUpdate =
-  (full_name: string, id: number, profile_picture: any, email: string) =>
+  (
+    full_name: string,
+    id: number,
+    profile_picture: any,
+    email: string,
+    role: string
+  ) =>
   async (dispatch: Dispatch): Promise<void> => {
     const token = localStorage.getItem("access_token");
     const config = {
@@ -159,13 +205,24 @@ export const userChangeUpdate =
     };
 
     try {
+      toast.info(`Processing Update Your User Profile`);
       await endPointAPI.put<any>(
         "/user/edit-user/" + id,
         { profile_picture, full_name },
         config
       );
-      // @ts-ignore
-      await dispatch(userGetbyAdmin());
+
+      if (role === "admin") {
+        // @ts-ignore
+        await dispatch(userGetbyAdmin());
+        // @ts-ignore
+        await dispatch(getAllArticles());
+      } else {
+        // @ts-ignore
+        await dispatch(userGetById());
+        // @ts-ignore
+        await dispatch(getAllArticles());
+      }
       toast.success(`Change Success for ${email}`);
     } catch (error: any) {
       toast.error(`${error.response.data.message}`);

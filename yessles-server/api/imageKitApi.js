@@ -1,10 +1,20 @@
+require("dotenv").config();
 const axios = require("axios");
 
 const imagekitApi = axios.create({
   baseURL: "https://upload.imagekit.io/api/v1",
   headers: {
-    Authorization: "Basic cHJpdmF0ZV9pb3A0WHFuTE1EbTR1ekZ2YnV5Y0xwaExNekU9Og==",
+    Authorization: process.env.IMAGEKIT_AUTH,
   },
 });
 
-module.exports = imagekitApi;
+const imagekitDeleteApi = axios.create({
+  baseURL: "https://api.imagekit.io/v1",
+  headers: {
+    Authorization: process.env.IMAGEKIT_AUTH,
+  },
+});
+
+// ImageKit API using Yessles Main Email
+
+module.exports = { imagekitApi, imagekitDeleteApi };

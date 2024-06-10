@@ -1,5 +1,3 @@
-"use client";
-
 import { ColumnDef } from "@tanstack/react-table";
 
 import { Badge } from "@/components/ui/badge";
@@ -98,7 +96,11 @@ export const columns: ColumnDef<User>[] = [
       return (
         <div
           className={`flex w-[100px] items-center ${
-            status.value === "ACTIVE" ? "text-yl-10" : "text-red-500"
+            status.value === "ACTIVE"
+              ? "text-yl-10"
+              : status.value === "PENDING"
+              ? "text-yellow-500"
+              : "text-red-500"
           } `}
         >
           {status.icon && <status.icon className="mr-2 h-4 w-4" />}

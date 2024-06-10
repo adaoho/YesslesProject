@@ -2,6 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userSlice from "../features/user/userSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+import articleSlice from "../features/article/articleSlice";
 
 const persistConfig = {
   key: "root",
@@ -10,6 +11,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   user: userSlice,
+  article: articleSlice,
 });
 
 //@ts-ignore

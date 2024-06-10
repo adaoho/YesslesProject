@@ -1,43 +1,73 @@
-const imagekitApi = require("../api/imageKitApi");
 const { comparePassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 const { User } = require("../models");
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 const multer = require("multer");
+const { imagekitApi, imagekitDeleteApi } = require("../api/imageKitApi");
 
 class UserStatic {
   static async userRegister(req, res, next) {
-    try {
-      const { full_name, email, password } = req.body;
+    const storage = multer.memoryStorage();
+    const upload = multer({ storage });
 
-      if (!email) throw { name: `EmailEmpty` };
-      if (!password) throw { name: `PasswordEmpty` };
-      if (!full_name) throw { name: `FullNameEmpty` };
+    upload.single("profile_picture")(req, res, async function (err) {
+      if (err) {
+        return next(err);
+      }
 
-      await User.create({
-        full_name,
-        email,
-        password,
-        profile_picture:
-          "https://ik.imagekit.io/os8mo2ias/yessles_profile.jpeg?updatedAt=1716537504300",
-        role: "tutor",
-        status: "ACTIVE",
-      });
+      try {
+        const { full_name, email, password } = req.body;
 
-      const newUser = await User.findOne({
-        attributes: {
-          exclude: ["password", "createdAt", "updatedAt"],
-        },
-        where: { email },
-      });
+        if (!email) throw { name: `EmailEmpty` };
+        if (!password) throw { name: `PasswordEmpty` };
+        if (!full_name) throw { name: `FullNameEmpty` };
 
-      res.status(201).json({
-        message: `Success Create User ${email}`,
-        data: newUser,
-      });
-    } catch (error) {
-      next(error);
-    }
+        if (!req.file) {
+          await User.create({
+            full_name,
+            email,
+            password,
+            profile_picture:
+              "https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg?updatedAt=1717140814267",
+            profile_picture_id: "66597d4d37b244ef54eeee2b",
+            role: "tutor",
+            status: "INACTIVE",
+          });
+        } else {
+          const fileData = req.file.buffer.toString("base64");
+
+          const form = new FormData();
+          form.append("file", fileData);
+          form.append("fileName", req.file.originalname);
+
+          const { data } = await imagekitApi.post("/files/upload", form);
+
+          await User.create({
+            full_name,
+            email,
+            password,
+            profile_picture: data.url,
+            profile_picture_id: data.fileId,
+            role: "tutor",
+            status: "INACTIVE",
+          });
+        }
+
+        const newUser = await User.findOne({
+          attributes: {
+            exclude: ["password", "createdAt", "updatedAt"],
+          },
+          where: { email },
+        });
+
+        res.status(201).json({
+          message: `Success Create User ${email}`,
+          data: newUser,
+        });
+      } catch (error) {
+        next(error);
+      }
+    });
   }
 
   static async userLogin(req, res, next) {
@@ -123,6 +153,28 @@ class UserStatic {
     }
   }
 
+  static async userGetById(req, res, next) {
+    try {
+      const UserId = req.user.id;
+
+      const findUser = await User.findOne({
+        where: { id: UserId },
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "password"],
+        },
+      });
+
+      res.status(200).json({
+        message: `Success Get User ${findUser.email}`,
+        data: {
+          data: findUser,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async userDelete(req, res, next) {
     try {
       const { UserId } = req.params;
@@ -197,15 +249,24 @@ class UserStatic {
         } else {
           const fileData = req.file.buffer.toString("base64");
 
-          // console.log(fileData);
-
           const form = new FormData();
           form.append("file", fileData);
           form.append("fileName", req.file.originalname);
 
+          if (findUser.profile_picture_id) {
+            await imagekitDeleteApi.delete(
+              "/files/" + findUser.profile_picture_id
+            );
+          }
+
           const { data } = await imagekitApi.post("/files/upload", form);
+
           await User.update(
-            { full_name, profile_picture: data.url },
+            {
+              full_name,
+              profile_picture: data.url,
+              profile_picture_id: data.fileId,
+            },
             {
               where: {
                 id: UserId,
@@ -237,8 +298,6 @@ class UserStatic {
       const form = new FormData();
       form.append("file", fileData);
       form.append("fileName", req.file.originalname);
-      // console.log(form);
-
       const { data } = await imagekitApi.post("/files/upload", form);
 
       const updateImage = await User.update(

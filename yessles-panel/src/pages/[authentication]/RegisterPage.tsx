@@ -18,14 +18,28 @@ import { FiAlertCircle } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { Form, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const RegisterPage = () => {
   const [seePassword, setSeePassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [filePhoto, setFilePhoto] = useState("");
 
   const onSeePassword = () => {
     setSeePassword(!seePassword);
+  };
+
+  const onChangeFile = (e: any) => {
+    let fileSize = e.target.files[0].size;
+    let fileType = e.target.files[0].type.split("/")[0];
+    let file = e.target.files[0];
+
+    fileType !== "image"
+      ? toast.error("Only Upload Image")
+      : fileSize > 200000
+      ? toast.error("Maximum File Size 200kb")
+      : setFilePhoto(file);
   };
 
   return (
@@ -36,7 +50,7 @@ const RegisterPage = () => {
         autoComplete={"off"}
         onSubmit={(values) => {
           //@ts-ignore
-          dispatch(userRegister(values, navigate));
+          dispatch(userRegister(values, filePhoto, navigate));
         }}
       >
         {(props) => {
@@ -58,6 +72,15 @@ const RegisterPage = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-4">
+                      <div className="grid gap-2">
+                        <Label htmlFor="first-name">Profile Picture</Label>
+                        <Input
+                          id="picture"
+                          type="file"
+                          name="profile_picture"
+                          onChange={onChangeFile}
+                        />
+                      </div>
                       <div className="grid gap-2">
                         <Label htmlFor="first-name">Nama Lengkap</Label>
                         <Input
@@ -114,7 +137,11 @@ const RegisterPage = () => {
                           </div>
                         )}
                       </div>
-                      <Button type="submit" className="w-full">
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={Object.keys(errors).length > 0 ? true : false}
+                      >
                         Create an account
                       </Button>
                     </div>

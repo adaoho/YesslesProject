@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       body: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           notNull: {
@@ -50,6 +50,8 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       thumbnail: DataTypes.STRING,
+      thumbnail_id: DataTypes.STRING,
+      description: DataTypes.TEXT,
       UserId: DataTypes.INTEGER,
       status: DataTypes.STRING,
     },

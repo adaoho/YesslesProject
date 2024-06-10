@@ -16,8 +16,17 @@ import { RiArticleLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 const SidebarDashMobile = () => {
-  const { userData } = useSelector((state: any) => state.user);
+  const { userData, items } = useSelector((state: any) => state.user);
+  const articleItems = useSelector((state: any) => state.article.items);
   const userRole = userData?.role;
+
+  const getUserLength = items.filter(
+    (item: any) => item.status === "ACTIVE"
+  ).length;
+
+  const getArticleLength = articleItems.filter(
+    (item: any) => item.status === "ACTIVE"
+  ).length;
 
   return (
     <>
@@ -31,14 +40,14 @@ const SidebarDashMobile = () => {
         <SheetContent side="left" className="flex flex-col">
           <nav className="grid gap-2 text-lg font-medium">
             <Link
-              to={"/dashboard"}
+              to={"/panel/dashboard"}
               className="flex items-center gap-2 font-semibold border-b pb-4"
             >
               <img src="/yessles_logo_icon.svg" alt="" className="size-7" />
               <span className="">Yessles Panel</span>
             </Link>
             <Link
-              to={"/dashboard"}
+              to={"/panel/dashboard"}
               className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               <Home className="h-5 w-5" />
@@ -51,19 +60,19 @@ const SidebarDashMobile = () => {
               >
                 <HiUsers className="h-4 w-4" />
                 Users
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  {userData.length}
+                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-yl-10">
+                  {getUserLength}
                 </Badge>
               </Link>
             )}
             <Link
-              to={"/dashboard"}
+              to={"/panel/articles"}
               className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               <RiArticleLine className="h-4 w-4" />
               Articles
-              <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                6
+              <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-yl-10">
+                {getArticleLength}
               </Badge>
             </Link>
           </nav>

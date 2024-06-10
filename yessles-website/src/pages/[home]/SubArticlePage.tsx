@@ -7,36 +7,38 @@ import { Link, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { IoIosArrowForward } from "react-icons/io";
 import CardArticlePage from "./components/CardArticlePage";
-import { useEffect, useState } from "react";
-import { articles } from "../../database/articles.json";
-import { formatDateString } from "@/utils/static";
+import { formatDateString, removeSurroundingQuotes } from "@/utils/static";
 import { Helmet } from "react-helmet-async";
-
-interface dataArtikel {
-  id: number;
-  slug: string;
-  title: string;
-  publication_date: string;
-  author: string;
-  authorProfile: string;
-  content: string | TrustedHTML | undefined;
-  thumbnail: string;
-  description: string;
-}
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
+import { endPoint } from "@/utils/endpoint";
 
 const SubArticlePage = () => {
-  const [dataArtikel, setDataArtikel] = useState<dataArtikel>();
   const { slug } = useParams();
   const currentUrl = window.location.href;
 
-  useEffect(() => {
-    //@ts-ignore
-    articles?.map((data, index) => {
-      if (data.slug === slug) {
-        setDataArtikel(data);
-      }
-    });
-  }, [slug]);
+  const getArticle = async () => {
+    try {
+      const res = await fetch(
+        endPoint + "/article/article-active?page=1&limit=100&search="
+      );
+
+      return await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const { data } = useQuery({
+    queryKey: ["article"],
+    queryFn: () => getArticle(),
+    placeholderData: keepPreviousData,
+  });
+
+  const dataArtikel = data?.data?.items;
+  const dataDetailArtikel = dataArtikel?.find(
+    (data: any) => data.slug === slug
+  );
 
   const handleCopy = async () => {
     try {
@@ -71,37 +73,48 @@ const SubArticlePage = () => {
   return (
     <>
       <Helmet>
-        <title>{dataArtikel?.title}</title>
-        <meta name="description" content={dataArtikel?.description} />
-        <meta property="og:title" content={dataArtikel?.title} />
-        <meta property="og:description" content={dataArtikel?.description} />
+        <title>{dataDetailArtikel?.title}</title>
+        <meta name="description" content={dataDetailArtikel?.description} />
+        <meta property="og:title" content={dataDetailArtikel?.title} />
+        <meta
+          property="og:description"
+          content={dataDetailArtikel?.description}
+        />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={currentUrl} />
-        {dataArtikel?.thumbnail && (
-          <meta property="og:image" content={dataArtikel?.thumbnail} />
+        {dataDetailArtikel?.thumbnail && (
+          <meta property="og:image" content={dataDetailArtikel?.thumbnail} />
         )}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={dataArtikel?.title} />
-        <meta name="twitter:description" content={dataArtikel?.description} />
-        {dataArtikel?.thumbnail && (
-          <meta name="twitter:image" content={dataArtikel?.thumbnail} />
+        <meta name="twitter:title" content={dataDetailArtikel?.title} />
+        <meta
+          name="twitter:description"
+          content={dataDetailArtikel?.description}
+        />
+        {dataDetailArtikel?.thumbnail && (
+          <meta name="twitter:image" content={dataDetailArtikel?.thumbnail} />
         )}
       </Helmet>
 
-      <div className="w-[80%] lg:w-[65%] h-fit mt-[26%] sm:mt-[16%] md:mt-[13%] lg:mt-[10%] xl:mt-[8%] flex flex-col justify-start items-center gap-y-5 font-lexend mx-auto ">
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-[80%] lg:w-[65%] h-fit mt-[26%] sm:mt-[16%] md:mt-[13%] lg:mt-[10%] xl:mt-[8%] flex flex-col justify-start items-center gap-y-5 font-lexend mx-auto "
+      >
         <div className="w-full flex justify-start items-start">
           <h1 className="text-left text-[24px] md:text-[30px] lg:text-[42px] font-bold">
-            {dataArtikel?.title}
+            {dataDetailArtikel?.title}
           </h1>
         </div>
 
         <div className="flex flex-row gap-x-3 w-full justify-between text-left">
           <div className="flex flex-col lg:flex-row gap-x-2 md:text-[14px] text-[12px] gap-y-1">
-            <h1>{dataArtikel?.author}</h1>
+            <h1>{dataDetailArtikel?.User?.full_name}</h1>
             <h1 className="hidden lg:block">|</h1>
             <h1>
-              {dataArtikel?.publication_date
-                ? formatDateString(dataArtikel?.publication_date)
+              {dataDetailArtikel?.createdAt
+                ? formatDateString(dataDetailArtikel?.createdAt)
                 : ""}
             </h1>
           </div>
@@ -130,7 +143,7 @@ const SubArticlePage = () => {
         </div>
 
         <img
-          src={dataArtikel?.thumbnail}
+          src={dataDetailArtikel?.thumbnail}
           alt=""
           className="w-full h-[340px] object-cover rounded-lg group-hover:scale-105 transition-all mb-4"
         />
@@ -138,9 +151,11 @@ const SubArticlePage = () => {
         {/* Body Content */}
         <div
           className="font-sans leading-8 mb-14"
-          dangerouslySetInnerHTML={{ __html: dataArtikel?.content as string }}
+          dangerouslySetInnerHTML={{
+            __html: removeSurroundingQuotes(dataDetailArtikel?.body) as string,
+          }}
         />
-      </div>
+      </motion.div>
 
       <div className="border-b-[1px] border-gray-400 mx-[8%] mb-10"></div>
 
@@ -156,7 +171,7 @@ const SubArticlePage = () => {
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full h-fit gap-10 px-[8%] mb-20">
-        {articles.map((data, index) => {
+        {dataArtikel?.map((data: any, index: number) => {
           if (data.slug !== slug) {
             return (
               //@ts-ignore

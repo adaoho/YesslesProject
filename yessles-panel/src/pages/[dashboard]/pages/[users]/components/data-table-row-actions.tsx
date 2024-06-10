@@ -35,7 +35,7 @@ import {
   userDelete,
 } from "@/features/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
 
 interface DataTableRowActionsProps<TData> {
@@ -46,6 +46,7 @@ export function DataTableRowActions<TData>(
   //@ts-ignore
   { row }: DataTableRowActionsProps<TData>
 ) {
+  const { userData } = useSelector((state: any) => state.user);
   // @ts-ignore
   const emailUser = row.original.email;
   // @ts-ignore
@@ -54,6 +55,8 @@ export function DataTableRowActions<TData>(
   const idEmail = row.original.email;
   // @ts-ignore
   const idFullName = row.original.full_name;
+  // @ts-ignore
+  const idRole = userData.role;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -73,10 +76,10 @@ export function DataTableRowActions<TData>(
 
   const onEdit = (e: React.FormEvent<HTMLInputElement>, id: number) => {
     e.preventDefault();
-    console.log(fullName, "from submit");
-    console.log(filePhoto, "from submit");
+    // console.log(fullName, "from submit");
+    // console.log(filePhoto, "from submit");
     // @ts-ignore
-    dispatch(userChangeUpdate(fullName, id, filePhoto, idEmail));
+    dispatch(userChangeUpdate(fullName, id, filePhoto, idEmail, idRole));
     setEditOpen(!editOpen);
     setFullName(idFullName);
     setFilePhoto("");
