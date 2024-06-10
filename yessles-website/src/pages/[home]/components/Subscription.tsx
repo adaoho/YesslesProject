@@ -20,7 +20,7 @@ const Subscription = ({ className, other }: any) => {
     <>
       {other ? (
         <>
-          <section id="subscription" data-aos="fade-up">
+          <section id="subscription">
             <div className="flex w-[100dvw] h-[350px] items-center px-[8%] flex-col pb-[6%] justify-center mt-8">
               {/* Banner Button */}
               <div className="flex flex-col w-full items-center justify-center h-full rounded-[25px] overflow-hidden relative">

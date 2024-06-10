@@ -1,3 +1,4 @@
+import { BsWhatsapp } from "react-icons/bs";
 import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import { Fragment, useEffect, useRef, useState } from "react";
@@ -219,7 +220,7 @@ const ProgBelPage = () => {
               target="_blank"
             >
               <div className="flex flex-row gap-x-2 bg-yl-100 mx-4 mb-3 py-1 rounded-lg justify-center items-center text-white hover:bg-yl-10 hover:scale-105 transition-all">
-                <img src="/whatsapp-icon.svg" alt="" className="w-4 h-4" />
+                <BsWhatsapp className="w-4 h-4" />
                 <p>Hubungi Kami</p>
               </div>
             </Link>

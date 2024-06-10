@@ -15,7 +15,7 @@ const CardArticle = ({ data, other }: any) => {
             <img
               src={data?.thumbnail}
               alt=""
-              className={`object-cover rounded-lg group-hover:scale-105 transition-all`}
+              className={`object-cover w-full h-full rounded-lg group-hover:scale-105 transition-all`}
             />
           </div>
 
