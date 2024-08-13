@@ -132,7 +132,7 @@ class UserStatic {
         attributes: {
           exclude: ["createdAt", "updatedAt", "password"],
         },
-        order: [["id", "ASC"]],
+        order: [["createdAt", "ASC"]],
         limit: limitNum,
         offset,
       });
