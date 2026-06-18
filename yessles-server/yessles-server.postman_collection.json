@@ -1,0 +1,825 @@
+{
+  "info": {
+    "_postman_id": "yessles-server-collection",
+    "name": "Yessles Server API",
+    "description": "Koleksi endpoint Yessles Server — REST API berbasis Express.js + Sequelize (PostgreSQL). Gunakan variabel {{base_url}} dan {{access_token}} di environment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "full_name", "value": "Adnan Nugroho", "type": "text" },
+                { "key": "email", "value": "adnan@yessles.com", "type": "text" },
+                { "key": "password", "value": "password123", "type": "text" },
+                {
+                  "key": "profile_picture",
+                  "type": "file",
+                  "src": [],
+                  "description": "Opsional — jika tidak diisi akan menggunakan foto default",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/user/register",
+              "host": ["{{base_url}}"],
+              "path": ["user", "register"]
+            },
+            "description": "Mendaftarkan user baru dengan role `tutor` dan status `INACTIVE`. Profile picture opsional (form-data file); jika tidak disertakan akan menggunakan foto default. User harus diaktifkan oleh admin sebelum bisa login."
+          },
+          "response": [
+            {
+              "name": "201 – Register Berhasil",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    { "key": "full_name", "value": "Adnan Nugroho", "type": "text" },
+                    { "key": "email", "value": "adnan@yessles.com", "type": "text" },
+                    { "key": "password", "value": "password123", "type": "text" }
+                  ]
+                },
+                "url": { "raw": "{{base_url}}/user/register", "host": ["{{base_url}}"], "path": ["user", "register"] }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Create User adnan@yessles.com\",\n  \"data\": {\n    \"id\": 5,\n    \"full_name\": \"Adnan Nugroho\",\n    \"email\": \"adnan@yessles.com\",\n    \"role\": \"tutor\",\n    \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg?updatedAt=1717140814267\",\n    \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\",\n    \"status\": \"INACTIVE\"\n  }\n}"
+            },
+            {
+              "name": "400 – Email Sudah Terdaftar",
+              "originalRequest": {
+                "method": "POST",
+                "body": { "mode": "formdata", "formdata": [{ "key": "email", "value": "adnan@yessles.com", "type": "text" }, { "key": "password", "value": "password123", "type": "text" }, { "key": "full_name", "value": "Adnan", "type": "text" }] },
+                "url": { "raw": "{{base_url}}/user/register", "host": ["{{base_url}}"], "path": ["user", "register"] }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Email already registered!\"\n}"
+            },
+            {
+              "name": "400 – Field Kosong",
+              "originalRequest": {
+                "method": "POST",
+                "body": { "mode": "formdata", "formdata": [{ "key": "email", "value": "adnan@yessles.com", "type": "text" }] },
+                "url": { "raw": "{{base_url}}/user/register", "host": ["{{base_url}}"], "path": ["user", "register"] }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Password Can't be Empty\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.data && res.data.access_token) {",
+                  "  pm.collectionVariables.set('access_token', res.data.access_token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@yessles.com\",\n  \"password\": \"password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/user/login",
+              "host": ["{{base_url}}"],
+              "path": ["user", "login"]
+            },
+            "description": "Login user. Script test otomatis menyimpan `access_token` ke collection variable sehingga request lain bisa langsung menggunakannya."
+          },
+          "response": [
+            {
+              "name": "200 – Login Berhasil",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@yessles.com\",\n  \"password\": \"password123\"\n}" },
+                "url": { "raw": "{{base_url}}/user/login", "host": ["{{base_url}}"], "path": ["user", "login"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Login Account admin@yessles.com\",\n  \"data\": {\n    \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkB5ZXNzbGVzLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzE0MDgxNH0.example_token\",\n    \"role\": \"admin\",\n    \"data\": {\n      \"id\": 1,\n      \"full_name\": \"Admin Yessles\",\n      \"email\": \"admin@yessles.com\",\n      \"role\": \"admin\",\n      \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg\",\n      \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\",\n      \"status\": \"ACTIVE\"\n    }\n  }\n}"
+            },
+            {
+              "name": "401 – Kredensial Salah",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"email\": \"admin@yessles.com\",\n  \"password\": \"salah\"\n}" },
+                "url": { "raw": "{{base_url}}/user/login", "host": ["{{base_url}}"], "path": ["user", "login"] }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Invalid email/password\"\n}"
+            },
+            {
+              "name": "401 – Akun Tidak Aktif",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"email\": \"tutor@yessles.com\",\n  \"password\": \"password123\"\n}" },
+                "url": { "raw": "{{base_url}}/user/login", "host": ["{{base_url}}"], "path": ["user", "login"] }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Account is Inactive\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "url": {
+              "raw": "{{base_url}}/user/get-user-id",
+              "host": ["{{base_url}}"],
+              "path": ["user", "get-user-id"]
+            },
+            "description": "Mengambil data user yang sedang login berdasarkan token. ID user diambil dari payload JWT, bukan dari parameter."
+          },
+          "response": [
+            {
+              "name": "200 – Data User Saat Ini",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/user/get-user-id", "host": ["{{base_url}}"], "path": ["user", "get-user-id"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Get User admin@yessles.com\",\n  \"data\": {\n    \"data\": {\n      \"id\": 1,\n      \"full_name\": \"Admin Yessles\",\n      \"email\": \"admin@yessles.com\",\n      \"role\": \"admin\",\n      \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg\",\n      \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\",\n      \"status\": \"ACTIVE\"\n    }\n  }\n}"
+            },
+            {
+              "name": "401 – Token Tidak Valid",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer invalid_token" }],
+                "url": { "raw": "{{base_url}}/user/get-user-id", "host": ["{{base_url}}"], "path": ["user", "get-user-id"] }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Invalid Token\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Users (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "url": {
+              "raw": "{{base_url}}/user/get-user?page=1&limit=10&search=",
+              "host": ["{{base_url}}"],
+              "path": ["user", "get-user"],
+              "query": [
+                { "key": "page", "value": "1", "description": "Nomor halaman (default: 1)" },
+                { "key": "limit", "value": "10", "description": "Jumlah item per halaman (default: 100)" },
+                { "key": "search", "value": "", "description": "Filter berdasarkan full_name (case-insensitive)" }
+              ]
+            },
+            "description": "Mengambil semua user dengan pagination dan search. Hanya dapat diakses oleh user dengan role `admin`."
+          },
+          "response": [
+            {
+              "name": "200 – Daftar Semua User",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/user/get-user?page=1&limit=10", "host": ["{{base_url}}"], "path": ["user", "get-user"], "query": [{ "key": "page", "value": "1" }, { "key": "limit", "value": "10" }] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Get All User\",\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": 1,\n        \"full_name\": \"Admin Yessles\",\n        \"email\": \"admin@yessles.com\",\n        \"role\": \"admin\",\n        \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg\",\n        \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\",\n        \"status\": \"ACTIVE\"\n      },\n      {\n        \"id\": 2,\n        \"full_name\": \"Budi Santoso\",\n        \"email\": \"budi@yessles.com\",\n        \"role\": \"tutor\",\n        \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg\",\n        \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\",\n        \"status\": \"ACTIVE\"\n      }\n    ],\n    \"totalPages\": 1,\n    \"currentPage\": 1,\n    \"totalUsers\": 2\n  }\n}"
+            },
+            {
+              "name": "403 – Bukan Admin",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/user/get-user", "host": ["{{base_url}}"], "path": ["user", "get-user"] }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"You're Not Authorized\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "full_name", "value": "Adnan Nugroho Updated", "type": "text" },
+                {
+                  "key": "profile_picture",
+                  "type": "file",
+                  "src": [],
+                  "description": "Opsional — jika diisi akan mengganti foto lama di ImageKit",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/user/edit-user/2",
+              "host": ["{{base_url}}"],
+              "path": ["user", "edit-user", "2"]
+            },
+            "description": "Memperbarui data user. Hanya nama dan foto profil yang bisa diubah. Tidak bisa mengubah data admin. Jika `profile_picture` disertakan, foto lama di ImageKit akan dihapus dan diganti."
+          },
+          "response": [
+            {
+              "name": "200 – Update Berhasil",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": { "mode": "formdata", "formdata": [{ "key": "full_name", "value": "Adnan Nugroho Updated", "type": "text" }] },
+                "url": { "raw": "{{base_url}}/user/edit-user/2", "host": ["{{base_url}}"], "path": ["user", "edit-user", "2"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Update User for budi@yessles.com\"\n}"
+            },
+            {
+              "name": "404 – User Tidak Ditemukan",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": { "mode": "formdata", "formdata": [{ "key": "full_name", "value": "Test", "type": "text" }] },
+                "url": { "raw": "{{base_url}}/user/edit-user/999", "host": ["{{base_url}}"], "path": ["user", "edit-user", "999"] }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Error Data Not Found\"\n}"
+            },
+            {
+              "name": "401 – Target adalah Admin",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": { "mode": "formdata", "formdata": [{ "key": "full_name", "value": "Test", "type": "text" }] },
+                "url": { "raw": "{{base_url}}/user/edit-user/1", "host": ["{{base_url}}"], "path": ["user", "edit-user", "1"] }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Unable Action for Super Admin\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete User (Admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "url": {
+              "raw": "{{base_url}}/user/delete-user/2",
+              "host": ["{{base_url}}"],
+              "path": ["user", "delete-user", "2"]
+            },
+            "description": "Menghapus user berdasarkan ID. Hanya admin yang bisa mengakses. Tidak bisa menghapus user dengan role `admin`."
+          },
+          "response": [
+            {
+              "name": "200 – Hapus Berhasil",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/user/delete-user/2", "host": ["{{base_url}}"], "path": ["user", "delete-user", "2"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Delete Account with Email budi@yessles.com\"\n}"
+            },
+            {
+              "name": "404 – User Tidak Ditemukan",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/user/delete-user/999", "host": ["{{base_url}}"], "path": ["user", "delete-user", "999"] }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Error Data Not Found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Set User Status (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"ACTIVE\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/user/status-user/2",
+              "host": ["{{base_url}}"],
+              "path": ["user", "status-user", "2"]
+            },
+            "description": "Mengubah status user menjadi `ACTIVE` atau `INACTIVE`. Hanya admin yang bisa mengakses. Tidak bisa mengubah status admin."
+          },
+          "response": [
+            {
+              "name": "200 – Status Berhasil Diubah",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }, { "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"status\": \"ACTIVE\"\n}" },
+                "url": { "raw": "{{base_url}}/user/status-user/2", "host": ["{{base_url}}"], "path": ["user", "status-user", "2"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Change Status to ACTIVE for budi@yessles.com\"\n}"
+            },
+            {
+              "name": "200 – Status Dinonaktifkan",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }, { "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"status\": \"INACTIVE\"\n}" },
+                "url": { "raw": "{{base_url}}/user/status-user/2", "host": ["{{base_url}}"], "path": ["user", "status-user", "2"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Change Status to INACTIVE for budi@yessles.com\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Article",
+      "item": [
+        {
+          "name": "Get Active Articles (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/article/article-active?page=1&limit=20&search=",
+              "host": ["{{base_url}}"],
+              "path": ["article", "article-active"],
+              "query": [
+                { "key": "page", "value": "1", "description": "Nomor halaman (default: 1)" },
+                { "key": "limit", "value": "20", "description": "Jumlah item per halaman (default: 20)" },
+                { "key": "search", "value": "", "description": "Filter berdasarkan judul artikel (case-insensitive)" }
+              ]
+            },
+            "description": "Mengambil semua artikel berstatus `ACTIVE`. Endpoint publik — tidak memerlukan autentikasi. Digunakan untuk halaman utama website."
+          },
+          "response": [
+            {
+              "name": "200 – Daftar Artikel Aktif",
+              "originalRequest": {
+                "method": "GET",
+                "url": { "raw": "{{base_url}}/article/article-active?page=1&limit=20", "host": ["{{base_url}}"], "path": ["article", "article-active"], "query": [{ "key": "page", "value": "1" }, { "key": "limit", "value": "20" }] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Get All Active Articles\",\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": 3,\n        \"title\": \"Tips Belajar Efektif untuk Pelajar\",\n        \"slug\": \"tips-belajar-efektif-untuk-pelajar\",\n        \"description\": \"Rangkuman strategi belajar yang terbukti meningkatkan pemahaman.\",\n        \"body\": \"<p>Belajar efektif bukan soal lama duduk...</p>\",\n        \"thumbnail\": \"https://ik.imagekit.io/a1hblgyox/tips-belajar.jpg\",\n        \"thumbnail_id\": \"66597d4d37b244ef54eeee30\",\n        \"status\": \"ACTIVE\",\n        \"UserId\": 2,\n        \"User\": {\n          \"id\": 2,\n          \"full_name\": \"Budi Santoso\",\n          \"email\": \"budi@yessles.com\",\n          \"role\": \"tutor\",\n          \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg\",\n          \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\"\n        }\n      }\n    ],\n    \"totalPages\": 1,\n    \"currentPage\": 1,\n    \"totalArticles\": 1\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Articles",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "url": {
+              "raw": "{{base_url}}/article?page=1&limit=10&search=",
+              "host": ["{{base_url}}"],
+              "path": ["article"],
+              "query": [
+                { "key": "page", "value": "1", "description": "Nomor halaman (default: 1)" },
+                { "key": "limit", "value": "10", "description": "Jumlah item per halaman (default: 100)" },
+                { "key": "search", "value": "", "description": "Filter berdasarkan judul (case-insensitive)" }
+              ]
+            },
+            "description": "Mengambil semua artikel. Admin melihat semua artikel; tutor hanya melihat artikel miliknya sendiri (berdasarkan `UserId` dari token)."
+          },
+          "response": [
+            {
+              "name": "200 – Daftar Artikel (Admin)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/article?page=1&limit=10", "host": ["{{base_url}}"], "path": ["article"], "query": [{ "key": "page", "value": "1" }, { "key": "limit", "value": "10" }] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Get All Articles\",\n  \"data\": {\n    \"items\": [\n      {\n        \"id\": 3,\n        \"title\": \"Tips Belajar Efektif untuk Pelajar\",\n        \"slug\": \"tips-belajar-efektif-untuk-pelajar\",\n        \"description\": \"Rangkuman strategi belajar.\",\n        \"body\": \"<p>Konten artikel...</p>\",\n        \"thumbnail\": \"https://ik.imagekit.io/a1hblgyox/tips-belajar.jpg\",\n        \"thumbnail_id\": \"66597d4d37b244ef54eeee30\",\n        \"status\": \"ACTIVE\",\n        \"UserId\": 2,\n        \"User\": {\n          \"id\": 2,\n          \"full_name\": \"Budi Santoso\",\n          \"email\": \"budi@yessles.com\",\n          \"role\": \"tutor\",\n          \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg\",\n          \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\"\n        }\n      }\n    ],\n    \"totalPages\": 1,\n    \"currentPage\": 1,\n    \"totalArticles\": 1\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Article by ID",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "url": {
+              "raw": "{{base_url}}/article/article-get/3",
+              "host": ["{{base_url}}"],
+              "path": ["article", "article-get", "3"]
+            },
+            "description": "Mengambil detail artikel berdasarkan ID. Admin bisa mengakses semua artikel; tutor hanya bisa mengakses artikel miliknya sendiri."
+          },
+          "response": [
+            {
+              "name": "200 – Detail Artikel",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/article/article-get/3", "host": ["{{base_url}}"], "path": ["article", "article-get", "3"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Get Articles with Tips Belajar Efektif untuk Pelajar\",\n  \"data\": {\n    \"id\": 3,\n    \"title\": \"Tips Belajar Efektif untuk Pelajar\",\n    \"slug\": \"tips-belajar-efektif-untuk-pelajar\",\n    \"description\": \"Rangkuman strategi belajar yang terbukti meningkatkan pemahaman.\",\n    \"body\": \"<p>Belajar efektif bukan soal lama duduk...</p>\",\n    \"thumbnail\": \"https://ik.imagekit.io/a1hblgyox/tips-belajar.jpg\",\n    \"thumbnail_id\": \"66597d4d37b244ef54eeee30\",\n    \"status\": \"ACTIVE\",\n    \"UserId\": 2,\n    \"User\": {\n      \"id\": 2,\n      \"full_name\": \"Budi Santoso\",\n      \"email\": \"budi@yessles.com\",\n      \"role\": \"tutor\",\n      \"profile_picture\": \"https://ik.imagekit.io/a1hblgyox/yessles_profile_gPfoAvdTTO.jpeg\",\n      \"profile_picture_id\": \"66597d4d37b244ef54eeee2b\"\n    }\n  }\n}"
+            },
+            {
+              "name": "400 – Bukan Artikel Milik Tutor",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/article/article-get/5", "host": ["{{base_url}}"], "path": ["article", "article-get", "5"] }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Invalid User ID Action\"\n}"
+            },
+            {
+              "name": "404 – Artikel Tidak Ditemukan",
+              "originalRequest": {
+                "method": "GET",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/article/article-get/999", "host": ["{{base_url}}"], "path": ["article", "article-get", "999"] }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Error Data Not Found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Article",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "title", "value": "Panduan Lengkap Belajar Matematika", "type": "text" },
+                { "key": "description", "value": "Kumpulan tips dan trik belajar matematika untuk semua jenjang.", "type": "text" },
+                { "key": "body", "value": "<p>Matematika adalah ilmu yang menyenangkan...</p>", "type": "text" },
+                { "key": "thumbnail", "type": "file", "src": [], "description": "Wajib diisi — file gambar thumbnail artikel" }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/article",
+              "host": ["{{base_url}}"],
+              "path": ["article"]
+            },
+            "description": "Membuat artikel baru. Thumbnail wajib diisi (file). Artikel baru akan berstatus `PENDING` dan harus diaktifkan admin. User harus berstatus `ACTIVE` untuk bisa membuat artikel. Slug dibuat otomatis dari judul."
+          },
+          "response": [
+            {
+              "name": "201 – Artikel Berhasil Dibuat",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    { "key": "title", "value": "Panduan Lengkap Belajar Matematika", "type": "text" },
+                    { "key": "description", "value": "Kumpulan tips dan trik.", "type": "text" },
+                    { "key": "body", "value": "<p>Matematika...</p>", "type": "text" },
+                    { "key": "thumbnail", "type": "file", "src": [] }
+                  ]
+                },
+                "url": { "raw": "{{base_url}}/article", "host": ["{{base_url}}"], "path": ["article"] }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Create Article for budi@yessles.com \"\n}"
+            },
+            {
+              "name": "400 – Judul Sudah Digunakan",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": { "mode": "formdata", "formdata": [{ "key": "title", "value": "Panduan Lengkap Belajar Matematika", "type": "text" }, { "key": "body", "value": "<p>...</p>", "type": "text" }, { "key": "thumbnail", "type": "file", "src": [] }] },
+                "url": { "raw": "{{base_url}}/article", "host": ["{{base_url}}"], "path": ["article"] }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Article Title Already Created\"\n}"
+            },
+            {
+              "name": "400 – Thumbnail Kosong",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": { "mode": "formdata", "formdata": [{ "key": "title", "value": "Judul Baru", "type": "text" }, { "key": "body", "value": "<p>Isi</p>", "type": "text" }] },
+                "url": { "raw": "{{base_url}}/article", "host": ["{{base_url}}"], "path": ["article"] }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Thumbnail Can't be Empty\"\n}"
+            },
+            {
+              "name": "400 – User Tidak Aktif",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": { "mode": "formdata", "formdata": [{ "key": "title", "value": "Judul Baru", "type": "text" }, { "key": "body", "value": "<p>Isi</p>", "type": "text" }, { "key": "thumbnail", "type": "file", "src": [] }] },
+                "url": { "raw": "{{base_url}}/article", "host": ["{{base_url}}"], "path": ["article"] }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"User is Inactive\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Article",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "title", "value": "Panduan Belajar Matematika (Diperbarui)", "type": "text" },
+                { "key": "description", "value": "Versi terbaru panduan matematika.", "type": "text" },
+                { "key": "body", "value": "<p>Konten yang sudah diperbarui...</p>", "type": "text" },
+                {
+                  "key": "thumbnail",
+                  "type": "file",
+                  "src": [],
+                  "description": "Opsional — jika diisi akan mengganti thumbnail lama di ImageKit",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/article/3",
+              "host": ["{{base_url}}"],
+              "path": ["article", "3"]
+            },
+            "description": "Memperbarui artikel. Setelah diperbarui, status artikel kembali ke `PENDING`. Admin bisa mengupdate semua artikel; tutor hanya bisa mengupdate artikel miliknya. Thumbnail opsional."
+          },
+          "response": [
+            {
+              "name": "200 – Artikel Berhasil Diperbarui",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    { "key": "title", "value": "Panduan Belajar Matematika (Diperbarui)", "type": "text" },
+                    { "key": "description", "value": "Versi terbaru.", "type": "text" },
+                    { "key": "body", "value": "<p>Konten baru...</p>", "type": "text" }
+                  ]
+                },
+                "url": { "raw": "{{base_url}}/article/3", "host": ["{{base_url}}"], "path": ["article", "3"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Update Article Panduan Lengkap Belajar Matematika\"\n}"
+            },
+            {
+              "name": "404 – Artikel Tidak Ditemukan",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "body": { "mode": "formdata", "formdata": [{ "key": "title", "value": "Judul", "type": "text" }] },
+                "url": { "raw": "{{base_url}}/article/999", "host": ["{{base_url}}"], "path": ["article", "999"] }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Error Data Not Found\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Change Article Status (Admin)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{access_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"ACTIVE\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/article/article-status/3",
+              "host": ["{{base_url}}"],
+              "path": ["article", "article-status", "3"]
+            },
+            "description": "Mengubah status artikel. Hanya admin yang bisa mengakses. Nilai `status` yang valid: `ACTIVE`, `INACTIVE`, `PENDING`."
+          },
+          "response": [
+            {
+              "name": "200 – Status Artikel Diubah ke ACTIVE",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }, { "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"status\": \"ACTIVE\"\n}" },
+                "url": { "raw": "{{base_url}}/article/article-status/3", "host": ["{{base_url}}"], "path": ["article", "article-status", "3"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Change Status Article id: 3\"\n}"
+            },
+            {
+              "name": "200 – Status Artikel Diubah ke INACTIVE",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }, { "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"status\": \"INACTIVE\"\n}" },
+                "url": { "raw": "{{base_url}}/article/article-status/3", "host": ["{{base_url}}"], "path": ["article", "article-status", "3"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Change Status Article id: 3\"\n}"
+            },
+            {
+              "name": "403 – Bukan Admin",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }, { "key": "Content-Type", "value": "application/json" }],
+                "body": { "mode": "raw", "raw": "{\n  \"status\": \"ACTIVE\"\n}" },
+                "url": { "raw": "{{base_url}}/article/article-status/3", "host": ["{{base_url}}"], "path": ["article", "article-status", "3"] }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"You're Not Authorized\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Article",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+            "url": {
+              "raw": "{{base_url}}/article/3",
+              "host": ["{{base_url}}"],
+              "path": ["article", "3"]
+            },
+            "description": "Menghapus artikel berdasarkan ID. Admin bisa menghapus semua artikel; tutor hanya bisa menghapus artikel miliknya."
+          },
+          "response": [
+            {
+              "name": "200 – Artikel Berhasil Dihapus",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/article/3", "host": ["{{base_url}}"], "path": ["article", "3"] }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Success Delete Article Panduan Lengkap Belajar Matematika\"\n}"
+            },
+            {
+              "name": "404 – Artikel Tidak Ditemukan",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/article/999", "host": ["{{base_url}}"], "path": ["article", "999"] }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Error Data Not Found\"\n}"
+            },
+            {
+              "name": "400 – Tutor Mencoba Hapus Artikel Orang Lain",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [{ "key": "Authorization", "value": "Bearer {{access_token}}" }],
+                "url": { "raw": "{{base_url}}/article/5", "host": ["{{base_url}}"], "path": ["article", "5"] }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"message\": \"Invalid User ID Action\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

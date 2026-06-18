@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "jest --detectOpenHandles --forceExit --testTimeout=3000 --verbose",
     "db:test": "sequelize-cli --env=test db:drop && sequelize-cli --env=test db:create && sequelize-cli --env=test db:migrate",
     "db:dev": "npx sequelize-cli db:drop --env=development && npx sequelize-cli db:create --env=development && npx sequelize-cli db:migrate --env=development && npx sequelize-cli db:seed:all --env=development",
