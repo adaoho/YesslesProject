@@ -1,0 +1,21 @@
+---
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
+import ProgBelPageContent from '../../components/sections/ProgBelPageContent.jsx';
+import programBelajarData from '../../database/program_belajar.json';
+
+const { slug } = Astro.params;
+const { program_belajar } = programBelajarData;
+const pageData = program_belajar.find((p) => p.slug === slug);
+
+export function getStaticPaths() {
+  const { program_belajar } = programBelajarData;
+  return program_belajar.map((p) => ({ params: { slug: p.slug } }));
+}
+---
+
+<SubPageLayout
+  title={`Program ${pageData?.type || 'Belajar'} | Yessles`}
+  description={pageData?.hero?.description || 'Program belajar privat di Yessles, Bimbingan No.1 di Madiun.'}
+>
+  <ProgBelPageContent slug={slug} client:load />
+</SubPageLayout>

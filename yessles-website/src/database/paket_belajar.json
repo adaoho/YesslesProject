@@ -5,40 +5,35 @@
       "slug": "paket-sahabat-belajar",
       "title": "Paket Sahabat Belajar",
       "hero": {
-        "title": "Sahabat Belajar bagi Yess Student",
-        "sub_title": "100 Kali Tatap Muka, Mulai dari 5,9jt/Tahun!",
-        "description": "This is description and bla bla",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "title": "Sahabat Belajar Sepanjang Tahun",
+        "sub_title": "100 Kali Tatap Muka, Mulai dari Rp 7,2jt / Tahun!",
+        "description": "Paket paling lengkap untuk pendampingan belajar sepanjang tahun. Dengan 100 kali tatap muka bersama tutor pilihan, si buah hati ditemani di setiap langkah hingga konsisten berkembang dan siap meraih nilai terbaik.",
+        "thumbnail": "/paket_belajar/paket_belajar_1.png"
       },
       "price": [
         {
-          "pendidikan": "Prasekolah",
-          "min_price": 5900000,
-          "max_price": 0
-        },
-        {
-          "pendidikan": "Taman Kanak-Kanak (TK)",
-          "min_price": 5900000,
+          "pendidikan": "Prasekolah & TK",
+          "min_price": 7200000,
           "max_price": 0
         },
         {
           "pendidikan": "Sekolah Dasar (SD)",
-          "min_price": 6400000,
+          "min_price": 8200000,
           "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
-          "min_price": 6900000,
+          "pendidikan": "Sekolah Menengah Pertama (SMP)",
+          "min_price": 9700000,
           "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Atas (SMA)",
-          "min_price": 7400000,
+          "pendidikan": "Sekolah Menengah Atas (SMA)",
+          "min_price": 10700000,
           "max_price": 0
         },
         {
           "pendidikan": "Umum",
-          "min_price": 7900000,
+          "min_price": 12700000,
           "max_price": 0
         }
       ],
@@ -59,40 +54,35 @@
       "slug": "paket-sobat-belajar",
       "title": "Paket Sobat Belajar",
       "hero": {
-        "title": "Sobat Belajar bagi Yess Student",
-        "sub_title": "50 Kali Tatap Muka, Mulai dari 3,05jt/6 Bulan!",
-        "description": "This is description and bla bla",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "title": "Sobat Belajar Selama Enam Bulan",
+        "sub_title": "50 Kali Tatap Muka, Mulai dari Rp 3,65jt / 6 Bulan!",
+        "description": "Teman setia belajar selama enam bulan penuh. Lewat 50 kali tatap muka, kebiasaan belajar yang baik mulai terbentuk dan pemahaman materi si buah hati semakin matang.",
+        "thumbnail": "/paket_belajar/paket_belajar_2.png"
       },
       "price": [
         {
-          "pendidikan": "Prasekolah",
-          "min_price": 3050000,
-          "max_price": 0
-        },
-        {
-          "pendidikan": "Taman Kanak-Kanak (TK)",
-          "min_price": 3050000,
+          "pendidikan": "Prasekolah & TK",
+          "min_price": 3650000,
           "max_price": 0
         },
         {
           "pendidikan": "Sekolah Dasar (SD)",
-          "min_price": 3300000,
+          "min_price": 4150000,
           "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
-          "min_price": 3550000,
+          "pendidikan": "Sekolah Menengah Pertama (SMP)",
+          "min_price": 4900000,
           "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Atas (SMA)",
-          "min_price": 3800000,
+          "pendidikan": "Sekolah Menengah Atas (SMA)",
+          "min_price": 5400000,
           "max_price": 0
         },
         {
           "pendidikan": "Umum",
-          "min_price": 4050000,
+          "min_price": 6400000,
           "max_price": 0
         }
       ],
@@ -113,40 +103,35 @@
       "slug": "paket-sohib-belajar",
       "title": "Paket Sohib Belajar",
       "hero": {
-        "title": "Sohib Belajar bagi Yess Student",
-        "sub_title": "30 Kali Tatap Muka, Mulai dari 1.89jt/3 Bulan!",
-        "description": "This is description and bla bla",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "title": "Sohib Belajar Selama Tiga Bulan",
+        "sub_title": "30 Kali Tatap Muka, Mulai dari Rp 2,22jt / 3 Bulan!",
+        "description": "Pilihan tepat untuk fokus tiga bulan ke depan. 30 kali tatap muka yang intensif untuk mengejar materi, mempersiapkan ujian, atau menguatkan fondasi belajar si buah hati.",
+        "thumbnail": "/paket_belajar/paket_belajar_3.png"
       },
       "price": [
         {
-          "pendidikan": "Prasekolah",
-          "min_price": 1890000,
-          "max_price": 0
-        },
-        {
-          "pendidikan": "Taman Kanak-Kanak (TK)",
-          "min_price": 1890000,
+          "pendidikan": "Prasekolah & TK",
+          "min_price": 2220000,
           "max_price": 0
         },
         {
           "pendidikan": "Sekolah Dasar (SD)",
-          "min_price": 2040000,
+          "min_price": 2520000,
           "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
-          "min_price": 2190000,
+          "pendidikan": "Sekolah Menengah Pertama (SMP)",
+          "min_price": 2970000,
           "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Atas (SMA)",
-          "min_price": 2340000,
+          "pendidikan": "Sekolah Menengah Atas (SMA)",
+          "min_price": 3270000,
           "max_price": 0
         },
         {
           "pendidikan": "Umum",
-          "min_price": 2490000,
+          "min_price": 3870000,
           "max_price": 0
         }
       ],
@@ -167,46 +152,41 @@
       "slug": "paket-konco-belajar",
       "title": "Paket Konco Belajar",
       "hero": {
-        "title": "Konco Belajar bagi Yess Student",
-        "sub_title": "15 Kali Tatap Muka, Mulai dari 975rb/1 Bulan!",
-        "description": "This is description and bla bla",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "title": "Konco Belajar Selama Sebulan Penuh",
+        "sub_title": "15 Kali Tatap Muka, Mulai dari Rp 1,095jt / Bulan!",
+        "description": "Booster belajar selama satu bulan penuh. 15 kali tatap muka untuk menambah jam belajar dan menuntaskan materi yang dirasa paling menantang.",
+        "thumbnail": "/paket_belajar/paket_belajar_4.png"
       },
       "price": [
         {
-          "pendidikan": "Prasekolah",
-          "min_price": 65000,
-          "max_price": 975000
-        },
-        {
-          "pendidikan": "Taman Kanak-Kanak (TK)",
-          "min_price": 65000,
-          "max_price": 975000
+          "pendidikan": "Prasekolah & TK",
+          "min_price": 1095000,
+          "max_price": 0
         },
         {
           "pendidikan": "Sekolah Dasar (SD)",
-          "min_price": 70000,
-          "max_price": 1050000
+          "min_price": 1170000,
+          "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
-          "min_price": 75000,
-          "max_price": 1125000
+          "pendidikan": "Sekolah Menengah Pertama (SMP)",
+          "min_price": 1245000,
+          "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Atas (SMA)",
-          "min_price": 80000,
-          "max_price": 1200000
+          "pendidikan": "Sekolah Menengah Atas (SMA)",
+          "min_price": 1320000,
+          "max_price": 0
         },
         {
           "pendidikan": "Umum",
-          "min_price": 85000,
-          "max_price": 1275000
+          "min_price": 1395000,
+          "max_price": 0
         }
       ],
       "ketentuan": [
         {
-          "description": "Pengambilan jadwal 3 mata pelajaran/ 3 pertemuan tiap minggu"
+          "description": "Pengambilan jadwal 3 mata pelajaran/3 pertemuan tiap minggu"
         },
         {
           "description": "Durasi pemakaian maksimal 1 Bulan"
@@ -218,46 +198,41 @@
       "slug": "paket-kawan-belajar",
       "title": "Paket Kawan Belajar",
       "hero": {
-        "title": "Kawan Belajar bagi Yess Student",
-        "sub_title": "10 Kali Tatap Muka, Mulai dari 650rb/1 Bulan!",
-        "description": "This is description and bla bla",
-        "thumbnail": "/paket_belajar/paket_belajar_6.png"
+        "title": "Kawan Belajar untuk Dua Mata Pelajaran",
+        "sub_title": "10 Kali Tatap Muka, Mulai dari Rp 750rb / Bulan!",
+        "description": "Paket hemat untuk menemani belajar di dua mata pelajaran prioritas. 10 kali tatap muka yang pas untuk menjaga ritme belajar si buah hati tetap stabil.",
+        "thumbnail": "/paket_belajar/paket_belajar_5.png"
       },
       "price": [
         {
-          "pendidikan": "Prasekolah",
-          "min_price": 65000,
-          "max_price": 650000
-        },
-        {
-          "pendidikan": "Taman Kanak-Kanak (TK)",
-          "min_price": 65000,
-          "max_price": 650000
+          "pendidikan": "Prasekolah & TK",
+          "min_price": 750000,
+          "max_price": 0
         },
         {
           "pendidikan": "Sekolah Dasar (SD)",
-          "min_price": 70000,
-          "max_price": 700000
+          "min_price": 850000,
+          "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
-          "min_price": 75000,
-          "max_price": 750000
+          "pendidikan": "Sekolah Menengah Pertama (SMP)",
+          "min_price": 1000000,
+          "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Atas (SMA)",
-          "min_price": 80000,
-          "max_price": 800000
+          "pendidikan": "Sekolah Menengah Atas (SMA)",
+          "min_price": 1100000,
+          "max_price": 0
         },
         {
           "pendidikan": "Umum",
-          "min_price": 85000,
-          "max_price": 850000
+          "min_price": 1300000,
+          "max_price": 0
         }
       ],
       "ketentuan": [
         {
-          "description": "Pengambilan jadwal 2 mata pelajaran/ 2 pertemuan tiap minggu"
+          "description": "Pengambilan jadwal 2 mata pelajaran/2 pertemuan tiap minggu"
         },
         {
           "description": "Durasi pemakaian maksimal 1 Bulan"
@@ -269,46 +244,41 @@
       "slug": "paket-teman-belajar",
       "title": "Paket Teman Belajar",
       "hero": {
-        "title": "Teman Belajar bagi Yess Student",
-        "sub_title": "5 Kali Tatap Muka, Mulai dari 325rb/1 Bulan!",
-        "description": "This is description and bla bla",
+        "title": "Teman Belajar untuk Langkah Pertama",
+        "sub_title": "1 Kali Tatap Muka, Mulai dari Rp 80rb!",
+        "description": "Langkah pertama yang ringan untuk mencoba serunya belajar bersama Yessles. 1 kali tatap muka yang fokus pada satu mata pelajaran—terjangkau dan tanpa beban.",
         "thumbnail": "/paket_belajar/paket_belajar_6.png"
       },
       "price": [
         {
-          "pendidikan": "Prasekolah",
-          "min_price": 65000,
-          "max_price": 325000
-        },
-        {
-          "pendidikan": "Taman Kanak-Kanak (TK)",
-          "min_price": 65000,
-          "max_price": 325000
+          "pendidikan": "Prasekolah & TK",
+          "min_price": 80000,
+          "max_price": 0
         },
         {
           "pendidikan": "Sekolah Dasar (SD)",
-          "min_price": 70000,
-          "max_price": 350000
+          "min_price": 90000,
+          "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Pertama (SMP)",
-          "min_price": 75000,
-          "max_price": 375000
+          "pendidikan": "Sekolah Menengah Pertama (SMP)",
+          "min_price": 105000,
+          "max_price": 0
         },
         {
-          "pendidikan": "Sekolah Mengenah Atas (SMA)",
-          "min_price": 80000,
-          "max_price": 400000
+          "pendidikan": "Sekolah Menengah Atas (SMA)",
+          "min_price": 115000,
+          "max_price": 0
         },
         {
           "pendidikan": "Umum",
-          "min_price": 85000,
-          "max_price": 425000
+          "min_price": 135000,
+          "max_price": 0
         }
       ],
       "ketentuan": [
         {
-          "description": "Pengambilan jadwal 1 mata pelajaran/ 1 pertemuan tiap minggu"
+          "description": "Pengambilan jadwal 1 mata pelajaran/1 pertemuan"
         },
         {
           "description": "Durasi pemakaian maksimal 1 Bulan"

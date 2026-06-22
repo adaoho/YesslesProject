@@ -1,0 +1,36 @@
+---
+import '../styles/globals.css';
+import BaseHead from '../components/seo/BaseHead.astro';
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <BaseHead title="404 - Halaman Tidak Ditemukan | Yessles" noindex={true} />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WGZKGFR8"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="w-screen h-screen flex justify-center items-center">
+      <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col items-center pb-4">
+          <h1 class="font-bold text-[34px] font-lexend">Opps...</h1>
+          <h1 class="font-lexend">Page yang kamu Cari Tidak Ada</h1>
+        </div>
+        <a
+          href="/"
+          class="flex flex-row items-center gap-x-2 px-2 py-1 bg-yl-60 rounded-lg text-white transition-all cursor-pointer hover:bg-yl-30 font-lexend"
+        >
+          &larr; Kembali
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

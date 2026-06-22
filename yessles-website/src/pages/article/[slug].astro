@@ -1,0 +1,48 @@
+---
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
+import SubArticlePageContent from '../../components/sections/SubArticlePageContent.jsx';
+import { endPoint } from '@/utils/Endpoint';
+
+export async function getStaticPaths() {
+  try {
+    const res = await fetch(`${endPoint}/article/article-active?page=1&limit=100&search=`);
+    const data = await res.json();
+    const items = data?.data?.items ?? [];
+    return items.map((item) => ({ params: { slug: item.slug }, props: { article: item } }));
+  } catch {
+    return [];
+  }
+}
+
+const { slug } = Astro.params;
+const { article } = Astro.props as { article: { title?: string; body?: string } };
+
+const stripHtml = (s = '') =>
+  s
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&[a-z]+;/gi, ' ')
+    .replace(/\\+/g, '')
+    .replace(/"/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+const excerpt = stripHtml(article?.body || '');
+const description =
+  excerpt.length > 155
+    ? `${excerpt.slice(0, 152).trimEnd()}…`
+    : excerpt || 'Artikel dari Yessles Bimbingan No.1 di Madiun';
+const title = `${article?.title ?? 'Article'} | Yessles`;
+const ogImage = `/og/article/${slug}.jpg`;
+---
+
+<SubPageLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogType="article"
+  ogImageWidth={1200}
+  ogImageHeight={630}
+>
+  <SubArticlePageContent slug={slug} client:load />
+</SubPageLayout>

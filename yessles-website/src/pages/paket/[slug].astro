@@ -1,0 +1,21 @@
+---
+import SubPageLayout from '../../layouts/SubPageLayout.astro';
+import PakBelPageContent from '../../components/sections/PakBelPageContent.jsx';
+import paketBelajarData from '../../database/paket_belajar.json';
+
+const { slug } = Astro.params;
+const { paket_program_belajar } = paketBelajarData;
+const pageData = paket_program_belajar.find((p) => p.slug === slug);
+
+export function getStaticPaths() {
+  const { paket_program_belajar } = paketBelajarData;
+  return paket_program_belajar.map((p) => ({ params: { slug: p.slug } }));
+}
+---
+
+<SubPageLayout
+  title={`Paket Belajar ${pageData?.title || ''}`}
+  description={`${pageData?.title || 'Paket Belajar'} di Yessles Bimbingan No.1 di Madiun`}
+>
+  <PakBelPageContent slug={slug} client:load />
+</SubPageLayout>

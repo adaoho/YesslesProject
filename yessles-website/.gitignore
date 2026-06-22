@@ -6,11 +6,16 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+.claude
+.astro
+deploy-prod.sh
+deploy.sh
 
 node_modules
 dist
 dist-ssr
 *.local
+prod
 
 # Editor directories and files
 .vscode/*

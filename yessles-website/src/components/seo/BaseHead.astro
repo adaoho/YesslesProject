@@ -1,0 +1,192 @@
+---
+// Centralized <head>: SEO meta, Open Graph/Twitter, favicon, JSON-LD,
+// fonts, and Google Analytics. Used by every layout so metadata stays
+// consistent across the whole site.
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+}
+
+const SITE = "https://yessles.id";
+const GA_ID = "G-C7L8F29B37";
+const GTM_ID = "GTM-WGZKGFR8";
+
+const {
+  title = "Yessles: Bimbel No.1 di Madiun",
+  description = "Bimbingan belajar privat berbasis psikologi dan motivasi di Madiun. Metode Student Centered Learning untuk jenjang Prasekolah, TK, SD, SMP, hingga SMA.",
+  ogImage = "/background_utama.jpeg",
+  ogType = "website",
+  noindex = false,
+  ogImageWidth,
+  ogImageHeight,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, SITE).href;
+const ogImageURL = new URL(ogImage, SITE).href;
+const ogImageType = ogImage.endsWith(".png") ? "image/png" : "image/jpeg";
+
+const keywords = [
+  "bimbel madiun",
+  "bimbingan belajar privat madiun",
+  "les privat madiun",
+  "bimbel sd madiun",
+  "bimbel smp madiun",
+  "bimbel sma madiun",
+  "yessles",
+  "student centered learning",
+  "sahabat belajar madiun",
+].join(", ");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "Yessles",
+  alternateName: "Yessles Sahabat Belajarmu",
+  url: SITE,
+  logo: `${SITE}/yessles_logo_icon.svg`,
+  image: ogImageURL,
+  description,
+  email: "haloyessles@gmail.com",
+  telephone: "+62-899-4944-728",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Jl. Bali No. 1C",
+    addressLocality: "Kota Madiun",
+    addressRegion: "Jawa Timur",
+    postalCode: "63122",
+    addressCountry: "ID",
+  },
+  sameAs: [
+    "https://www.instagram.com/yessles_official/",
+    "https://www.youtube.com/@YesslesSahabatBelajarmu",
+    "https://www.facebook.com/yessles.madiun",
+  ],
+};
+
+// Helps Google understand the canonical site name shown in search results.
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Yessles",
+  alternateName: "Yessles Sahabat Belajarmu",
+  url: SITE,
+};
+
+// Auto breadcrumb from the URL path → enables breadcrumb rich results and
+// improves the structural signals Google uses to generate sitelinks.
+const SEG_LABELS = {
+  program: "Program Belajar",
+  paket: "Paket Belajar",
+  article: "Article",
+  tentang: "Tentang Yessles",
+};
+const prettify = (s) =>
+  SEG_LABELS[s] ?? s.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+const segments = Astro.url.pathname.split("/").filter(Boolean);
+const crumbs = [{ name: "Beranda", url: SITE }];
+let acc = "";
+for (const seg of segments) {
+  acc += `/${seg}`;
+  crumbs.push({ name: prettify(seg), url: `${SITE}${acc}` });
+}
+const breadcrumbLd =
+  segments.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: crumbs.map((c, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: c.name,
+          item: c.url,
+        })),
+      }
+    : null;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Google Tag Manager -->
+<script is:inline define:vars={{ GTM_ID }}>
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l != "dataLayer" ? "&l=" + l : "";
+    j.async = true;
+    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, "script", "dataLayer", GTM_ID);
+</script>
+<!-- End Google Tag Manager -->
+
+<!-- Primary meta -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="Yessles" />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+<meta name="theme-color" content="#527773" />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Favicon / app icons -->
+<link rel="icon" type="image/svg+xml" href="/yessles_logo_icon.svg" />
+<link rel="shortcut icon" href="/yessles_logo_icon.svg" />
+<link rel="apple-touch-icon" href="/yessles_logo_icon.svg" />
+<link rel="mask-icon" href="/yessles_logo_icon.svg" color="#527773" />
+
+<!-- Open Graph -->
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content="Yessles" />
+<meta property="og:locale" content="id_ID" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageURL} />
+<meta property="og:image:type" content={ogImageType} />
+{ogImageWidth && <meta property="og:image:width" content={String(ogImageWidth)} />}
+{ogImageHeight && <meta property="og:image:height" content={String(ogImageHeight)} />}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageURL} />
+
+<!-- Structured data -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+{breadcrumbLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Raleway:wght@400;600;700;900&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+  rel="stylesheet"
+/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+<!-- Google Analytics (GA4) -->
+<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+<script is:inline define:vars={{ GA_ID }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", GA_ID);
+</script>

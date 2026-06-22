@@ -1,0 +1,43 @@
+---
+import '../styles/globals.css';
+import Navbar from '../components/Navbar.jsx';
+import BaseHead from '../components/seo/BaseHead.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+}
+
+const { title, description, ogImage, ogType, ogImageWidth, ogImageHeight } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      ogType={ogType}
+      ogImageWidth={ogImageWidth}
+      ogImageHeight={ogImageHeight}
+    />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WGZKGFR8"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+    <Navbar client:load noScroll={false} />
+    <slot />
+  </body>
+</html>
